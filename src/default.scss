@@ -1,12 +1,5 @@
-*, ::before {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-.App {
-  background: #1E1E1E;
-  color: white;
-  width: 100vw;
-  height: 100vh;
-}
+@use './assets/styles/base';
+@use './assets/styles/flex';
+@use './assets/styles/font';
+@use './assets/styles/theme';
+@use './assets/styles/utils';

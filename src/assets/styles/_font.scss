@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
+
+@font-face {
+  font-family: 'garet-book';
+  src: local('garet-book'),
+    url('../font/garet-book-webfont.woff2') format('woff2'),
+    url('../font/garet-book-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fs-10 {
+  font-size: 1rem;
+}
+.fs-16 {
+  font-size: 1.6rem;
+}
+.fs-18 {
+  font-size: 1.8rem;
+}
+.fs-20 {
+  font-size: 2rem;
+}
+.fs-24 {
+  font-size: 2.4rem;
+}
+.fs-32 {
+  font-size: 3.2rem;
+}
+.fs-40 {
+  font-size: 4rem;
+}
+.fs-144 {
+  font-size: 14.4rem;
+}
+
+.ff-title {
+  font-family: 'Space Grotesk', sans-serif;
+}
+.ff-text {
+  font-family: 'garet-book', sans-serif;
+}
+
+.td-none{
+  text-decoration: none;
+}
+.td-underline{
+  text-decoration: underline;
+}
+
+.ta-center {
+  text-align: center;
+}

@@ -1,0 +1,55 @@
+@use './variables' as color;
+
+// color
+.c-primary {
+  color: color.$primary;
+}
+.c-on-surface {
+  color: color.$on-surface;
+}
+.c-on-surface-variant {
+  color: color.$on-surface-variant;
+}
+
+// background
+.b-primary {
+  background: color.$primary;
+}
+.b-surface {
+  background: color.$surface;
+}
+.b-surface-1 {
+  background: color.$surface-1;
+}
+.b-surface-2 {
+  background: color.$surface-2;
+}
+.b-on-surface-hover {
+  background: color.$on-surface-hover;
+}
+
+// border
+.border-top {
+  border-top: 2px color.$outline solid;
+}
+.border-top-1 {
+  border-top: 1px color.$outline solid;
+}
+.border-right {
+  border-right: 2px color.$outline solid;
+}
+.border-right-1 {
+  border-right: 1px color.$outline solid;
+}
+.border-bottom {
+  border-bottom: 2px color.$outline solid;
+}
+.border-bottom-1 {
+  border-bottom: 1px color.$outline solid;
+}
+.border-left {
+  border-left: 2px color.$outline solid;
+}
+.border-left-1 {
+  border-left: 1px color.$outline solid;
+}

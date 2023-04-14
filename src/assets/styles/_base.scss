@@ -1,0 +1,20 @@
+@use './variables' as color;
+
+*, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  // 1rem = 10px // 
+  font-size: 62.5%;
+}
+
+.App {
+  background: color.$surface;
+  color: color.$on-surface;
+  width: 100vw;
+  height: 100vh;
+  font-size: 1.6rem;
+}
