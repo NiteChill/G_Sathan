@@ -12,7 +12,7 @@ export default function App() {
       setAppSize(App.current.getBoundingClientRect().width);
     }
     window.addEventListener('resize', setSize);
-    // return window.removeEventListener('resize', setSize) //---> la page ne se reload jamais grace a vite donc si on met cette ligne de code l'eventlistener ne s'effectue jamais
+    //  return window.removeEventListener('resize', setSize)   //---> la page ne se reload jamais grace a vite donc si on met cette ligne de code l'eventlistener ne s'effectue jamais
   }, []);
   return (
     <div className='App' ref={App}>
