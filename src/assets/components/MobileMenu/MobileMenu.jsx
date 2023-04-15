@@ -8,6 +8,8 @@ export default function MobileMenu({ open = false, onClick }) {
           width: '100vw',
           height: '100vh',
           left: open === false ? '-100vw' : '0',
+          background: '#000000',
+          opacity: '.16'
         }}
         onClick={onClick}
       ></div>
@@ -18,7 +20,7 @@ export default function MobileMenu({ open = false, onClick }) {
           left: open === false ? '-30rem' : '0',
           width: '30rem',
           height: '100vh',
-          transition: 'all .2s',
+          transition: 'all .2s'
         }}
       >
         hello

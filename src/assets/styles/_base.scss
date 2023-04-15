@@ -1,13 +1,14 @@
 @use './variables' as color;
 
-*, ::after {
+*,
+::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 html {
-  // 1rem = 10px // 
+  // 1rem = 10px //
   font-size: 62.5%;
 }
 
@@ -17,12 +18,12 @@ html {
   width: 100vw;
   height: 100vh;
   font-size: 1.6rem;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
