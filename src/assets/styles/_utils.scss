@@ -1,4 +1,9 @@
+@use './variables' as color;
+
 // padding
+.p-5 {
+  padding: 5px;
+}
 .p-8 {
   padding: 0.8rem;
 }
@@ -30,6 +35,9 @@
   padding: 8rem;
 }
 
+.pt-5 {
+  padding-top: 5px;
+}
 .pt-8 {
   padding-top: 0.8rem;
 }
@@ -61,6 +69,9 @@
   padding-top: 8rem;
 }
 
+.pr-5 {
+  padding-right: 5px;
+}
 .pr-8 {
   padding-right: 0.8rem;
 }
@@ -92,6 +103,9 @@
   padding-right: 8rem;
 }
 
+.pb-5 {
+  padding-bottom: 5px;
+}
 .pb-8 {
   padding-bottom: 0.8rem;
 }
@@ -123,6 +137,9 @@
   padding-bottom: 8rem;
 }
 
+.pl-5 {
+  padding-left: 5px;
+}
 .pl-8 {
   padding-left: 0.8rem;
 }
@@ -155,6 +172,9 @@
 }
 
 // margin
+.m-5 {
+  margin: 5px;
+}
 .m-8 {
   margin: 0.8rem;
 }
@@ -186,6 +206,9 @@
   margin: 8rem;
 }
 
+.mt-5 {
+  margin-top: 5px;
+}
 .mt-8 {
   margin-top: 0.8rem;
 }
@@ -217,6 +240,9 @@
   margin-top: 8rem;
 }
 
+.mr-5 {
+  margin-right: 5px;
+}
 .mr-8 {
   margin-right: 0.8rem;
 }
@@ -248,6 +274,9 @@
   margin-right: 8rem;
 }
 
+.mb-5 {
+  margin-bottom: 5px;
+}
 .mb-8 {
   margin-bottom: 0.8rem;
 }
@@ -279,6 +308,9 @@
   margin-bottom: 8rem;
 }
 
+.ml-5 {
+  margin-left: 5px;
+}
 .ml-8 {
   margin-left: 0.8rem;
 }
@@ -315,7 +347,41 @@
   width: 100%;
 }
 
-//height
+// height
 .height-full{
   height: 100%;
+}
+
+// border-radius
+.bora-full {
+  border-radius: 10rem;
+}
+
+// hover 
+.hover:hover {
+  background: color.$on-surface-hover;
+}
+
+// cursor
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-context-menu {
+  cursor: context-menu;
+}
+
+// user-select
+.user-select-none {
+  user-select: none;
+}
+
+// position
+.pos-absolute {
+  position: absolute;
+}
+.pos-relative {
+  position: relative;
+}
+.pos-fixed {
+  position: fixed;
 }
