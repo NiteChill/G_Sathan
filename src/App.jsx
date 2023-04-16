@@ -38,12 +38,14 @@ export default function App() {
               : appSize < '650'
               ? 'fs-56'
               : appSize < '850'
-              ? 'fs-80'
+              ? 'fs-80 border-right'
               : appSize < '1150'
-              ? 'fs-104'
+              ? 'fs-104 border-right'
               : appSize < '1400'
-              ? 'fs-144'
-              : appSize < '1650' ? 'fs-176' : 'fs-224'
+              ? 'fs-144 border-right'
+              : appSize < '1650'
+              ? 'fs-176 border-right'
+              : 'fs-224 border-right'
           }`}
           style={{ flex: '1' }}
         >
