@@ -15,9 +15,10 @@ export default function Navbar({ appSize }) {
           className='d-flex-row ai-center jc-center p-8 bora-full hover user-select-none cursor-pointer'
           style={{ height: '4rem' }}
           onClick={() => setMenu(!menu)}
+          title='Menu Principal'
         >
           <span
-            className='material-symbols-outlined'
+            className='material-symbols-outlined cursor-pointer user-select-none'
           >
             {menu ? 'menu_open' : 'menu'}
           </span>
