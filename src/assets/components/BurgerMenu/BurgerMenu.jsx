@@ -6,7 +6,7 @@ export default function BurgerMenu({menu, onclick}) {
       onClick={onclick}
       title='Menu Principal'
     >
-      <span className='material-symbols-outlined cursor-pointer user-select-none'>
+      <span className='material-symbols-outlined cursor-pointer user-select-none c-on-surface'>
         {menu ? 'menu_open' : 'menu'}
       </span>
     </div>

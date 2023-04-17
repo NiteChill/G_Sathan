@@ -6,18 +6,18 @@ import { useEffect, useRef, useState } from 'react';
 import picture from './assets/images/gsathan_picture.webp';
 
 export default function App() {
-  const App = useRef(null);
+  const appRef = useRef(null);
   const [appSize, setAppSize] = useState('');
   useEffect(() => {
-    setAppSize(App.current.getBoundingClientRect().width);
+    setAppSize(appRef.current.getBoundingClientRect().width);
     function setSize() {
-      setAppSize(App.current.getBoundingClientRect().width);
+      setAppSize(appRef.current.getBoundingClientRect().width);
     }
     window.addEventListener('resize', setSize);
     //  return window.removeEventListener('resize', setSize)   //---> la page ne se reload jamais grace a vite donc si on met cette ligne de code l'eventlistener ne s'effectue jamais
   }, []);
   return (
-    <div className='App' ref={App}>
+    <div className='App' ref={appRef}>
       <Navbar appSize={appSize} />
       <div
         className={`${

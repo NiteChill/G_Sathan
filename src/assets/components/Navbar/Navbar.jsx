@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import Logo from '../Logo/Logo';
-import MobileMenu from '../MobileMenu/MobileMenu';
+import Menu from '../Menu/Menu';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 export default function Navbar({ appSize }) {
   const [menu, setMenu] = useState(false);
   return (
     <>
-      <MobileMenu
+      <Menu
         menu={menu}
+        setMenu={setMenu}
         onClick={() => setMenu(false)}
         onClick2={() => setMenu(!menu)}
       />

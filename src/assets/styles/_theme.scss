@@ -27,6 +27,17 @@
 .b-on-surface-hover {
   background: color.$on-surface-hover;
 }
+.b-on-surface-variant {
+  background: color.$on-surface-variant;
+}
+.b-outline {
+  background: color.$outline;
+}
+
+//fill
+.f-on-surface-variant {
+  fill: color.$on-surface-variant;
+}
 
 // border
 .border-top {
