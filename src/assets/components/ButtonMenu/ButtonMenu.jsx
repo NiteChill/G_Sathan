@@ -15,7 +15,7 @@ export default function ButtonMenu({
         {
           onClickType === 'function'
             ? onClick
-            : (window.location.href = onClick);
+            : (window.open(onClick, "_blank"));
         }
       }}
     >
