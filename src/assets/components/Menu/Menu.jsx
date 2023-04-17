@@ -90,7 +90,7 @@ export default function Menu({ menu = false, setMenu, onClick, onClick2 }) {
           className='d-flex-column ai-center jc-end width-full pb-8'
           style={{ flex: '1' }}
         >
-          <div className='d-flex-row ai-flex-end jc-center w-full ff-title c-on-surface-variant'>
+          <div className='d-flex-row ai-center jc-center w-full ff-title c-on-surface-variant'>
             <p>G.Sathan</p>
             <div
               className='b-on-surface-variant bora-full mr-8 ml-8'
