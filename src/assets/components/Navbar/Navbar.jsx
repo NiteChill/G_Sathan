@@ -1,28 +1,22 @@
 import { useState } from 'react';
 import Logo from '../Logo/Logo';
 import MobileMenu from '../MobileMenu/MobileMenu';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 export default function Navbar({ appSize }) {
   const [menu, setMenu] = useState(false);
   return (
     <>
-      <MobileMenu open={menu} onClick={() => setMenu(false)} />
+      <MobileMenu
+        menu={menu}
+        onClick={() => setMenu(false)}
+        onClick2={() => setMenu(!menu)}
+      />
       <div
-        className={`d-flex-row ai-center jc-space-between pl-5 border-bottom-1 user-select-none pos-fixed b-surface`}
-        style={{ width: '100vw' }}
+        className={`d-flex-row ai-center jc-space-between pr-8 pl-8 border-bottom-1 user-select-none pos-fixed b-surface`}
+        style={{ width: '100vw', height: '5.6rem' }}
       >
-        <div
-          className='d-flex-row ai-center jc-center p-8 bora-full hover user-select-none cursor-pointer'
-          style={{ height: '4rem' }}
-          onClick={() => setMenu(!menu)}
-          title='Menu Principal'
-        >
-          <span
-            className='material-symbols-outlined cursor-pointer user-select-none'
-          >
-            {menu ? 'menu_open' : 'menu'}
-          </span>
-        </div>
+        <BurgerMenu menu={menu} onclick={() => setMenu(!menu)} />
         <Logo />
       </div>
     </>

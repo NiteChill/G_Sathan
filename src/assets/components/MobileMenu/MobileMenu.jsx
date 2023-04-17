@@ -1,4 +1,6 @@
-export default function MobileMenu({ open = false, onClick }) {
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
+
+export default function MobileMenu({ menu = false, onClick, onClick2 }) {
   return (
     <>
       <div
@@ -7,9 +9,9 @@ export default function MobileMenu({ open = false, onClick }) {
           zIndex: '30',
           width: '100vw',
           height: '100vh',
-          left: open === false ? '-100vw' : '0',
+          left: menu === false ? '-100vw' : '0',
           background: '#000000',
-          opacity: '.16'
+          opacity: menu === false ? '0' : '.5',
         }}
         onClick={onClick}
       ></div>
@@ -17,13 +19,15 @@ export default function MobileMenu({ open = false, onClick }) {
         className='b-surface-1 pos-fixed'
         style={{
           zIndex: '30',
-          left: open === false ? '-30rem' : '0',
+          left: menu === false ? '-30rem' : '0',
           width: '30rem',
           height: '100vh',
-          transition: 'all .2s'
+          transition: 'all .2s',
         }}
       >
-        hello
+        <div className='p-8 width-full border-bottom-1' style={{ height: '5.6rem' }}>
+          <BurgerMenu menu={menu} onclick={onClick2} />
+        </div>
       </div>
     </>
   );
