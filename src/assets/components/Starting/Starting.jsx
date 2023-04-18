@@ -1,8 +1,8 @@
 import logo from '../../images/logo_gsathan.svg';
 
-export default function Starting({ appSize }) {
+export default function Starting({ appSize, startingRef }) {
   return (
-    <div className='d-flex-row w-full border-bottom-1'>
+    <div className='d-flex-row w-full border-bottom-1' ref={startingRef}>
       <div
         className={`d-flex-column b-surface-1 ${
           appSize < 800
@@ -33,7 +33,7 @@ export default function Starting({ appSize }) {
       </div>
       {appSize >= 450 && (
         <div
-          className='d-flex-row jc-center ai-center border-left'
+          className='d-flex-row jc-center ai-center border-left-1'
           style={{ minWidth: '45%', flex: '1' }}
         >
           <img src={logo} alt='logo' style={{ height: '70%' }} />

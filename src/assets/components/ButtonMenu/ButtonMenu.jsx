@@ -2,8 +2,6 @@ export default function ButtonMenu({
   iconType = 'font',
   icon,
   name,
-  setMenu,
-  onClickType = 'function',
   onClick,
   title
 }) {
@@ -12,14 +10,7 @@ export default function ButtonMenu({
       className='d-flex-row ai-center pr-8 pl-16 hover hover-icons cursor-pointer user-select-none'
       style={{ borderRadius: '0 10rem 10rem 0', height: '4rem' }}
       data-title={title}
-      onClick={() => {
-        setMenu(false);
-        {
-          onClickType === 'function'
-            ? onClick
-            : (window.open(onClick, "_blank"));
-        }
-      }}
+      onClick={onClick}
     >
       {iconType === 'font' ? (
         <span className='material-symbols-outlined user-select-none c-on-surface-variant'>

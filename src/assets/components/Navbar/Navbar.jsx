@@ -3,7 +3,7 @@ import Logo from '../Logo/Logo';
 import Menu from '../Menu/Menu';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
-export default function Navbar({ appSize }) {
+export default function Navbar({ appRef, startingRef, tatooProcessusRef, portfolioRef }) {
   const [menu, setMenu] = useState(false);
   return (
     <>
@@ -12,6 +12,10 @@ export default function Navbar({ appSize }) {
         setMenu={setMenu}
         onClick={() => setMenu(false)}
         onClick2={() => setMenu(!menu)}
+        appRef={appRef}
+        startingRef={startingRef}
+        tatooProcessusRef={tatooProcessusRef}
+        portfolioRef={portfolioRef}
       />
       <div
         className={`d-flex-row ai-center jc-space-between pr-8 pl-8 border-bottom-1 user-select-none pos-fixed b-surface`}

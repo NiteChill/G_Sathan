@@ -5,9 +5,13 @@ import { useEffect, useRef, useState } from 'react';
 
 import Starting from './assets/components/Starting/Starting';
 import HeroHeader from './assets/components/HeroHeader/HeroHeader';
+import ContactMe from './assets/components/ContactMe/ContactMe';
 
 export default function App() {
   const appRef = useRef(null);
+  const startingRef = useRef(null);
+  const tatooProcessusRef = useRef(null);
+  const portfolioRef = useRef(null);
   const [appSize, setAppSize] = useState('');
   useEffect(() => {
     setAppSize(appRef.current.getBoundingClientRect().width);
@@ -19,9 +23,15 @@ export default function App() {
   }, []);
   return (
     <div className='App' ref={appRef}>
-      <Navbar appSize={appSize} />
+      <Navbar
+        appRef={appRef}
+        startingRef={startingRef}
+        tatooProcessusRef={tatooProcessusRef}
+        portfolioRef={portfolioRef}
+      />
       <HeroHeader appSize={appSize} />
-      <Starting appSize={appSize} />
+      <ContactMe appSize={appSize} />
+      <Starting appSize={appSize} startingRef={startingRef} />
     </div>
   );
 }

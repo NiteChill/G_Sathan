@@ -413,6 +413,9 @@
 .hover-icons:hover div svg path {
   fill: color.$on-surface;
 }
+.hover-red:hover p {
+  text-decoration: underline;
+}
 
 // cursor
 .cursor-pointer {
