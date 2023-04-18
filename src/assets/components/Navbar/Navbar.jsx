@@ -3,11 +3,12 @@ import Logo from '../Logo/Logo';
 import Menu from '../Menu/Menu';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
-export default function Navbar({ appRef, startingRef, tatooProcessusRef, portfolioRef }) {
+export default function Navbar({ appSize, appRef, startingRef, tatooProcessusRef, portfolioRef }) {
   const [menu, setMenu] = useState(false);
   return (
     <>
       <Menu
+        appSize={appSize}
         menu={menu}
         setMenu={setMenu}
         onClick={() => setMenu(false)}
