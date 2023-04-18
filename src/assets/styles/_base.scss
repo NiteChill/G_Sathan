@@ -27,3 +27,29 @@ html {
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
+
+[data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+}
+[data-title]:after {
+    content: attr(data-title);
+    background-color: color.$surface-2;
+    color: color.$on-surface;
+    position: absolute;
+    font-size: 1rem;
+    padding: 1px 5px 2px 5px;
+    bottom: -85%;
+    left: 75%;
+    white-space: nowrap;
+    opacity: 0;
+    z-index: 99999;
+    visibility: hidden;
+    padding: .8rem 1.6rem;
+    font-family: 'garet-book', sans-serif;
+    border-radius: .8rem;
+}
+[data-title] {
+    position: relative;
+}

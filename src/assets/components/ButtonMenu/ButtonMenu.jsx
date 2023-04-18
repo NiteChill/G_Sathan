@@ -11,7 +11,7 @@ export default function ButtonMenu({
     <div
       className='d-flex-row ai-center pr-8 pl-16 hover hover-icons cursor-pointer user-select-none'
       style={{ borderRadius: '0 10rem 10rem 0', height: '4rem' }}
-      title={title}
+      data-title={title}
       onClick={() => {
         setMenu(false);
         {
