@@ -1,0 +1,19 @@
+@use './variables' as color;
+
+@keyframes targetAnimation {
+  0% {
+    background: color.$surface-1;
+  }
+  50% {
+    background: color.$primary;
+  }
+  100% {
+    background: color.$surface-1;
+  }
+}
+
+.target-animation-starting div.starting{
+  animation-name: targetAnimation;
+  animation-duration: .7s;
+  animation-delay: .7s; 
+}

@@ -4,7 +4,7 @@ export default function Starting({ appSize, startingRef }) {
   return (
     <div className='d-flex-row w-full border-bottom-1' ref={startingRef}>
       <div
-        className={`d-flex-column b-surface-1 ${
+        className={`d-flex-column b-surface-1 starting ${
           appSize < 800
             ? 'pt-32 pr-24 pb-32 pl-24'
             : appSize < 1050

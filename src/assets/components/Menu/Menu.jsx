@@ -55,7 +55,12 @@ export default function Menu({
                 top: startingRef.current.getBoundingClientRect().top,
                 behavior: 'smooth',
               });
+              startingRef.current.classList.add('target-animation-starting');
+              window.setTimeout(() => {
+                startingRef.current.classList.remove('target-animation-starting');
+              }, 1400);
             }}
+            title='Accéder à "Mes débuts"'
           />
           <ButtonMenu
             appSize={appSize}
@@ -69,6 +74,7 @@ export default function Menu({
                 //rectifier <--------------------------------------------------------------------
               });
             }}
+            title='Accéder à "se faire tatouer"'
           />
           <ButtonMenu
             appSize={appSize}
@@ -82,6 +88,7 @@ export default function Menu({
                 //rectifier <--------------------------------------------------------------------
               });
             }}
+            title='Accéder au portfolio'
           />
         </div>
         <Divider />
@@ -93,6 +100,7 @@ export default function Menu({
             onClick={() => {
               setMenu(false);
             }}
+            title='Accéder au formulaire'
           />
           <ButtonMenu
             appSize={appSize}
