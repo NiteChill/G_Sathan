@@ -1,8 +1,14 @@
+import { useEffect } from 'react';
 import logo from '../../images/logo_gsathan.svg';
 
 export default function Starting({ appSize, startingRef }) {
+  useEffect(() => {
+    // console.log(startingRef.current.scrollTop);
+  }, [])
   return (
-    <div className='d-flex-row w-full border-bottom-1' ref={startingRef}>
+    <div className='d-flex-row w-full border-bottom-1'
+      // style={{ marginLeft: '-105%' }}
+      ref={startingRef}>
       <div
         className={`d-flex-column b-surface-1 starting ${
           appSize < 800

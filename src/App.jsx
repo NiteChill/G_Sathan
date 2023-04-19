@@ -17,6 +17,8 @@ export default function App() {
     setAppSize(appRef.current.getBoundingClientRect().width);
     function setSize() {
       setAppSize(appRef.current.getBoundingClientRect().width);
+      // console.log(appRef.current.scrollTop);
+      // console.log(startingRef.current.getBoundingClientRect().top);
     }
     window.addEventListener('resize', setSize);
     //  return window.removeEventListener('resize', setSize)   //---> la page ne se reload jamais grace a vite donc si on met cette ligne de code l'eventlistener ne s'effectue jamais
