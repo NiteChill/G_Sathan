@@ -1,14 +1,19 @@
-import { useEffect } from 'react';
 // import logo from '../../images/logo_gsathan.svg';
+import { useEffect } from 'react';
 import studio from '../../images/studio_image.png'
 
 export default function Starting({ appSize, startingRef }) {
-  useEffect(() => {
-    // console.log(startingRef.current.scrollTop);
-  }, [])
+  const observer = new IntersectionObserver((entries) => {
+    entries[0].intersectionRatio >= 0
+      ? ((startingRef.current.style.marginTop = '0'),
+        (startingRef.current.style.opacity = '1'))
+      : ((startingRef.current.style.marginTop = '30%'),
+        (startingRef.current.style.opacity = '0'));
+  });
+  useEffect(() => observer.observe(startingRef.current), []);
   return (
     <div className='d-flex-row w-full border-bottom-1'
-      style={{ marginBottom: '105%' }}
+      style={{ marginTop: '30%', opacity: '0', transition: 'all .8s' }}
       ref={startingRef}>
       <div
         className={`d-flex-column b-surface-1 starting ${

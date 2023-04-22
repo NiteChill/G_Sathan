@@ -1,10 +1,25 @@
+import { useRef, useEffect } from "react";
+
 export default function ContactMe({ appSize }) {
+    const contactMeRef = useRef(null);
+    const observer = new IntersectionObserver((entries) => {
+      entries[0].intersectionRatio >= 0
+        ? ((contactMeRef.current.style.marginTop = '0'),
+          (contactMeRef.current.style.opacity = '1'))
+        : ((contactMeRef.current.style.marginTop = '30%'),
+          (contactMeRef.current.style.opacity = '0'));
+    });
+    useEffect(() => observer.observe(contactMeRef.current), []);
   return (
     <div
       className='d-flex-row ai-center jc-end width-full b-surface-1 c-on-surface ff-text border-bottom-1'
       style={{
         height: appSize < 800 ? '8.5rem' : appSize < 1050 ? '10rem' : '14rem',
+        marginTop: '30%',
+        opacity: 0,
+        transition: 'all .8s',
       }}
+      ref={contactMeRef}
     >
       {appSize >= 351 && (
         <div

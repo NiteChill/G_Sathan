@@ -3,12 +3,20 @@ import banner from '../../images/banniere.svg';
 import { useRef, useEffect } from 'react';
 
 export default function HeroHeader({ appSize }) {
+  const heroHeaderRef = useRef(null);
+  const observer = new IntersectionObserver((entries) => {
+    entries[0].intersectionRatio >= 0
+      ? (heroHeaderRef.current.style.opacity = '1')
+      : (heroHeaderRef.current.style.opacity = '0');
+  });
+  useEffect(() => observer.observe(heroHeaderRef.current), []);
   return (
     <div
       className={`${
         appSize <= '550' ? 'd-flex-column' : 'd-flex-row-reverse'
       } width-full border-bottom-1`}
-      style={{ paddingTop: '5.3rem', transition: 'all .5s' }}
+      style={{ marginTop: '5.6rem', opacity: 0, transition: 'opacity 1s' }}
+      ref={heroHeaderRef}
     >
       <img
         src={picture}
@@ -36,7 +44,11 @@ export default function HeroHeader({ appSize }) {
         style={{ flex: '1' }}
       >
         {/* <p className='ff-title'>G.Sathan</p> */}
-        <img src={banner} alt="baniere" style={{width: appSize > 550 ? '80%': '60%'}} />
+        <img
+          src={banner}
+          alt='baniere'
+          style={{ width: appSize > 550 ? '80%' : '60%' }}
+        />
       </div>
     </div>
   );
