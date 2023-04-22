@@ -40,6 +40,12 @@
 }
 
 // border
+.border {
+  border: 2px color.$outline solid;
+}
+.border-1 {
+  border: 1px color.$outline solid;
+}
 .border-top {
   border-top: 2px color.$outline solid;
 }
@@ -67,6 +73,9 @@
 
 // media
 @media screen and (min-width: 650px) {
+  .border-1 {
+    border: 2px color.$outline solid;
+  }
   .border-top-1 {
     border-top: 2px color.$outline solid;
   }

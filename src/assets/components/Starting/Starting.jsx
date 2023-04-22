@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import logo from '../../images/logo_gsathan.svg';
+// import logo from '../../images/logo_gsathan.svg';
+import studio from '../../images/studio_image.png'
 
 export default function Starting({ appSize, startingRef }) {
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function Starting({ appSize, startingRef }) {
           className='d-flex-row jc-center ai-center border-left-1'
           style={{ minWidth: '45%', flex: '1' }}
         >
-          <img src={logo} alt='logo' style={{ height: '70%' }} />
+          <img src={studio} alt='logo' style={{ width: '70%', maxHeight: '70%', objectFit: 'cover' }} className='border-1' />
         </div>
       )}
     </div>
