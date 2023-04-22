@@ -10,17 +10,12 @@ import ContactMe from './assets/components/ContactMe/ContactMe';
 export default function App() {
   const appRef = useRef(null);
   const startingRef = useRef(null);
-  const tatooProcessusRef = useRef(null);
+  const tattooProcessusRef = useRef(null);
   const portfolioRef = useRef(null);
   const [appSize, setAppSize] = useState('');
   useEffect(() => {
     setAppSize(appRef.current.getBoundingClientRect().width);
-    function setSize() {
-      setAppSize(appRef.current.getBoundingClientRect().width);
-      // console.log(appRef.current.scrollTop);
-      // console.log(startingRef.current.getBoundingClientRect().top);
-    }
-    window.addEventListener('resize', setSize);
+    window.addEventListener('resize', () => setAppSize(appRef.current.getBoundingClientRect().width));
     //  return window.removeEventListener('resize', setSize)   //---> la page ne se reload jamais grace a vite donc si on met cette ligne de code l'eventlistener ne s'effectue jamais
   }, []);
   return (
@@ -29,7 +24,7 @@ export default function App() {
         appSize={appSize}
         appRef={appRef}
         startingRef={startingRef}
-        tatooProcessusRef={tatooProcessusRef}
+        tattooProcessusRef={tattooProcessusRef}
         portfolioRef={portfolioRef}
       />
       <HeroHeader appSize={appSize} />

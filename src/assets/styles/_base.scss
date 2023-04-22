@@ -32,27 +32,32 @@ html {
 }
 
 [data-title]:hover:after {
-    opacity: 1;
-    transition: all 0.1s ease 0.5s;
-    visibility: visible;
+  opacity: 1;
+  transition: all 0.1s ease 0.5s;
+  visibility: visible;
 }
 [data-title]:after {
-    content: attr(data-title);
-    background-color: color.$surface-2;
-    color: color.$on-surface;
-    position: absolute;
-    font-size: 1rem;
-    padding: 1px 5px 2px 5px;
-    bottom: -85%;
-    left: 75%;
-    white-space: nowrap;
-    opacity: 0;
-    z-index: 99999;
-    visibility: hidden;
-    padding: .8rem 1.6rem;
-    font-family: 'garet-book', sans-serif;
-    border-radius: .8rem;
+  content: attr(data-title);
+  background-color: color.$surface-2;
+  color: color.$on-surface;
+  position: absolute;
+  font-size: 1rem;
+  padding: 1px 5px 2px 5px;
+  bottom: -85%;
+  left: 75%;
+  white-space: nowrap;
+  opacity: 0;
+  z-index: 99999;
+  visibility: hidden;
+  padding: 0.8rem 1.6rem;
+  font-family: 'garet-book', sans-serif;
+  border-radius: 0.8rem;
 }
 [data-title] {
-    position: relative;
+  position: relative;
+}
+
+.hidden {
+  margin-top: 30vh;
+  opacity: 1;
 }

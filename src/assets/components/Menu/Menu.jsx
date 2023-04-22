@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import ButtonMenu from '../ButtonMenu/ButtonMenu';
 import Divider from '../Divider/Divider';
@@ -10,9 +11,16 @@ export default function Menu({
   onClick2,
   appRef,
   startingRef,
-  tatooProcessusRef,
+  tattooProcessusRef,
   portfolioRef,
 }) {
+  const [tops, setTops] = useState(['', '', '']);
+  useEffect(() => {
+    setTops([startingRef.current.getBoundingClientRect().y, '', '']);
+    window.addEventListener('resize', () =>
+      setTops([startingRef.current.getBoundingClientRect().y, '', ''])
+    );
+  }, []);
   return (
     <>
       <div
@@ -52,7 +60,7 @@ export default function Menu({
             onClick={() => {
               setMenu(false);
               appRef.current.scrollTo({
-                top: startingRef.current.getBoundingClientRect().top,
+                top: tops[0],
                 behavior: 'smooth',
               });
               startingRef.current.classList.add('target-animation-starting');

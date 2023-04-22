@@ -8,7 +8,7 @@ export default function Starting({ appSize, startingRef }) {
   }, [])
   return (
     <div className='d-flex-row w-full border-bottom-1'
-      // style={{ marginLeft: '-105%' }}
+      style={{ marginBottom: '105%' }}
       ref={startingRef}>
       <div
         className={`d-flex-column b-surface-1 starting ${
