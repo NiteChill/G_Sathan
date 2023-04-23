@@ -14,13 +14,6 @@ export default function Menu({
   tattooProcessusRef,
   portfolioRef,
 }) {
-  const [tops, setTops] = useState(['', '', '']);
-  useEffect(() => {
-    setTops([startingRef.current.getBoundingClientRect().y, '', '']);
-    window.addEventListener('resize', () =>
-      setTops([startingRef.current.getBoundingClientRect().y, '', ''])
-    );
-  }, []);
   return (
     <>
       <div
@@ -60,7 +53,7 @@ export default function Menu({
             onClick={() => {
               setMenu(false);
               appRef.current.scrollTo({
-                top: tops[0],
+                top: startingRef.current.offsetTop - appRef.current.getBoundingClientRect().height / 2 + startingRef.current.getBoundingClientRect().height / 2,
                 behavior: 'smooth',
               });
               startingRef.current.classList.add('target-animation-starting');

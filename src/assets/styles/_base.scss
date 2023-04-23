@@ -1,5 +1,9 @@
 @use './variables' as color;
 
+html {
+  scroll-behavior: smooth;
+}
+
 *,
 ::after {
   box-sizing: border-box;
