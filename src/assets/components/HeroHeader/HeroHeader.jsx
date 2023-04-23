@@ -5,9 +5,11 @@ import { useRef, useEffect } from 'react';
 export default function HeroHeader({ appSize }) {
   const heroHeaderRef = useRef(null);
   const observer = new IntersectionObserver((entries) => {
-    entries[0].intersectionRatio >= 0
-      ? (heroHeaderRef.current.style.opacity = '1')
-      : (heroHeaderRef.current.style.opacity = '0');
+    entries.map((entry) => {
+      entry.isIntersecting
+        ? ((heroHeaderRef.current.style.opacity = '1'), observer.disconnect())
+        : (heroHeaderRef.current.style.opacity = '0');
+    });
   });
   useEffect(() => observer.observe(heroHeaderRef.current), []);
   return (

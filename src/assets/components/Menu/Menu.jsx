@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import ButtonMenu from '../ButtonMenu/ButtonMenu';
 import Divider from '../Divider/Divider';

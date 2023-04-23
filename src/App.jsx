@@ -30,7 +30,7 @@ export default function App() {
       <HeroHeader appSize={appSize} />
       <ContactMe appSize={appSize} />
       <Starting appSize={appSize} startingRef={startingRef} />
-      <div style={{ height: '1000px'}}></div>
+      {/* <div style={{ height: '1000px' }}></div> */}
     </div>
   );
 }
