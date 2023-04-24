@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import Starting from './assets/components/Starting/Starting';
 import HeroHeader from './assets/components/HeroHeader/HeroHeader';
 import ContactMe from './assets/components/ContactMe/ContactMe';
+import TattooProcessus from './assets/components/TattooProcessus/TattooProcessus';
 
 export default function App() {
   const appRef = useRef(null);
@@ -15,7 +16,9 @@ export default function App() {
   const [appSize, setAppSize] = useState('');
   useEffect(() => {
     setAppSize(appRef.current.getBoundingClientRect().width);
-    window.addEventListener('resize', () => setAppSize(appRef.current.getBoundingClientRect().width));
+    window.addEventListener('resize', () =>
+      setAppSize(appRef.current.getBoundingClientRect().width)
+    );
     //  return window.removeEventListener('resize', setSize)   //---> la page ne se reload jamais grace a vite donc si on met cette ligne de code l'eventlistener ne s'effectue jamais
   }, []);
   return (
@@ -30,6 +33,10 @@ export default function App() {
       <HeroHeader appSize={appSize} />
       <ContactMe appSize={appSize} />
       <Starting appSize={appSize} startingRef={startingRef} />
+      <TattooProcessus
+        tattooProcessusRef={tattooProcessusRef}
+        appSize={appSize}
+      />
       {/* <div style={{ height: '1000px' }}></div> */}
     </div>
   );

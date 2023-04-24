@@ -52,12 +52,17 @@ export default function Menu({
             onClick={() => {
               setMenu(false);
               appRef.current.scrollTo({
-                top: startingRef.current.offsetTop - appRef.current.getBoundingClientRect().height / 2 + startingRef.current.getBoundingClientRect().height / 2,
+                top:
+                  startingRef.current.offsetTop -
+                  appRef.current.getBoundingClientRect().height / 2 +
+                  startingRef.current.getBoundingClientRect().height / 2,
                 behavior: 'smooth',
               });
               startingRef.current.classList.add('target-animation-starting');
               window.setTimeout(() => {
-                startingRef.current.classList.remove('target-animation-starting');
+                startingRef.current.classList.remove(
+                  'target-animation-starting'
+                );
               }, 1400);
             }}
             title='Accéder à "Mes débuts"'
@@ -69,10 +74,20 @@ export default function Menu({
             onClick={() => {
               setMenu(false);
               appRef.current.scrollTo({
-                top: 10000,
+                top:
+                  tattooProcessusRef.current.offsetTop -
+                  appRef.current.getBoundingClientRect().height / 2 +
+                  tattooProcessusRef.current.getBoundingClientRect().height / 2,
                 behavior: 'smooth',
-                //rectifier <--------------------------------------------------------------------
               });
+              tattooProcessusRef.current.classList.add(
+                'target-animation-tattoo-processus'
+              );
+              window.setTimeout(() => {
+                tattooProcessusRef.current.classList.remove(
+                  'target-animation-tattoo-processus'
+                );
+              }, 1400);
             }}
             title='Accéder à "se faire tatouer"'
           />

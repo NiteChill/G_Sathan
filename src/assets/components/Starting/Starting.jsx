@@ -3,13 +3,6 @@ import { useEffect } from 'react';
 import studio from '../../images/studio_image.png'
 
 export default function Starting({ appSize, startingRef }) {
-  // const observer = new IntersectionObserver((entries) => {
-  //   entries[0].intersectionRatio >= 0
-  //     ? ((startingRef.current.style.marginTop = '0'),
-  //       (startingRef.current.style.opacity = '1'))
-  //     : ((startingRef.current.style.marginTop = '30%'),
-  //       (startingRef.current.style.opacity = '0'));
-  // });
   const observer = new IntersectionObserver((entries) => {
     entries.map((entry) => {
       entry.isIntersecting

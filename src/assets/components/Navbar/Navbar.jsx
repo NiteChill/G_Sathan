@@ -3,7 +3,13 @@ import Logo from '../Logo/Logo';
 import Menu from '../Menu/Menu';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
-export default function Navbar({ appSize, appRef, startingRef, tatooProcessusRef, portfolioRef }) {
+export default function Navbar({
+  appSize,
+  appRef,
+  startingRef,
+  tattooProcessusRef,
+  portfolioRef,
+}) {
   const [menu, setMenu] = useState(false);
   return (
     <>
@@ -15,7 +21,7 @@ export default function Navbar({ appSize, appRef, startingRef, tatooProcessusRef
         onClick2={() => setMenu(!menu)}
         appRef={appRef}
         startingRef={startingRef}
-        tatooProcessusRef={tatooProcessusRef}
+        tattooProcessusRef={tattooProcessusRef}
         portfolioRef={portfolioRef}
       />
       <div
