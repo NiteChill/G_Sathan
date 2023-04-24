@@ -108,7 +108,7 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
                   Venez vous faire tatouer dans mon salon ou dans d'autres qui
                   m'accueillent.{' '}
                   <a
-                    href='mailto:g.sathantattoo@gmail.com'
+                    href=''
                     target='_blank'
                     className='c-on-surface'
                     style={{ whiteSpace: 'nowrap' }}
