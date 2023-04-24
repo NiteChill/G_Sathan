@@ -84,10 +84,20 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
                   >
                     mail
                   </a>{' '}
-                  ou via le{' '}
-                  <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>
+                  , via le{' '}
+                  <span
+                    style={{ textDecoration: 'underline', cursor: 'pointer' }}
+                  >
                     formulaire
-                  </span>
+                  </span>{' '}
+                  ou avec{' '}
+                  <a
+                    href='https://www.instagram.com/gerard_sathan/'
+                    target='_blank'
+                    className='c-on-surface'
+                  >
+                    Instagram
+                  </a>
                 </div>
               }
             />
