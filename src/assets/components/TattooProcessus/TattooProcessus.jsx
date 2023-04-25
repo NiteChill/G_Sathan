@@ -1,24 +1,26 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import ListText from '../ListText/ListText';
 
 export default function TattooProcessus({ tattooProcessusRef, appSize }) {
   const tattooAnimationRef = useRef(null);
-  const observer = new IntersectionObserver((entries) => {
-    entries.map((entry) => {
-      entry.isIntersecting
-        ? ((tattooAnimationRef.current.style.paddingTop = '0'),
-          (tattooAnimationRef.current.style.opacity = '1'),
-          observer.disconnect())
-        : ((tattooAnimationRef.current.style.paddingTop = '30%'),
-          (tattooAnimationRef.current.style.opacity = '0'));
+    const [visible, setVisible] = useState(false);
+    useEffect(() => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.map((entry) => {
+          entry.isIntersecting
+            ? (setVisible(entry.isIntersecting),
+              observer.unobserve(tattooAnimationRef.current))
+            : setVisible(entry.isIntersecting);
+        });
+      });
+      tattooAnimationRef.current && observer.observe(tattooAnimationRef.current),
+        [tattooAnimationRef];
     });
-  });
-  useEffect(() => observer.observe(tattooAnimationRef.current), []);
   return (
     <div
       style={{
-        paddingTop: '30%',
-        opacity: '0',
+        paddingTop: visible ? '0' : '30%',
+        opacity: visible ? '1' : '0',
         transition: 'all .8s',
       }}
       ref={tattooAnimationRef}

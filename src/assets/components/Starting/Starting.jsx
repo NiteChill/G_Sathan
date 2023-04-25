@@ -1,23 +1,30 @@
 // import logo from '../../images/logo_gsathan.svg';
-import { useEffect } from 'react';
-import studio from '../../images/studio_image.png'
+import { useEffect, useState } from 'react';
+import studio from '../../images/studio_image.png';
 
 export default function Starting({ appSize, startingRef }) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.map((entry) => {
-      entry.isIntersecting
-        ? ((startingRef.current.style.paddingTop = '0'),
-          (startingRef.current.style.opacity = '1'),
-          observer.disconnect())
-        : ((startingRef.current.style.paddingTop = '30%'),
-          (startingRef.current.style.opacity = '0'));
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.map((entry) => {
+        entry.isIntersecting
+          ? (setVisible(entry.isIntersecting),
+            observer.unobserve(startingRef.current))
+          : setVisible(entry.isIntersecting);
+      });
     });
+    startingRef.current && observer.observe(startingRef.current), [startingRef];
   });
-  useEffect(() => observer.observe(startingRef.current), []);
   return (
-    <div className='d-flex-row w-full border-bottom-1'
-      style={{ paddingTop: '30%', opacity: '0', transition: 'all .8s' }}
-      ref={startingRef}>
+    <div
+      className='d-flex-row w-full border-bottom-1'
+      style={{
+        paddingTop: visible ? '0' : '30%',
+        opacity: visible ? '1' : '0',
+        transition: 'all .8s',
+      }}
+      ref={startingRef}
+    >
       <div
         className={`d-flex-column b-surface-1 starting ${
           appSize < 800
@@ -51,7 +58,12 @@ export default function Starting({ appSize, startingRef }) {
           className='d-flex-row jc-center ai-center border-left-1'
           style={{ minWidth: '45%', flex: '1' }}
         >
-          <img src={studio} alt='logo' style={{ width: '70%', maxHeight: '70%', objectFit: 'cover' }} className='border-1' />
+          <img
+            src={studio}
+            alt='logo'
+            style={{ width: '70%', maxHeight: '70%', objectFit: 'cover' }}
+            className='border-1'
+          />
         </div>
       )}
     </div>

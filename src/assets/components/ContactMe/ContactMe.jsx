@@ -1,21 +1,23 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 export default function ContactMe({ appSize }) {
   const contactMeRef = useRef(null);
-  const observer = new IntersectionObserver((entries) => {
-    entries.map((entry) => {
-      entry.isIntersecting
-        ? ((contactMeRef.current.style.paddingTop = '0'),
-          (contactMeRef.current.style.opacity = '1'),
-          observer.disconnect())
-        : ((contactMeRef.current.style.paddingTop = '30%'),
-          (contactMeRef.current.style.opacity = '0'));
-    })
-  });
-  useEffect(() => observer.observe(contactMeRef.current), []);
+    const [visible, setVisible] = useState(false);
+    useEffect(() => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.map((entry) => {
+          entry.isIntersecting
+            ? (setVisible(entry.isIntersecting),
+              observer.unobserve(contactMeRef.current))
+            : setVisible(entry.isIntersecting);
+        });
+      });
+      contactMeRef.current && observer.observe(contactMeRef.current),
+        [contactMeRef];
+    });
   return (
     <div
-      style={{ paddingTop: '30%', opacity: 0, transition: 'all .8s' }}
+      style={{ paddingTop: visible ? '0' : '30%', opacity: visible ? '1' : '0', transition: 'all .8s' }}
       ref={contactMeRef}
     >
       <div
