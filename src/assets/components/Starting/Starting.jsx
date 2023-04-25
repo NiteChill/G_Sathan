@@ -9,11 +9,11 @@ export default function Starting({ appSize, startingRef }) {
       entries.map((entry) => {
         entry.isIntersecting
           ? (setVisible(entry.isIntersecting),
-            observer.unobserve(startingRef.current))
+            observer.unobserve(entry.target.current))
           : setVisible(entry.isIntersecting);
       });
     });
-    startingRef.current && observer.observe(startingRef.current), [startingRef];
+    startingRef.current && observer.observe(startingRef.current);
   }, [startingRef]);
   return (
     <div
