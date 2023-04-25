@@ -8,9 +8,8 @@ export default function Starting({ appSize, startingRef }) {
     const observer = new IntersectionObserver((entries) => {
       entries.map((entry) => {
         entry.isIntersecting
-          ? (setVisible(entry.isIntersecting),
-            observer.unobserve(entry.target.current))
-          : setVisible(entry.isIntersecting);
+          && (setVisible(entry.isIntersecting),
+            observer.unobserve(entry.target))
       });
     });
     startingRef.current && observer.observe(startingRef.current);

@@ -7,9 +7,8 @@ export default function ContactMe({ appSize }) {
       const observer = new IntersectionObserver((entries) => {
         entries.map((entry) => {
           entry.isIntersecting
-            ? (setVisible(entry.isIntersecting),
+            && (setVisible(entry.isIntersecting),
               observer.unobserve(entry.target))
-            : setVisible(entry.isIntersecting);
         });
       });
       contactMeRef.current && observer.observe(contactMeRef.current);
