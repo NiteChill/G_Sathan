@@ -12,9 +12,8 @@ export default function ContactMe({ appSize }) {
             : setVisible(entry.isIntersecting);
         });
       });
-      contactMeRef.current && observer.observe(contactMeRef.current),
-        [contactMeRef];
-    });
+      contactMeRef.current && observer.observe(contactMeRef.current);
+    }, [contactMeRef]);
   return (
     <div
       style={{ paddingTop: visible ? '0' : '30%', opacity: visible ? '1' : '0', transition: 'all .8s' }}

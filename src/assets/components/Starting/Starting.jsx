@@ -14,7 +14,7 @@ export default function Starting({ appSize, startingRef }) {
       });
     });
     startingRef.current && observer.observe(startingRef.current), [startingRef];
-  });
+  }, [startingRef]);
   return (
     <div
       className='d-flex-row w-full border-bottom-1'

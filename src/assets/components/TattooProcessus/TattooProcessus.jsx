@@ -13,9 +13,9 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
             : setVisible(entry.isIntersecting);
         });
       });
-      tattooAnimationRef.current && observer.observe(tattooAnimationRef.current),
-        [tattooAnimationRef];
-    });
+      tattooAnimationRef.current &&
+        observer.observe(tattooAnimationRef.current);
+    }, [tattooAnimationRef]);
   return (
     <div
       style={{
