@@ -9,7 +9,7 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
         entries.map((entry) => {
           entry.isIntersecting
             ? (setVisible(entry.isIntersecting),
-              observer.unobserve(tattooAnimationRef.current))
+              observer.unobserve(entry.target))
             : setVisible(entry.isIntersecting);
         });
       });

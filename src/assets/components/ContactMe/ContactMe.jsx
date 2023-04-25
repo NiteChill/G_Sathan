@@ -8,7 +8,7 @@ export default function ContactMe({ appSize }) {
         entries.map((entry) => {
           entry.isIntersecting
             ? (setVisible(entry.isIntersecting),
-              observer.unobserve(contactMeRef.current))
+              observer.unobserve(entry.target))
             : setVisible(entry.isIntersecting);
         });
       });
