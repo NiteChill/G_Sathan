@@ -1,4 +1,3 @@
-// import logo from '../../images/logo_gsathan.svg';
 import { useEffect, useState } from 'react';
 import studio from '../../images/studio_image.png';
 

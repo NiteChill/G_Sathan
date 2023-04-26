@@ -3,18 +3,16 @@ import ListText from '../ListText/ListText';
 
 export default function TattooProcessus({ tattooProcessusRef, appSize }) {
   const tattooAnimationRef = useRef(null);
-    const [visible, setVisible] = useState(false);
-    useEffect(() => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.map((entry) => {
-          entry.isIntersecting
-            && (setVisible(entry.isIntersecting),
-              observer.unobserve(entry.target))
-        });
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.map((entry) => {
+        entry.isIntersecting &&
+          (setVisible(entry.isIntersecting), observer.unobserve(entry.target));
       });
-      tattooAnimationRef.current &&
-        observer.observe(tattooAnimationRef.current);
-    }, [tattooAnimationRef]);
+    });
+    tattooAnimationRef.current && observer.observe(tattooAnimationRef.current);
+  }, [tattooAnimationRef]);
   return (
     <div
       style={{
