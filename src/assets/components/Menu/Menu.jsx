@@ -98,10 +98,20 @@ export default function Menu({
             onClick={() => {
               setMenu(false);
               appRef.current.scrollTo({
-                top: 10000,
+                top:
+                  portfolioRef.current.offsetTop -
+                  appRef.current.getBoundingClientRect().height / 2 +
+                  portfolioRef.current.getBoundingClientRect().height / 2,
                 behavior: 'smooth',
-                //rectifier <--------------------------------------------------------------------
               });
+              portfolioRef.current.classList.add(
+                'target-animation-portfolio'
+              );
+              window.setTimeout(() => {
+                portfolioRef.current.classList.remove(
+                  'target-animation-portfolio'
+                );
+              }, 1400);
             }}
             title='Accéder au portfolio'
           />

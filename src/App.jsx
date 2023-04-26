@@ -7,6 +7,7 @@ import Starting from './assets/components/Starting/Starting';
 import HeroHeader from './assets/components/HeroHeader/HeroHeader';
 import ContactMe from './assets/components/ContactMe/ContactMe';
 import TattooProcessus from './assets/components/TattooProcessus/TattooProcessus';
+import Portfolio from './assets/components/Portfolio/Portfolio';
 
 export default function App() {
   const appRef = useRef(null);
@@ -37,6 +38,7 @@ export default function App() {
         tattooProcessusRef={tattooProcessusRef}
         appSize={appSize}
       />
+      <Portfolio portfolioRef={portfolioRef} appSize={appSize} />
       {/* <div style={{ height: '1000px' }}></div> */}
     </div>
   );
