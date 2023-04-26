@@ -416,6 +416,33 @@
 .hover-red:hover p {
   text-decoration: underline;
 }
+.hover-chevron-right:hover {
+  padding: .8rem .4rem .8rem .8rem;
+  & span {
+    margin-left: .4rem;
+  }
+}
+.hover-chevron-left:hover {
+  padding: .8rem .8rem .8rem .4rem;
+  & span {
+    margin-right: .4rem;
+  }
+}
+@media screen and (minWidth: 800px) {
+  .hover-chevron-right:hover {
+  padding: .8rem 0rem .8rem .8rem;
+  & span {
+    margin-left: .8rem;
+  }
+}
+.hover-chevron-left:hover {
+  padding: .8rem .8rem .8rem 0rem;
+  & span {
+    margin-right: .8rem;
+  }
+}
+  
+}
 
 // cursor
 .cursor-pointer {

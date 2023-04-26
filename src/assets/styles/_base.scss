@@ -65,3 +65,7 @@ html {
   margin-top: 30vh;
   opacity: 1;
 }
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}

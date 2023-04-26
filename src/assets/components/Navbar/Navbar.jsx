@@ -26,7 +26,7 @@ export default function Navbar({
       />
       <div
         className={`d-flex-row ai-center jc-space-between pr-8 pl-8 border-bottom-1 user-select-none pos-fixed b-surface`}
-        style={{ width: '100vw', height: '5.6rem' }}
+        style={{ width: '100vw', height: '5.6rem', zIndex: '10' }}
       >
         <BurgerMenu menu={menu} onclick={() => setMenu(!menu)} />
         <Logo />
