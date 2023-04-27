@@ -11,7 +11,7 @@ export default function Portfolio({ portfolioRef, appSize }) {
         entry.isIntersecting &&
           (setVisible(entry.isIntersecting), observer.unobserve(entry.target));
       });
-    });
+    }, {threshold: 0.1});
     PortfolioAnimationRef.current &&
       observer.observe(PortfolioAnimationRef.current);
   }, [PortfolioAnimationRef]);
@@ -19,7 +19,7 @@ export default function Portfolio({ portfolioRef, appSize }) {
   const [activePhoto, setActivePhoto] = useState(0);
   return (
     <div
-      className='d-flex-column border-bottom-1'
+      className='d-flex-column'
       ref={PortfolioAnimationRef}
       style={{
         paddingTop: visible ? '0' : '30%',
@@ -129,7 +129,7 @@ export default function Portfolio({ portfolioRef, appSize }) {
             <div
               className={`d-flex-row ai-center jc-center p-8 cursor-pointer hover-chevron-right ${
                 activePhoto < photos.length - 1 &&
-                'hover-chevron-left cursor-pointer'
+                'hover-chevron-right cursor-pointer'
               }`}
               style={{ transition: 'all .3s' }}
               onClick={() =>

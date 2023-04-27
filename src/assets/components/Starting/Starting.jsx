@@ -4,13 +4,16 @@ import studio from '../../images/studio_image.png';
 export default function Starting({ appSize, startingRef }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.map((entry) => {
-        entry.isIntersecting
-          && (setVisible(entry.isIntersecting),
-            observer.unobserve(entry.target))
-      });
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.map((entry) => {
+          entry.isIntersecting &&
+            (setVisible(entry.isIntersecting),
+            observer.unobserve(entry.target));
+        });
+      },
+      { threshold: 0.1 }
+    );
     startingRef.current && observer.observe(startingRef.current);
   }, [startingRef]);
   return (

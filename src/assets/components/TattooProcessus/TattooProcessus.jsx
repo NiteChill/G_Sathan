@@ -5,12 +5,16 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
   const tattooAnimationRef = useRef(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.map((entry) => {
-        entry.isIntersecting &&
-          (setVisible(entry.isIntersecting), observer.unobserve(entry.target));
-      });
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.map((entry) => {
+          entry.isIntersecting &&
+            (setVisible(entry.isIntersecting),
+            observer.unobserve(entry.target));
+        });
+      },
+      { threshold: 0.1 }
+    );
     tattooAnimationRef.current && observer.observe(tattooAnimationRef.current);
   }, [tattooAnimationRef]);
   return (

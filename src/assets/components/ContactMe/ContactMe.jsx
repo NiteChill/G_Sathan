@@ -4,12 +4,16 @@ export default function ContactMe({ appSize }) {
   const contactMeRef = useRef(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.map((entry) => {
-        entry.isIntersecting &&
-          (setVisible(entry.isIntersecting), observer.unobserve(entry.target));
-      });
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.map((entry) => {
+          entry.isIntersecting &&
+            (setVisible(entry.isIntersecting),
+            observer.unobserve(entry.target));
+        });
+      },
+      { threshold: 0.1 }
+    );
     contactMeRef.current && observer.observe(contactMeRef.current);
   }, [contactMeRef]);
   return (
