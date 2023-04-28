@@ -186,7 +186,7 @@ export default function Portfolio({ portfolioRef, appSize }) {
                 appSize < 800 ? '.8rem' : appSize < 1050 ? '1.6rem' : '2.4rem',
               overflow: 'auto',
             }}
-            className={`height-full d-flex-row ai-center scrollbar-none ${
+            className={`height-full d-flex-row ai-center scrollbar-styled ${
               appSize < 800
                 ? 'pr-16 pl-16'
                 : appSize < 1050

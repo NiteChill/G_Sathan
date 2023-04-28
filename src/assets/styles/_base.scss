@@ -66,6 +66,12 @@ html {
   opacity: 1;
 }
 
-.scrollbar-none::-webkit-scrollbar {
-  display: none;
+.scrollbar-styled {
+  &::-webkit-scrollbar {
+    background: none;
+    height: .8rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: color.$surface-3;
+  }
 }

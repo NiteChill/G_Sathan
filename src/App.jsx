@@ -8,6 +8,7 @@ import HeroHeader from './assets/components/HeroHeader/HeroHeader';
 import ContactMe from './assets/components/ContactMe/ContactMe';
 import TattooProcessus from './assets/components/TattooProcessus/TattooProcessus';
 import Portfolio from './assets/components/Portfolio/Portfolio';
+import Footer from './assets/components/Footer/Footer';
 
 export default function App() {
   const appRef = useRef(null);
@@ -39,6 +40,7 @@ export default function App() {
         appSize={appSize}
       />
       <Portfolio portfolioRef={portfolioRef} appSize={appSize} />
+      <Footer appSize={appSize} />
       {/* <div style={{ height: '1000px' }}></div> */}
     </div>
   );
