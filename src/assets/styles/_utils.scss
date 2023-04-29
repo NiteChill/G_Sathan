@@ -448,26 +448,26 @@
 .hover-red:hover p {
   text-decoration: underline;
 }
-.hover-chevron-right:hover {
+.hover-chevron-right:hover div {
   padding: 0.8rem 0.4rem 0.8rem 0.8rem;
   & span {
     margin-left: 0.4rem;
   }
 }
-.hover-chevron-left:hover {
+.hover-chevron-left:hover div {
   padding: 0.8rem 0.8rem 0.8rem 0.4rem;
   & span {
     margin-right: 0.4rem;
   }
 }
 @media screen and (minwidth: 800px) {
-  .hover-chevron-right:hover {
+  .hover-chevron-right:hover div {
     padding: 0.8rem 0rem 0.8rem 0.8rem;
     & span {
       margin-left: 0.8rem;
     }
   }
-  .hover-chevron-left:hover {
+  .hover-chevron-left:hover div {
     padding: 0.8rem 0.8rem 0.8rem 0rem;
     & span {
       margin-right: 0.8rem;

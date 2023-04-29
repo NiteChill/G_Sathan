@@ -6,12 +6,16 @@ export default function Portfolio({ portfolioRef, appSize }) {
   const PortfolioAnimationRef = useRef(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.map((entry) => {
-        entry.isIntersecting &&
-          (setVisible(entry.isIntersecting), observer.unobserve(entry.target));
-      });
-    }, {threshold: 0.3});
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.map((entry) => {
+          entry.isIntersecting &&
+            (setVisible(entry.isIntersecting),
+            observer.unobserve(entry.target));
+        });
+      },
+      { threshold: 0.3 }
+    );
     PortfolioAnimationRef.current &&
       observer.observe(PortfolioAnimationRef.current);
   }, [PortfolioAnimationRef]);
@@ -19,7 +23,7 @@ export default function Portfolio({ portfolioRef, appSize }) {
   const [activePhoto, setActivePhoto] = useState(0);
   return (
     <div
-      className='d-flex-column'
+      className='d-flex-column user-select-none'
       ref={PortfolioAnimationRef}
       style={{
         paddingBottom: visible ? '0' : '-30%',
@@ -75,7 +79,9 @@ export default function Portfolio({ portfolioRef, appSize }) {
           }}
         >
           <div
-            className='d-flex-row ai-center jc-center border-right-1 height-full'
+            className={`d-flex-row ai-center jc-center border-right-1 height-full ${
+              activePhoto !== 0 && 'hover-chevron-left cursor-pointer'
+            }`}
             style={{
               width:
                 appSize < 800
@@ -84,15 +90,11 @@ export default function Portfolio({ portfolioRef, appSize }) {
                   ? '8.8rem'
                   : '10.4rem',
             }}
+            onClick={() => activePhoto !== 0 && setActivePhoto(activePhoto - 1)}
           >
             <div
-              className={`d-flex-row ai-center jc-center p-8 ${
-                activePhoto !== 0 && 'hover-chevron-left cursor-pointer'
-              }`}
+              className='d-flex-row ai-center jc-center p-8'
               style={{ transition: 'all .3s' }}
-              onClick={() =>
-                activePhoto !== 0 && setActivePhoto(activePhoto - 1)
-              }
             >
               <span
                 className={`material-symbols-outlined user-select-none ${
@@ -117,7 +119,10 @@ export default function Portfolio({ portfolioRef, appSize }) {
             />
           </div>
           <div
-            className='d-flex-row ai-center jc-center border-left-1 height-full'
+            className={`d-flex-row ai-center jc-center border-left-1 height-full ${
+              activePhoto < photos.length - 1 &&
+              'hover-chevron-right cursor-pointer'
+            }`}
             style={{
               width:
                 appSize < 800
@@ -126,17 +131,13 @@ export default function Portfolio({ portfolioRef, appSize }) {
                   ? '8.8rem'
                   : '10.4rem',
             }}
+            onClick={() =>
+              activePhoto < photos.length - 1 && setActivePhoto(activePhoto + 1)
+            }
           >
             <div
-              className={`d-flex-row ai-center jc-center p-8 cursor-pointer hover-chevron-right ${
-                activePhoto < photos.length - 1 &&
-                'hover-chevron-right cursor-pointer'
-              }`}
+              className='d-flex-row ai-center jc-center p-8 cursor-pointer hover-chevron-right'
               style={{ transition: 'all .3s' }}
-              onClick={() =>
-                activePhoto < photos.length - 1 &&
-                setActivePhoto(activePhoto + 1)
-              }
             >
               <span
                 className={`material-symbols-outlined user-select-none ${
