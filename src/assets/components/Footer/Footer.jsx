@@ -127,7 +127,7 @@ export default function Footer({ appSize }) {
           className='b-on-surface-variant bora-full mr-8 ml-8'
           style={{ width: '.5rem', height: '.5rem' }}
         ></div>
-        <p>Tout droits réservé</p>
+        <p>Tous droits réservés</p>
       </div>
     </div>
   );
