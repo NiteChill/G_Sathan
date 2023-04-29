@@ -12,7 +12,7 @@ export default function Starting({ appSize, startingRef }) {
             observer.unobserve(entry.target));
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
     startingRef.current && observer.observe(startingRef.current);
   }, [startingRef]);
