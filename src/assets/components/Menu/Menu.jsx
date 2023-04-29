@@ -26,6 +26,7 @@ export default function Menu({
           opacity: menu === false ? '0' : '.5',
         }}
         onClick={onClick}
+        role='menu'
       ></div>
       <div
         className='b-surface-1 pos-fixed d-flex-column'

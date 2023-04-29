@@ -28,7 +28,8 @@ export default function Footer({ appSize }) {
           : appSize < 1050
           ? 'pt-64 pr-48 pb-64 pl-48'
           : 'pt-96 pr-64 pb-64 pl-64'
-      }`}
+        }`}
+      role=''
     >
       <div
         className={`${

@@ -48,7 +48,7 @@ export default function ContactMe({ appSize }) {
             <p
               className={`pt-8 ${
                 appSize < 800 ? 'fs-10' : appSize < 1050 ? 'fs-16' : 'fs-20'
-              }`}
+                }`}
             >
               Contactez moi via ce simple formulaire
             </p>
