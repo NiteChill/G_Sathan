@@ -1,4 +1,25 @@
+import { useRef, useEffect, useState } from 'react';
+
 export default function Footer({ appSize }) {
+  const warningRef = useRef(null);
+  const additionalWorkRef = useRef(null);
+  const contactRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.map((entry) => {
+          entry.isIntersecting &&
+            (setVisible(entry.isIntersecting),
+            observer.unobserve(entry.target));
+        });
+      },
+      { threshold: .8 }
+    );
+    warningRef.current && observer.observe(warningRef.current);
+    additionalWorkRef.current && observer.observe(additionalWorkRef.current);
+    contactRef.current && observer.observe(contactRef.current);
+  }, [warningRef, additionalWorkRef, contactRef]);
   return (
     <div
       className={`d-flex-column gap-64 b-surface-1 ${
@@ -20,7 +41,13 @@ export default function Footer({ appSize }) {
           </p>
           <p
             className={`ff-text ${appSize < 900 ? 'fs-10' : 'fs-16'}`}
-            // style={{ whiteSpace: 'nowrap' }}
+            style={{
+              marginBottom: visible ? '0' : '-15%',
+              marginTop: visible ? '0' : '15%',
+              opacity: visible ? '1' : '0',
+              transition: 'all 1s ease',
+            }}
+            ref={warningRef}
           >
             Le tatouage est un acte relativement intime car
             {appSize >= 550 && <br />}
@@ -40,7 +67,13 @@ export default function Footer({ appSize }) {
           </p>
           <p
             className={`ff-text ${appSize < 900 ? 'fs-10' : 'fs-16'}`}
-            // style={{ whiteSpace: 'nowrap' }}
+            style={{
+              marginBottom: visible ? '0' : '-15%',
+              marginTop: visible ? '0' : '15%',
+              opacity: visible ? '1' : '0',
+              transition: 'all 1s ease .2s',
+            }}
+            ref={additionalWorkRef}
           >
             Additionnellement au tatouage,
             {appSize >= 550 && <br />}
@@ -59,6 +92,13 @@ export default function Footer({ appSize }) {
                 ? 'd-flex-row jc-space-between'
                 : 'd-flex-column gap-16'
             } c-on-surface ff-text ${appSize < 900 ? 'fs-10' : 'fs-16'}`}
+            style={{
+              marginBottom: visible ? '0' : '-15%',
+              marginTop: visible ? '0' : '15%',
+              opacity: visible ? '1' : '0',
+              transition: 'all 1s ease .4s',
+            }}
+            ref={contactRef}
           >
             <a
               href='mailto:g.sathantattoo@gmail.com'

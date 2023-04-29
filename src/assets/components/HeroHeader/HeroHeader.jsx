@@ -11,7 +11,7 @@ export default function HeroHeader({ appSize }) {
           ? ((heroHeaderRef.current.style.opacity = '1'), observer.disconnect())
           : (heroHeaderRef.current.style.opacity = '0');
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 }
     );
   });
   useEffect(() => observer.observe(heroHeaderRef.current), []);

@@ -11,7 +11,7 @@ export default function Portfolio({ portfolioRef, appSize }) {
         entry.isIntersecting &&
           (setVisible(entry.isIntersecting), observer.unobserve(entry.target));
       });
-    }, {threshold: 0.1});
+    }, {threshold: 0.3});
     PortfolioAnimationRef.current &&
       observer.observe(PortfolioAnimationRef.current);
   }, [PortfolioAnimationRef]);
@@ -22,6 +22,7 @@ export default function Portfolio({ portfolioRef, appSize }) {
       className='d-flex-column'
       ref={PortfolioAnimationRef}
       style={{
+        paddingBottom: visible ? '0' : '-30%',
         paddingTop: visible ? '0' : '30%',
         opacity: visible ? '1' : '0',
         transition: 'all .8s',

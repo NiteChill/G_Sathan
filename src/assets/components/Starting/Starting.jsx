@@ -12,7 +12,7 @@ export default function Starting({ appSize, startingRef }) {
             observer.unobserve(entry.target));
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 }
     );
     startingRef.current && observer.observe(startingRef.current);
   }, [startingRef]);
@@ -20,6 +20,7 @@ export default function Starting({ appSize, startingRef }) {
     <div
       className='d-flex-row w-full border-bottom-1'
       style={{
+        paddingBottom: visible ? '0' : '-30%',
         paddingTop: visible ? '0' : '30%',
         opacity: visible ? '1' : '0',
         transition: 'all .8s',

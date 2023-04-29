@@ -12,13 +12,14 @@ export default function ContactMe({ appSize }) {
             observer.unobserve(entry.target));
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 }
     );
     contactMeRef.current && observer.observe(contactMeRef.current);
   }, [contactMeRef]);
   return (
     <div
       style={{
+        paddingBottom: visible ? '0' : '-30%',
         paddingTop: visible ? '0' : '30%',
         opacity: visible ? '1' : '0',
         transition: 'all .8s',

@@ -25,6 +25,7 @@ export default function App() {
   }, []);
   return (
     <div className='App' ref={appRef}>
+      {/* <FollowCursor /> */}
       <Navbar
         appSize={appSize}
         appRef={appRef}

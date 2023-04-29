@@ -13,13 +13,14 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
             observer.unobserve(entry.target));
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 }
     );
     tattooAnimationRef.current && observer.observe(tattooAnimationRef.current);
   }, [tattooAnimationRef]);
   return (
     <div
       style={{
+        paddingBottom: visible ? '0' : '-30%',
         paddingTop: visible ? '0' : '30%',
         opacity: visible ? '1' : '0',
         transition: 'all .8s',
@@ -103,6 +104,7 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
                   </a>
                 </div>
               }
+              delay='0.3s'
             />
             <ListText
               appSize={appSize}
@@ -120,6 +122,7 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
                   </a>
                 </div>
               }
+              delay='0.6s'
             />
             <ListText
               appSize={appSize}
@@ -129,6 +132,7 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
                   tatouage cicatrise correctement
                 </div>
               }
+              delay='0.9s'
             />
           </div>
         </div>
