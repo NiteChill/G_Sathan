@@ -13,7 +13,7 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
             observer.unobserve(entry.target));
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
     tattooAnimationRef.current && observer.observe(tattooAnimationRef.current);
   }, [tattooAnimationRef]);

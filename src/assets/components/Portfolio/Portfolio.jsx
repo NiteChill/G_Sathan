@@ -14,13 +14,31 @@ export default function Portfolio({ portfolioRef, appSize }) {
             observer.unobserve(entry.target));
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
     PortfolioAnimationRef.current &&
       observer.observe(PortfolioAnimationRef.current);
   }, [PortfolioAnimationRef]);
 
   const [activePhoto, setActivePhoto] = useState(0);
+
+  const sliderRef = useRef(null);
+  const photosRef = useRef([]);
+  useEffect(() => {
+    let leftAdd = 56;
+    appSize < 800 ? leftAdd = 56 : appSize < 1050 ? leftAdd = 88 : leftAdd = 104;
+    sliderRef.current.scrollLeft =
+      photosRef.current[activePhoto].offsetLeft +
+      photosRef.current[activePhoto].clientWidth / 2 -
+      sliderRef.current.clientWidth / 2 -
+      leftAdd;
+  }, [activePhoto, appSize]);
+
+  // appSize < 800
+  //                 ? '5.6rem'
+  //                 : appSize < 1050
+  //                 ? '8.8rem'
+  //                 : '10.4rem',
   return (
     <div
       className='d-flex-column user-select-none'
@@ -195,6 +213,7 @@ export default function Portfolio({ portfolioRef, appSize }) {
                 ? 'pr-32 pl-32'
                 : 'pr-48 pl-48'
             }`}
+            ref={sliderRef}
           >
             {photos.map((photo) => {
               return (
@@ -207,6 +226,7 @@ export default function Portfolio({ portfolioRef, appSize }) {
                   }`}
                   key={photo.id}
                   onClick={() => setActivePhoto(photo.id)}
+                  ref={(item) => (photosRef.current[photo.id] = item)}
                 />
               );
             })}

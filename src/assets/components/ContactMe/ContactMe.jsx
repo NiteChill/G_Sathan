@@ -12,7 +12,7 @@ export default function ContactMe({ appSize }) {
             observer.unobserve(entry.target));
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
     contactMeRef.current && observer.observe(contactMeRef.current);
   }, [contactMeRef]);
