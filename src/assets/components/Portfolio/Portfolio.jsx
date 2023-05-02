@@ -31,11 +31,15 @@ export default function Portfolio({ portfolioRef, appSize }) {
       : appSize < 1050
       ? (leftAdd = 88)
       : (leftAdd = 104);
-    sliderRef.current.scrollLeft =
-      photosRef.current[activePhoto].offsetLeft +
-      photosRef.current[activePhoto].clientWidth / 2 -
-      sliderRef.current.clientWidth / 2 -
-      leftAdd;
+    sliderRef.current.scrollTo({
+      top: 0,
+      left:
+        photosRef.current[activePhoto].offsetLeft +
+        photosRef.current[activePhoto].clientWidth / 2 -
+        sliderRef.current.clientWidth / 2 -
+        leftAdd,
+      behavior: 'smooth',
+    });
   }, [activePhoto, appSize]);
 
   // appSize < 800
