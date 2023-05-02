@@ -26,7 +26,11 @@ export default function Portfolio({ portfolioRef, appSize }) {
   const photosRef = useRef([]);
   useEffect(() => {
     let leftAdd = 56;
-    appSize < 800 ? leftAdd = 56 : appSize < 1050 ? leftAdd = 88 : leftAdd = 104;
+    appSize < 800
+      ? (leftAdd = 56)
+      : appSize < 1050
+      ? (leftAdd = 88)
+      : (leftAdd = 104);
     sliderRef.current.scrollLeft =
       photosRef.current[activePhoto].offsetLeft +
       photosRef.current[activePhoto].clientWidth / 2 -
