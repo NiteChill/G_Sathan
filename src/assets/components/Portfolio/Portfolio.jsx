@@ -41,12 +41,6 @@ export default function Portfolio({ portfolioRef, appSize }) {
       behavior: 'smooth',
     });
   }, [activePhoto, appSize]);
-
-  // appSize < 800
-  //                 ? '5.6rem'
-  //                 : appSize < 1050
-  //                 ? '8.8rem'
-  //                 : '10.4rem',
   return (
     <div
       className='d-flex-column user-select-none'
