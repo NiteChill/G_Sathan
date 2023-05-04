@@ -80,7 +80,7 @@ export default function Menu({
             icon='photo_camera'
             name='Portfolio'
             onClick={() =>
-              handleClick(portfolioRef, 'target-animation-portfolio', 'start')
+              handleClick(portfolioRef, 'target-animation-portfolio', 'center')
             }
             title='Accéder au portfolio'
           />
