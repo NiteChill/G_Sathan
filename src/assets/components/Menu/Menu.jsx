@@ -70,7 +70,8 @@ export default function Menu({
             onClick={() =>
               handleClick(
                 tattooProcessusRef,
-                'target-animation-tattoo-processus', 'center'
+                'target-animation-tattoo-processus',
+                'center'
               )
             }
             title='Accéder à "se faire tatouer"'
