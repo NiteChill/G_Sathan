@@ -13,6 +13,14 @@ export default function Menu({
   tattooProcessusRef,
   portfolioRef,
 }) {
+  function handleClick(ref, animation, block) {
+    setMenu(false);
+    ref.current.scrollIntoView({ behavior: 'smooth', block: block });
+    ref.current.classList.add(animation);
+    window.setTimeout(() => {
+      ref.current.classList.remove(animation);
+    }, 1400);
+  }
   return (
     <>
       <div
@@ -50,70 +58,30 @@ export default function Menu({
             appSize={appSize}
             icon='library_books'
             name='Mes débuts'
-            onClick={() => {
-              setMenu(false);
-              appRef.current.scrollTo({
-                top:
-                  startingRef.current.offsetTop -
-                  appRef.current.getBoundingClientRect().height / 2 +
-                  startingRef.current.getBoundingClientRect().height / 2,
-                behavior: 'smooth',
-              });
-              startingRef.current.classList.add('target-animation-starting');
-              window.setTimeout(() => {
-                startingRef.current.classList.remove(
-                  'target-animation-starting'
-                );
-              }, 1400);
-            }}
+            onClick={() =>
+              handleClick(startingRef, 'target-animation-starting', 'center')
+            }
             title='Accéder à "Mes débuts"'
           />
           <ButtonMenu
             appSize={appSize}
             icon='conversion_path'
             name='Se faire tatouer'
-            onClick={() => {
-              setMenu(false);
-              appRef.current.scrollTo({
-                top:
-                  tattooProcessusRef.current.offsetTop -
-                  appRef.current.getBoundingClientRect().height / 2 +
-                  tattooProcessusRef.current.getBoundingClientRect().height / 2,
-                behavior: 'smooth',
-              });
-              tattooProcessusRef.current.classList.add(
-                'target-animation-tattoo-processus'
-              );
-              window.setTimeout(() => {
-                tattooProcessusRef.current.classList.remove(
-                  'target-animation-tattoo-processus'
-                );
-              }, 1400);
-            }}
+            onClick={() =>
+              handleClick(
+                tattooProcessusRef,
+                'target-animation-tattoo-processus', 'center'
+              )
+            }
             title='Accéder à "se faire tatouer"'
           />
           <ButtonMenu
             appSize={appSize}
             icon='photo_camera'
             name='Portfolio'
-            onClick={() => {
-              setMenu(false);
-              appRef.current.scrollTo({
-                top:
-                  portfolioRef.current.offsetTop -
-                  appRef.current.getBoundingClientRect().height / 2 +
-                  portfolioRef.current.getBoundingClientRect().height / 2,
-                behavior: 'smooth',
-              });
-              portfolioRef.current.classList.add(
-                'target-animation-portfolio'
-              );
-              window.setTimeout(() => {
-                portfolioRef.current.classList.remove(
-                  'target-animation-portfolio'
-                );
-              }, 1400);
-            }}
+            onClick={() =>
+              handleClick(portfolioRef, 'target-animation-portfolio', 'start')
+            }
             title='Accéder au portfolio'
           />
         </div>
