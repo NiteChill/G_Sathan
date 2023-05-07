@@ -27,8 +27,8 @@ export default function HeroHeader({ appSize }) {
       <img
         src={picture}
         alt='picture'
-        style={{ width: appSize > '550' && '35%', objectFit: 'cover' }}
-        className={`${appSize <= '550' ? 'border-bottom-1' : ''}`}
+        style={{ width: appSize > 550 && '35%', objectFit: 'cover' }}
+        className={`${appSize <= 550 ? 'border-bottom-1' : ''}`}
       />
       <div
         className={`d-flex-row ai-center jc-center c-primary b-surface pt-24 pb-24 ${
