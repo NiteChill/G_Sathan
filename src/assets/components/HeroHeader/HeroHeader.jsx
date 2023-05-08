@@ -27,8 +27,8 @@ export default function HeroHeader({ appSize }) {
       <img
         src={picture}
         alt='picture'
-        style={{ width: appSize > '550' && '35%', objectFit: 'cover' }}
-        className={`${appSize <= '550' ? 'border-bottom-1' : ''}`}
+        style={{ width: appSize > 550 && '35%', objectFit: 'cover' }}
+        className={`${appSize <= 550 ? 'border-bottom-1' : ''}`}
       />
       <div
         className={`d-flex-row ai-center jc-center c-primary b-surface pt-24 pb-24 ${
@@ -40,24 +40,30 @@ export default function HeroHeader({ appSize }) {
           className='d-flex-row ai-center jc-center'
           style={{ width: '100%' }}
         >
-          <img src={logo} alt='logo gsathan' style={{ width: '23%' }} />
+          {/* <img src={logo} alt='logo gsathan' style={{ width: '23%' }} /> */}
           <h1
-            className={`${
-              appSize < 400
+            className={`d-flex-row ai-center jc-center ${
+              appSize < 350
+                ? 'fs-24'
+                : appSize < 450
                 ? 'fs-32'
                 : appSize < 550
-                ? 'fs-48'
-                : appSize < 650
+                ? 'fs-40'
+                : appSize < 800
                 ? 'fs-32'
-                : appSize < 700
+                : appSize < 1000
                 ? 'fs-48'
-                : appSize < 1050
+                : appSize < 1350
                 ? 'fs-56'
-                : 'fs-64'
+                : 'fs-80'
             }`}
           >
             Tattoos
-            <br />
+            <img
+              src={logo}
+              alt='logo gsathan'
+              style={{ width: '23%', marginLeft: '3%' }}
+            />
             Artworks
           </h1>
         </div>
