@@ -19,8 +19,8 @@ export default function ContactMe({ appSize }) {
   return (
     <div
       style={{
-        paddingBottom: visible ? '0' : '-30%',
-        paddingTop: visible ? '0' : '30%',
+        marginBottom: visible ? '0' : '-15%',
+        paddingTop: visible ? '0' : '15%',
         opacity: visible ? '1' : '0',
         transition: 'all .8s',
       }}

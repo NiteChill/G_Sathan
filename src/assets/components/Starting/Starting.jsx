@@ -20,8 +20,8 @@ export default function Starting({ appSize, startingRef }) {
     <div
       className='d-flex-row w-full border-bottom-1'
       style={{
-        paddingBottom: visible ? '0' : '-30%',
-        paddingTop: visible ? '0' : '30%',
+        marginBottom: visible ? '0' : '-15%',
+        paddingTop: visible ? '0' : '15%',
         opacity: visible ? '1' : '0',
         transition: 'all .8s',
       }}

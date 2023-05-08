@@ -46,8 +46,8 @@ export default function Portfolio({ portfolioRef, appSize }) {
       className='d-flex-column user-select-none'
       ref={PortfolioAnimationRef}
       style={{
-        paddingBottom: visible ? '0' : '-30%',
-        paddingTop: visible ? '0' : '30%',
+        marginBottom: visible ? '0' : '-15%',
+        paddingTop: visible ? '0' : '15%',
         opacity: visible ? '1' : '0',
         transition: 'all .8s',
       }}
