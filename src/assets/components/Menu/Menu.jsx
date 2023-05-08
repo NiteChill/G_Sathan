@@ -15,7 +15,13 @@ export default function Menu({
 }) {
   function handleClick(ref, animation, block) {
     setMenu(false);
-    ref.current.scrollIntoView({ behavior: 'smooth', block: block });
+    appRef.current.scrollTo({
+      top:
+        ref.current.offsetTop -
+        appRef.current.getBoundingClientRect().height / 2 +
+        ref.current.getBoundingClientRect().height / 2,
+      behavior: 'smooth',
+    });
     ref.current.classList.add(animation);
     window.setTimeout(() => {
       ref.current.classList.remove(animation);
