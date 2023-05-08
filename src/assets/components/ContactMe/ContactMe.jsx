@@ -1,8 +1,7 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 
-export default function ContactMe({ appSize }) {
+export default function ContactMe({ appSize, visible, setVisible }) {
   const contactMeRef = useRef(null);
-  const [visible, setVisible] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -19,7 +18,6 @@ export default function ContactMe({ appSize }) {
   return (
     <div
       style={{
-        marginBottom: visible ? '0' : '-15%',
         paddingTop: visible ? '0' : '15%',
         opacity: visible ? '1' : '0',
         transition: 'all .8s',

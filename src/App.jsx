@@ -16,6 +16,12 @@ export default function App() {
   const tattooProcessusRef = useRef(null);
   const portfolioRef = useRef(null);
   const [appSize, setAppSize] = useState('');
+
+  const [visibleContact, setVisibleContact] = useState(false);
+  const [visibleStarting, setVisibleStarting] = useState(false);
+  const [visibleTattooProcessus, setVisibleTattooProcessus] = useState(false);
+  const [visiblePortfolio, setVisiblePortfolio] = useState(false);
+
   useEffect(() => {
     setAppSize(appRef.current.getBoundingClientRect().width);
     window.addEventListener('resize', () =>
@@ -34,13 +40,29 @@ export default function App() {
         portfolioRef={portfolioRef}
       />
       <HeroHeader appSize={appSize} />
-      <ContactMe appSize={appSize} />
-      <Starting appSize={appSize} startingRef={startingRef} />
+      <ContactMe
+        appSize={appSize}
+        visible={visibleContact}
+        setVisible={setVisibleContact}
+      />
+      <Starting
+        appSize={appSize}
+        startingRef={startingRef}
+        visible={visibleStarting}
+        setVisible={setVisibleStarting}
+      />
       <TattooProcessus
         tattooProcessusRef={tattooProcessusRef}
         appSize={appSize}
+        visible={visibleTattooProcessus}
+        setVisible={setVisibleTattooProcessus}
       />
-      <Portfolio portfolioRef={portfolioRef} appSize={appSize} />
+      <Portfolio
+        portfolioRef={portfolioRef}
+        appSize={appSize}
+        visible={visiblePortfolio}
+        setVisible={setVisiblePortfolio}
+      />
       <Footer appSize={appSize} />
       {/* <div style={{ height: '1000px' }}></div> */}
     </div>

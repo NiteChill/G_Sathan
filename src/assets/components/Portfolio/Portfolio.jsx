@@ -2,9 +2,13 @@ import { useEffect, useState, useRef } from 'react';
 
 import { photos } from '../../../datas/photos';
 
-export default function Portfolio({ portfolioRef, appSize }) {
+export default function Portfolio({ portfolioRef, appSize, visible, setVisible }) {
+  const [activePhoto, setActivePhoto] = useState(0);
+
+  const sliderRef = useRef(null);
+  const photosRef = useRef([]);
+  
   const PortfolioAnimationRef = useRef(null);
-  const [visible, setVisible] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -19,11 +23,6 @@ export default function Portfolio({ portfolioRef, appSize }) {
     PortfolioAnimationRef.current &&
       observer.observe(PortfolioAnimationRef.current);
   }, [PortfolioAnimationRef]);
-
-  const [activePhoto, setActivePhoto] = useState(0);
-
-  const sliderRef = useRef(null);
-  const photosRef = useRef([]);
   useEffect(() => {
     let leftAdd = 56;
     appSize < 800
@@ -46,7 +45,6 @@ export default function Portfolio({ portfolioRef, appSize }) {
       className='d-flex-column user-select-none'
       ref={PortfolioAnimationRef}
       style={{
-        marginBottom: visible ? '0' : '-15%',
         paddingTop: visible ? '0' : '15%',
         opacity: visible ? '1' : '0',
         transition: 'all .8s',

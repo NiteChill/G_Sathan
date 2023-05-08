@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import studio from '../../images/studio_image.png';
 
-export default function Starting({ appSize, startingRef }) {
-  const [visible, setVisible] = useState(false);
+export default function Starting({ appSize, startingRef, visible, setVisible }) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -20,7 +19,6 @@ export default function Starting({ appSize, startingRef }) {
     <div
       className='d-flex-row w-full border-bottom-1'
       style={{
-        marginBottom: visible ? '0' : '-15%',
         paddingTop: visible ? '0' : '15%',
         opacity: visible ? '1' : '0',
         transition: 'all .8s',

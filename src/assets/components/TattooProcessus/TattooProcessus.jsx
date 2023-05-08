@@ -1,9 +1,8 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import ListText from '../ListText/ListText';
 
-export default function TattooProcessus({ tattooProcessusRef, appSize }) {
+export default function TattooProcessus({ tattooProcessusRef, appSize, visible, setVisible }) {
   const tattooAnimationRef = useRef(null);
-  const [visible, setVisible] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -20,7 +19,6 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
   return (
     <div
       style={{
-        marginBottom: visible ? '0' : '-15%',
         paddingTop: visible ? '0' : '15%',
         opacity: visible ? '1' : '0',
         transition: 'all .8s',
