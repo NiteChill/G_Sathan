@@ -460,7 +460,7 @@
     margin-right: 0.4rem;
   }
 }
-@media screen and (minwidth: 800px) {
+@media screen and (min-width: 800px) {
   .hover-chevron-right:hover div {
     padding: 0.8rem 0rem 0.8rem 0.8rem;
     & span {
