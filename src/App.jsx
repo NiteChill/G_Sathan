@@ -38,6 +38,10 @@ export default function App() {
         startingRef={startingRef}
         tattooProcessusRef={tattooProcessusRef}
         portfolioRef={portfolioRef}
+        visibleContact={visibleContact}
+        visibleStarting={visibleStarting}
+        visibleTattooProcessus={visibleTattooProcessus}
+        visiblePortfolio={visiblePortfolio}
       />
       <HeroHeader appSize={appSize} />
       <ContactMe
@@ -64,7 +68,6 @@ export default function App() {
         setVisible={setVisiblePortfolio}
       />
       <Footer appSize={appSize} />
-      {/* <div style={{ height: '1000px' }}></div> */}
     </div>
   );
 }

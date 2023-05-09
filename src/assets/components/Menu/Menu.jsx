@@ -12,14 +12,47 @@ export default function Menu({
   startingRef,
   tattooProcessusRef,
   portfolioRef,
+  visibleContact,
+  visibleStarting,
+  visibleTattooProcessus,
+  visiblePortfolio,
 }) {
-  function handleClick(ref, animation, block) {
+  function handleClick(ref, animation) {
+    const appHeight = appRef.current.getBoundingClientRect().height / 100;
+    let paddingTop;
+    if (ref === startingRef) {
+      if (!visibleStarting) {
+        if (!visibleContact) {
+          paddingTop = appHeight * 30;
+        } else paddingTop = appHeight * 15;
+      } else paddingTop = 0;
+    } else if (ref === tattooProcessusRef) {
+      if (!visibleTattooProcessus) {
+        if (!visibleStarting) {
+          if (!visibleContact) {
+            paddingTop = appHeight * 45;
+          } else paddingTop = appHeight * 30;
+        } else paddingTop = appHeight * 15;
+      } else paddingTop = 0;
+    } else if (ref === portfolioRef) {
+      if (!visiblePortfolio) {
+        if (!visibleTattooProcessus) {
+          if (!visibleStarting) {
+            if (!visibleContact) {
+              paddingTop = appHeight * 60;
+            } else paddingTop = appHeight * 45;
+          } else paddingTop = appHeight * 30;
+        } else paddingTop = appHeight * 15;
+      } else paddingTop = 0;
+    }
     setMenu(false);
     appRef.current.scrollTo({
       top:
         ref.current.offsetTop -
         appRef.current.getBoundingClientRect().height / 2 +
-        ref.current.getBoundingClientRect().height / 2,
+        ref.current.getBoundingClientRect().height / 2 -
+        paddingTop -
+        112,
       behavior: 'smooth',
     });
     ref.current.classList.add(animation);
@@ -65,7 +98,7 @@ export default function Menu({
             icon='library_books'
             name='Mes débuts'
             onClick={() =>
-              handleClick(startingRef, 'target-animation-starting', 'center')
+              handleClick(startingRef, 'target-animation-starting')
             }
             title='Accéder à "Mes débuts"'
           />
@@ -76,8 +109,7 @@ export default function Menu({
             onClick={() =>
               handleClick(
                 tattooProcessusRef,
-                'target-animation-tattoo-processus',
-                'center'
+                'target-animation-tattoo-processus'
               )
             }
             title='Accéder à "se faire tatouer"'
@@ -87,7 +119,7 @@ export default function Menu({
             icon='photo_camera'
             name='Portfolio'
             onClick={() =>
-              handleClick(portfolioRef, 'target-animation-portfolio', 'center')
+              handleClick(portfolioRef, 'target-animation-portfolio')
             }
             title='Accéder au portfolio'
           />

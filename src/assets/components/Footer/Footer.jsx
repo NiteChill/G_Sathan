@@ -28,7 +28,7 @@ export default function Footer({ appSize }) {
           : appSize < 1050
           ? 'pt-64 pr-48 pb-64 pl-48'
           : 'pt-96 pr-64 pb-64 pl-64'
-        }`}
+      }`}
       role=''
     >
       <div
@@ -50,12 +50,9 @@ export default function Footer({ appSize }) {
             }}
             ref={warningRef}
           >
-            Le tatouage est un acte relativement intime car
-            {appSize >= 550 && <br />}
-            il s'agit d'une altération définitive de l'intégrité
-            {appSize >= 550 && <br />}
-            physique. Il est important de le comprendre
-            {appSize >= 550 && <br />}
+            Le tatouage est un acte relativement intime car {appSize >= 550 && <br />}
+            il s'agit d'une altération définitive de l'intégrité {appSize >= 550 && <br />}
+            physique. Il est important de le comprendre {appSize >= 550 && <br />}
             avant d'envisager quoi que ce soit.
           </p>
         </div>
@@ -76,10 +73,8 @@ export default function Footer({ appSize }) {
             }}
             ref={additionalWorkRef}
           >
-            Additionnellement au tatouage,
-            {appSize >= 550 && <br />}
-            je travaille sur des commandes
-            {appSize >= 550 && <br />}
+            Additionnellement au tatouage, {appSize >= 550 && <br />}
+            je travaille sur des commandes {appSize >= 550 && <br />}
             d'illustration et produits dérivés.
           </p>
         </div>

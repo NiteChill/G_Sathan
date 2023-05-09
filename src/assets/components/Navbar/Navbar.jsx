@@ -9,6 +9,10 @@ export default function Navbar({
   startingRef,
   tattooProcessusRef,
   portfolioRef,
+  visibleContact,
+  visibleStarting,
+  visibleTattooProcessus,
+  visiblePortfolio,
 }) {
   const [menu, setMenu] = useState(false);
   return (
@@ -23,6 +27,10 @@ export default function Navbar({
         startingRef={startingRef}
         tattooProcessusRef={tattooProcessusRef}
         portfolioRef={portfolioRef}
+        visibleContact={visibleContact}
+        visibleStarting={visibleStarting}
+        visibleTattooProcessus={visibleTattooProcessus}
+        visiblePortfolio={visiblePortfolio}
       />
       <div
         className={`d-flex-row ai-center jc-space-between pr-8 pl-8 border-bottom-1 user-select-none pos-fixed b-surface`}
