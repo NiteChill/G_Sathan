@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import ButtonMenu from '../ButtonMenu/ButtonMenu';
 import Divider from '../Divider/Divider';
@@ -17,13 +16,23 @@ export default function Menu({
   function handleClick(ref, animation) {
     setMenu(false);
     console.log(ref);
-    appRef.current.scrollTo({
-      top:
-        ref.current.offsetTop -
-        appRef.current.getBoundingClientRect().height / 2 +
-        ref.current.getBoundingClientRect().height / 2,
-      behavior: 'smooth',
-    });
+    if (
+      appRef.current.getBoundingClientRect().height >=
+      ref.current.getBoundingClientRect().height
+    ) {
+      appRef.current.scrollTo({
+        top:
+          ref.current.offsetTop -
+          appRef.current.getBoundingClientRect().height / 2 +
+          ref.current.getBoundingClientRect().height / 2,
+        behavior: 'smooth',
+      });
+    } else {
+      appRef.current.scrollTo({
+        top: ref.current.offsetTop,
+        behavior: 'smooth',
+      });
+    }
     ref.current.classList.add(animation);
     window.setTimeout(() => {
       ref.current.classList.remove(animation);
