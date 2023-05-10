@@ -59,14 +59,22 @@ export default function Portfolio({ portfolioRef, appInfo }) {
         >
           <p
             className={`ff-title mb-24 ${
-              appInfo.size < 800 ? 'fs-18' : appInfo.size < 1050 ? 'fs-32' : 'fs-48'
+              appInfo.size < 800
+                ? 'fs-18'
+                : appInfo.size < 1050
+                ? 'fs-32'
+                : 'fs-48'
             }`}
           >
             Portfolio
           </p>
           <p
             className={`ff-text ${
-              appInfo.size < 800 ? 'fs-10' : appInfo.size < 1050 ? 'fs-16' : 'fs-20'
+              appInfo.size < 800
+                ? 'fs-10'
+                : appInfo.size < 1050
+                ? 'fs-16'
+                : 'fs-20'
             }`}
           >
             Voici un aperçu de mon travail sur quelques clients qui ont accepté
@@ -115,7 +123,11 @@ export default function Portfolio({ portfolioRef, appInfo }) {
                   className={`material-symbols-outlined user-select-none ${
                     activePhoto !== 0 ? 'c-on-surface' : 'c-inactive'
                   } ${
-                    appInfo.size < 800 ? 'fs-24' : appInfo.size < 1050 ? 'fs-48' : 'fs-56'
+                    appInfo.size < 800
+                      ? 'fs-24'
+                      : appInfo.size < 1050
+                      ? 'fs-48'
+                      : 'fs-56'
                   }`}
                 >
                   chevron_left
@@ -126,16 +138,51 @@ export default function Portfolio({ portfolioRef, appInfo }) {
               style={{ flex: '1' }}
               className='b-surface height-full d-flex-row ai-center jc-center'
             >
-              <img
-                src={photos[activePhoto].src}
-                alt={photos[activePhoto].alt}
-                style={{ height: '90%' }}
-                className='border-1'
-              />
+              {activePhoto < photos.length ? (
+                <img
+                  src={photos[activePhoto].src}
+                  alt={photos[activePhoto].alt}
+                  style={{ height: '90%' }}
+                  className='border-1'
+                />
+              ) : (
+                <div className='d-flex-row width-full height-full ai-center jc-center'>
+                  <div
+                    className='d-flex-column ai-center'
+                    style={{ gap: '2.4rem' }}
+                  >
+                    <p
+                      className={`ff-title ta-center ${
+                        appInfo.size < 800
+                          ? 'fs-18'
+                          : appInfo.size < 1050
+                          ? 'fs-32'
+                          : 'fs-48'
+                      }`}
+                    >
+                      Voir plus sur mon Instagram
+                    </p>
+                    <a
+                        href='https://www.instagram.com/gerard_sathan/'
+                        target='_blank'
+                      className={`ff-text c-on-surface ${
+                        appInfo.size < 800
+                          ? 'fs-10'
+                          : appInfo.size < 1050
+                          ? 'fs-16'
+                          : 'fs-20'
+                      }`}
+                      >
+                        {appInfo.size > 350 ? 'https://www.instagram.com/gerard_sathan'
+                         : 'Mon Instagram'}
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
             <div
               className={`d-flex-row ai-center jc-center border-left-1 height-full ${
-                activePhoto < photos.length - 1 &&
+                activePhoto < photos.length &&
                 'hover-chevron-right cursor-pointer'
               }`}
               style={{
@@ -147,8 +194,7 @@ export default function Portfolio({ portfolioRef, appInfo }) {
                     : '10.4rem',
               }}
               onClick={() =>
-                activePhoto < photos.length - 1 &&
-                setActivePhoto(activePhoto + 1)
+                activePhoto < photos.length && setActivePhoto(activePhoto + 1)
               }
             >
               <div
@@ -157,11 +203,13 @@ export default function Portfolio({ portfolioRef, appInfo }) {
               >
                 <span
                   className={`material-symbols-outlined user-select-none ${
-                    activePhoto < photos.length - 1
-                      ? 'c-on-surface'
-                      : 'c-inactive'
+                    activePhoto < photos.length ? 'c-on-surface' : 'c-inactive'
                   } ${
-                    appInfo.size < 800 ? 'fs-24' : appInfo.size < 1050 ? 'fs-48' : 'fs-56'
+                    appInfo.size < 800
+                      ? 'fs-24'
+                      : appInfo.size < 1050
+                      ? 'fs-48'
+                      : 'fs-56'
                   }`}
                 >
                   chevron_right
@@ -232,6 +280,24 @@ export default function Portfolio({ portfolioRef, appInfo }) {
                   />
                 );
               })}
+              <div
+                style={{
+                  height: activePhoto === photos.length ? '80%' : '60%',
+                }}
+                className={`d-flex-row ai-center jc-center border-1 user-select-none material-symbols-outlined ${
+                  activePhoto !== photos.length && 'cursor-pointer'
+                } ${
+                  appInfo.size < 800
+                    ? 'fs-16 p-8'
+                    : appInfo.size < 1050
+                    ? 'fs-24 p-16'
+                    : 'fs-32 p-24'
+                }`}
+                onClick={() => setActivePhoto(photos.length)}
+                ref={(item) => (photosRef.current[photos.length] = item)}
+              >
+                add
+              </div>
             </div>
             <div
               className='border-left-1'
