@@ -1,6 +1,7 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
-export default function ContactMe({ appSize, visible, setVisible }) {
+export default function ContactMe({ appSize }) {
+  const [visible, setVisible] = useState(false);
   const contactMeRef = useRef(null);
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -18,9 +19,9 @@ export default function ContactMe({ appSize, visible, setVisible }) {
   return (
     <div
       style={{
-        paddingTop: visible ? '0' : '15%',
+        transform: visible ? 'translateY(0)' : 'translateY(50%)',
         opacity: visible ? '1' : '0',
-        transition: 'all .8s',
+        transition: 'opacity .5s ease, transform .8s ease',
       }}
       ref={contactMeRef}
     >
@@ -46,7 +47,7 @@ export default function ContactMe({ appSize, visible, setVisible }) {
             <p
               className={`pt-8 ${
                 appSize < 800 ? 'fs-10' : appSize < 1050 ? 'fs-16' : 'fs-20'
-                }`}
+              }`}
             >
               Contactez moi via ce simple formulaire
             </p>

@@ -14,7 +14,7 @@ export default function Footer({ appSize }) {
             observer.unobserve(entry.target));
         });
       },
-      { threshold: .8 }
+      { threshold: 0.8 }
     );
     warningRef.current && observer.observe(warningRef.current);
     additionalWorkRef.current && observer.observe(additionalWorkRef.current);
@@ -43,20 +43,22 @@ export default function Footer({ appSize }) {
           <p
             className={`ff-text ${appSize < 900 ? 'fs-10' : 'fs-16'}`}
             style={{
-              marginBottom: visible ? '0' : '-15%',
-              marginTop: visible ? '0' : '15%',
+              transform: visible ? 'translateY(0)' : 'translateY(30%)',
               opacity: visible ? '1' : '0',
-              transition: 'all 1s ease',
+              transition: 'opacity .5s ease, transform .8s ease',
             }}
             ref={warningRef}
           >
-            Le tatouage est un acte relativement intime car {appSize >= 550 && <br />}
-            il s'agit d'une altération définitive de l'intégrité {appSize >= 550 && <br />}
-            physique. Il est important de le comprendre {appSize >= 550 && <br />}
+            Le tatouage est un acte relativement intime car{' '}
+            {appSize >= 550 && <br />}
+            il s'agit d'une altération définitive de l'intégrité{' '}
+            {appSize >= 550 && <br />}
+            physique. Il est important de le comprendre{' '}
+            {appSize >= 550 && <br />}
             avant d'envisager quoi que ce soit.
           </p>
         </div>
-        <div className='d-flex-column gap-24'>
+        <div className='d-flex-column gap-24 height-full'>
           <p
             className={`ff-title ${appSize < 900 ? 'fs-18' : 'fs-24'}`}
             style={{ whiteSpace: 'nowrap' }}
@@ -66,10 +68,9 @@ export default function Footer({ appSize }) {
           <p
             className={`ff-text ${appSize < 900 ? 'fs-10' : 'fs-16'}`}
             style={{
-              marginBottom: visible ? '0' : '-15%',
-              marginTop: visible ? '0' : '15%',
+              transform: visible ? 'translateY(0)' : 'translateY(30%)',
               opacity: visible ? '1' : '0',
-              transition: 'all 1s ease .2s',
+              transition: 'opacity .5s ease .1s, transform .8s ease .1s',
             }}
             ref={additionalWorkRef}
           >
@@ -83,34 +84,56 @@ export default function Footer({ appSize }) {
             Contact
           </p>
           <div
-            className={`${
+            className={`height-full ${
               appSize < 550
                 ? 'd-flex-row jc-space-between'
                 : 'd-flex-column gap-16'
             } c-on-surface ff-text ${appSize < 900 ? 'fs-10' : 'fs-16'}`}
-            style={{
-              marginBottom: visible ? '0' : '-15%',
-              marginTop: visible ? '0' : '15%',
-              opacity: visible ? '1' : '0',
-              transition: 'all 1s ease .4s',
-            }}
             ref={contactRef}
           >
             <a
               href='mailto:g.sathantattoo@gmail.com'
               target='_blank'
               className='c-on-surface'
+              style={{
+                transform: visible ? 'translateY(0)' : 'translateY(30%)',
+                opacity: visible ? '1' : '0',
+                transition: 'opacity .5s ease .2s, transform .8s ease.2s',
+              }}
             >
               Email
             </a>
-            <p className='td-underline cursor-pointer'>Formulaire</p>
-            <a href='' target='_blank' className='c-on-surface'>
+            <p
+              className='td-underline cursor-pointer'
+              style={{
+                transform: visible ? 'translateY(0)' : 'translateY(30%)',
+                opacity: visible ? '1' : '0',
+                transition: 'opacity .5s ease .3s, transform .8s ease .3s',
+              }}
+            >
+              Formulaire
+            </p>
+            <a
+              href=''
+              target='_blank'
+              className='c-on-surface'
+              style={{
+                transform: visible ? 'translateY(0)' : 'translateY(30%)',
+                opacity: visible ? '1' : '0',
+                transition: 'opacity .5s ease .4s, transform .8s ease .4s',
+              }}
+            >
               Adresse
             </a>
             <a
               href='https://www.instagram.com/gerard_sathan/'
               target='_blank'
               className='c-on-surface'
+              style={{
+                transform: visible ? 'translateY(0)' : 'translateY(30%)',
+                opacity: visible ? '1' : '0',
+                transition: 'opacity .5s ease .5s, transform .8s ease .5s',
+              }}
             >
               Instagram
             </a>

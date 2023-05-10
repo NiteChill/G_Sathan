@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import ButtonMenu from '../ButtonMenu/ButtonMenu';
 import Divider from '../Divider/Divider';
@@ -12,47 +13,15 @@ export default function Menu({
   startingRef,
   tattooProcessusRef,
   portfolioRef,
-  visibleContact,
-  visibleStarting,
-  visibleTattooProcessus,
-  visiblePortfolio,
 }) {
   function handleClick(ref, animation) {
-    const appHeight = appRef.current.getBoundingClientRect().height / 100;
-    let paddingTop;
-    if (ref === startingRef) {
-      if (!visibleStarting) {
-        if (!visibleContact) {
-          paddingTop = appHeight * 30;
-        } else paddingTop = appHeight * 15;
-      } else paddingTop = 0;
-    } else if (ref === tattooProcessusRef) {
-      if (!visibleTattooProcessus) {
-        if (!visibleStarting) {
-          if (!visibleContact) {
-            paddingTop = appHeight * 45;
-          } else paddingTop = appHeight * 30;
-        } else paddingTop = appHeight * 15;
-      } else paddingTop = 0;
-    } else if (ref === portfolioRef) {
-      if (!visiblePortfolio) {
-        if (!visibleTattooProcessus) {
-          if (!visibleStarting) {
-            if (!visibleContact) {
-              paddingTop = appHeight * 60;
-            } else paddingTop = appHeight * 45;
-          } else paddingTop = appHeight * 30;
-        } else paddingTop = appHeight * 15;
-      } else paddingTop = 0;
-    }
     setMenu(false);
+    console.log(ref);
     appRef.current.scrollTo({
       top:
         ref.current.offsetTop -
         appRef.current.getBoundingClientRect().height / 2 +
-        ref.current.getBoundingClientRect().height / 2 -
-        paddingTop -
-        112,
+        ref.current.getBoundingClientRect().height / 2,
       behavior: 'smooth',
     });
     ref.current.classList.add(animation);

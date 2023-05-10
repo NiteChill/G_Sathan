@@ -1,7 +1,8 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import ListText from '../ListText/ListText';
 
-export default function TattooProcessus({ tattooProcessusRef, appSize, visible, setVisible }) {
+export default function TattooProcessus({ tattooProcessusRef, appSize }) {
+  const [visible, setVisible] = useState(false);
   const tattooAnimationRef = useRef(null);
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -17,124 +18,126 @@ export default function TattooProcessus({ tattooProcessusRef, appSize, visible, 
     tattooAnimationRef.current && observer.observe(tattooAnimationRef.current);
   }, [tattooAnimationRef]);
   return (
-    <div
-      style={{
-        paddingTop: visible ? '0' : '15%',
-        opacity: visible ? '1' : '0',
-        transition: 'all .8s',
-      }}
-      ref={tattooAnimationRef}
-    >
+    <div ref={tattooProcessusRef}>
       <div
-        className='d-flex-row width-full border-bottom-1 b-surface-1'
         style={{
-          height:
-            appSize < 550
-              ? '4rem'
-              : appSize < 800
-              ? '6rem'
-              : appSize < 1050
-              ? '8rem'
-              : '10rem',
+          transform: visible ? 'translateY(0)' : 'translateY(15%)',
+          opacity: visible ? '1' : '0',
+          transition: 'opacity .5s ease, transform .8s ease',
         }}
+        ref={tattooAnimationRef}
       >
         <div
-          className='height-full border-right-1'
-          style={{ width: '10%' }}
-        ></div>
-        <div className='height-full' style={{ flex: '1' }}></div>
-        <div
-          className='height-full border-left-1'
-          style={{ width: '10%' }}
-        ></div>
-      </div>
-      <div className='d-flex-row b-surface-1 border-bottom-1'>
-        <div className='border-right-1' style={{ width: '10%' }}></div>
-        <div
-          className={
-            appSize < 800
-              ? 'pt-32 pr-24 pb-32 pl-24'
-              : appSize < 1050
-              ? 'pt-64 pr-48 pb-64 pl-48'
-              : 'pt-96 pr-64 pb-96 pl-64'
-          }
-          style={{ flex: '1', maxWidth: '80%' }}
-          ref={tattooProcessusRef}
+          className='d-flex-row width-full border-bottom-1 b-surface-1'
+          style={{
+            height:
+              appSize < 550
+                ? '4rem'
+                : appSize < 800
+                ? '6rem'
+                : appSize < 1050
+                ? '8rem'
+                : '10rem',
+          }}
         >
-          <p
-            className={`ff-title mb-24 ${
-              appSize < 800 ? 'fs-18' : appSize < 1050 ? 'fs-32' : 'fs-48'
-            }`}
-          >
-            Processus de tatouage
-          </p>
           <div
-            className='d-flex-column'
-            style={{
-              gap: appSize < 800 ? '.8rem' : appSize < 1050 ? '1.6rem' : '3rem',
-            }}
-          >
-            <ListText
-              appSize={appSize}
-              text={
-                <div>
-                  Prenez contact par{' '}
-                  <a
-                    href='mailto:g.sathantattoo@gmail.com'
-                    target='_blank'
-                    className='c-on-surface'
-                  >
-                    mail
-                  </a>{' '}
-                  , via le{' '}
-                  <span
-                    style={{ textDecoration: 'underline', cursor: 'pointer' }}
-                  >
-                    formulaire
-                  </span>{' '}
-                  ou avec{' '}
-                  <a
-                    href='https://www.instagram.com/gerard_sathan/'
-                    target='_blank'
-                    className='c-on-surface'
-                  >
-                    Instagram
-                  </a>
-                </div>
-              }
-              delay='0.3s'
-            />
-            <ListText
-              appSize={appSize}
-              text={
-                <div>
-                  Venez vous faire tatouer dans mon salon ou dans d'autres qui
-                  m'accueillent.{' '}
-                  <a
-                    href=''
-                    target='_blank'
-                    className='c-on-surface'
-                    style={{ whiteSpace: 'nowrap' }}
-                  >
-                    Agenda des destinations
-                  </a>
-                </div>
-              }
-              delay='0.6s'
-            />
-            <ListText
-              appSize={appSize}
-              text={
-                <div>
-                  Suivez les conseils qui vous seront donnés afin que le
-                  tatouage cicatrise correctement
-                </div>
-              }
-              delay='0.9s'
-            />
-          </div>
+            className='height-full border-right-1'
+            style={{ width: '10%' }}
+          ></div>
+          <div className='height-full' style={{ flex: '1' }}></div>
+          <div
+            className='height-full border-left-1'
+            style={{ width: '10%' }}
+          ></div>
         </div>
-        <div className='border-left-1' style={{ width: '10%' }}></div>
+        <div className='d-flex-row b-surface-1 border-bottom-1'>
+          <div className='border-right-1' style={{ width: '10%' }}></div>
+          <div
+            className={
+              appSize < 800
+                ? 'pt-32 pr-24 pb-32 pl-24'
+                : appSize < 1050
+                ? 'pt-64 pr-48 pb-64 pl-48'
+                : 'pt-96 pr-64 pb-96 pl-64'
+            }
+            style={{ flex: '1', maxWidth: '80%' }}
+          >
+            <p
+              className={`ff-title mb-24 ${
+                appSize < 800 ? 'fs-18' : appSize < 1050 ? 'fs-32' : 'fs-48'
+              }`}
+            >
+              Processus de tatouage
+            </p>
+            <div
+              className='d-flex-column'
+              style={{
+                gap:
+                  appSize < 800 ? '.8rem' : appSize < 1050 ? '1.6rem' : '3rem',
+              }}
+            >
+              <ListText
+                appSize={appSize}
+                text={
+                  <div>
+                    Prenez contact par{' '}
+                    <a
+                      href='mailto:g.sathantattoo@gmail.com'
+                      target='_blank'
+                      className='c-on-surface'
+                    >
+                      mail
+                    </a>{' '}
+                    , via le{' '}
+                    <span
+                      style={{ textDecoration: 'underline', cursor: 'pointer' }}
+                    >
+                      formulaire
+                    </span>{' '}
+                    ou avec{' '}
+                    <a
+                      href='https://www.instagram.com/gerard_sathan/'
+                      target='_blank'
+                      className='c-on-surface'
+                    >
+                      Instagram
+                    </a>
+                  </div>
+                }
+                delay='0.3s'
+              />
+              <ListText
+                appSize={appSize}
+                text={
+                  <div>
+                    Venez vous faire tatouer dans mon salon ou dans d'autres qui
+                    m'accueillent.{' '}
+                    <a
+                      href=''
+                      target='_blank'
+                      className='c-on-surface'
+                      style={{ whiteSpace: 'nowrap' }}
+                    >
+                      Agenda des destinations
+                    </a>
+                  </div>
+                }
+                delay='0.6s'
+              />
+              <ListText
+                appSize={appSize}
+                text={
+                  <div>
+                    Suivez les conseils qui vous seront donnés afin que le
+                    tatouage cicatrise correctement
+                  </div>
+                }
+                delay='0.9s'
+              />
+            </div>
+          </div>
+          <div className='border-left-1' style={{ width: '10%' }}></div>
+        </div>
       </div>
     </div>
   );
