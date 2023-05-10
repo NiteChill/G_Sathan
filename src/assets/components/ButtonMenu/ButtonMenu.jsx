@@ -1,5 +1,5 @@
 export default function ButtonMenu({
-  appSize,
+  appInfo,
   iconType = 'font',
   icon,
   name,
@@ -10,7 +10,7 @@ export default function ButtonMenu({
     <div
       className='d-flex-row ai-center pr-8 pl-16 hover hover-icons cursor-pointer user-select-none'
       style={{ borderRadius: '0 10rem 10rem 0', height: '4rem' }}
-      data-title={appSize >= 600 ? title : null}
+      data-title={appInfo.size >= 600 ? title : null}
       onClick={onClick}
     >
       {iconType === 'font' ? (

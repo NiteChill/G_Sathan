@@ -1,22 +1,20 @@
 import { useRef, useEffect, useState } from 'react';
 import ListText from '../ListText/ListText';
 
-export default function TattooProcessus({ tattooProcessusRef, appSize }) {
+export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
   const [visible, setVisible] = useState(false);
-  const tattooAnimationRef = useRef(null);
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.map((entry) => {
-          entry.isIntersecting &&
-            (setVisible(entry.isIntersecting),
-            observer.unobserve(entry.target));
-        });
-      },
-      { threshold: 0.2 }
-    );
-    tattooAnimationRef.current && observer.observe(tattooAnimationRef.current);
-  }, [tattooAnimationRef]);
+    if (
+      appInfo.scroll +
+        appInfo.ref.current.getBoundingClientRect().height -
+        tattooProcessusRef.current.getBoundingClientRect().height / 4 >=
+      tattooProcessusRef.current.offsetTop
+    ) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  }, [tattooProcessusRef, appInfo]);
   return (
     <div ref={tattooProcessusRef}>
       <div
@@ -25,17 +23,16 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
           opacity: visible ? '1' : '0',
           transition: 'opacity .5s ease, transform .8s ease',
         }}
-        ref={tattooAnimationRef}
       >
         <div
           className='d-flex-row width-full border-bottom-1 b-surface-1'
           style={{
             height:
-              appSize < 550
+              appInfo.size < 550
                 ? '4rem'
-                : appSize < 800
+                : appInfo.size < 800
                 ? '6rem'
-                : appSize < 1050
+                : appInfo.size < 1050
                 ? '8rem'
                 : '10rem',
           }}
@@ -54,9 +51,9 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
           <div className='border-right-1' style={{ width: '10%' }}></div>
           <div
             className={
-              appSize < 800
+              appInfo.size < 800
                 ? 'pt-32 pr-24 pb-32 pl-24'
-                : appSize < 1050
+                : appInfo.size < 1050
                 ? 'pt-64 pr-48 pb-64 pl-48'
                 : 'pt-96 pr-64 pb-96 pl-64'
             }
@@ -64,7 +61,7 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
           >
             <p
               className={`ff-title mb-24 ${
-                appSize < 800 ? 'fs-18' : appSize < 1050 ? 'fs-32' : 'fs-48'
+                appInfo.size < 800 ? 'fs-18' : appInfo.size < 1050 ? 'fs-32' : 'fs-48'
               }`}
             >
               Processus de tatouage
@@ -73,11 +70,11 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
               className='d-flex-column'
               style={{
                 gap:
-                  appSize < 800 ? '.8rem' : appSize < 1050 ? '1.6rem' : '3rem',
+                  appInfo.size < 800 ? '.8rem' : appInfo.size < 1050 ? '1.6rem' : '3rem',
               }}
             >
               <ListText
-                appSize={appSize}
+                appInfo={appInfo}
                 text={
                   <div>
                     Prenez contact par{' '}
@@ -107,7 +104,7 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
                 delay='0.3s'
               />
               <ListText
-                appSize={appSize}
+                appInfo={appInfo}
                 text={
                   <div>
                     Venez vous faire tatouer dans mon salon ou dans d'autres qui
@@ -125,7 +122,7 @@ export default function TattooProcessus({ tattooProcessusRef, appSize }) {
                 delay='0.6s'
               />
               <ListText
-                appSize={appSize}
+                appInfo={appInfo}
                 text={
                   <div>
                     Suivez les conseils qui vous seront donnés afin que le

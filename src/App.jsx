@@ -15,33 +15,50 @@ export default function App() {
   const startingRef = useRef(null);
   const tattooProcessusRef = useRef(null);
   const portfolioRef = useRef(null);
-  const [appSize, setAppSize] = useState('');
+
+  const [appInfo, setAppInfo] = useState({
+    size: 0,
+    scroll: 0,
+    ref: appRef && appRef,
+  });
+
   useEffect(() => {
-    setAppSize(appRef.current.getBoundingClientRect().width);
+    setAppInfo({
+      ...appInfo,
+      size: appRef.current.getBoundingClientRect().width,
+      ref: appRef &&  appRef,
+    });
     window.addEventListener('resize', () =>
-      setAppSize(appRef.current.getBoundingClientRect().width)
+      setAppInfo({
+        ...appInfo,
+        size: appRef.current.getBoundingClientRect().width,
+      })
     );
-    //  return window.removeEventListener('resize', setSize)   //---> la page ne se reload jamais grace a vite donc si on met cette ligne de code l'eventlistener ne s'effectue jamais
-  }, []);
+  }, [appRef]);
   return (
-    <div className='App' ref={appRef}>
+    <div
+      className='App'
+      ref={appRef}
+      onScroll={(e) => {
+        setAppInfo({ ...appInfo, scroll: e.target.scrollTop });
+      }}
+    >
       {/* <FollowCursor /> */}
       <Navbar
-        appSize={appSize}
-        appRef={appRef}
+        appInfo={appInfo}
         startingRef={startingRef}
         tattooProcessusRef={tattooProcessusRef}
         portfolioRef={portfolioRef}
       />
-      <HeroHeader appSize={appSize} />
-      <ContactMe appSize={appSize} />
-      <Starting appSize={appSize} startingRef={startingRef} />
+      <HeroHeader appInfo={appInfo} />
+      <ContactMe appInfo={appInfo} />
+      <Starting appInfo={appInfo} startingRef={startingRef} />
       <TattooProcessus
         tattooProcessusRef={tattooProcessusRef}
-        appSize={appSize}
+        appInfo={appInfo}
       />
-      <Portfolio portfolioRef={portfolioRef} appSize={appSize} />
-      <Footer appSize={appSize} />
+      <Portfolio portfolioRef={portfolioRef} appInfo={appInfo} />
+      <Footer appInfo={appInfo} />
     </div>
   );
 }

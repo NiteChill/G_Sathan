@@ -2,33 +2,30 @@ import { useEffect, useState, useRef } from 'react';
 
 import { photos } from '../../../datas/photos';
 
-export default function Portfolio({ portfolioRef, appSize }) {
+export default function Portfolio({ portfolioRef, appInfo }) {
   const [visible, setVisible] = useState(false);
   const [activePhoto, setActivePhoto] = useState(0);
 
   const sliderRef = useRef(null);
   const photosRef = useRef([]);
 
-  const PortfolioAnimationRef = useRef(null);
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.map((entry) => {
-          entry.isIntersecting &&
-            (setVisible(entry.isIntersecting),
-            observer.unobserve(entry.target));
-        });
-      },
-      { threshold: 0.2 }
-    );
-    PortfolioAnimationRef.current &&
-      observer.observe(PortfolioAnimationRef.current);
-  }, [PortfolioAnimationRef]);
+    if (
+      appInfo.scroll +
+        appInfo.ref.current.getBoundingClientRect().height -
+        portfolioRef.current.getBoundingClientRect().height / 4 >=
+      portfolioRef.current.offsetTop
+    ) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  }, [portfolioRef, appInfo]);
   useEffect(() => {
     let leftAdd = 56;
-    appSize < 800
+    appInfo.size < 800
       ? (leftAdd = 56)
-      : appSize < 1050
+      : appInfo.size < 1050
       ? (leftAdd = 88)
       : (leftAdd = 104);
     sliderRef.current.scrollTo({
@@ -40,12 +37,11 @@ export default function Portfolio({ portfolioRef, appSize }) {
         leftAdd,
       behavior: 'smooth',
     });
-  }, [activePhoto, appSize]);
+  }, [activePhoto, appInfo]);
   return (
     <div ref={portfolioRef}>
       <div
         className='d-flex-column user-select-none'
-        ref={PortfolioAnimationRef}
         style={{
           transform: visible ? 'translateY(0)' : 'translateY(10%)',
           opacity: visible ? '1' : '0',
@@ -54,23 +50,23 @@ export default function Portfolio({ portfolioRef, appSize }) {
       >
         <div
           className={`d-flex-column b-surface-1 ${
-            appSize < 800
+            appInfo.size < 800
               ? 'pt-32 pr-24 pb-32 pl-24'
-              : appSize < 1050
+              : appInfo.size < 1050
               ? 'pt-64 pr-48 pb-64 pl-48'
               : 'pt-96 pr-64 pb-96 pl-64'
           }`}
         >
           <p
             className={`ff-title mb-24 ${
-              appSize < 800 ? 'fs-18' : appSize < 1050 ? 'fs-32' : 'fs-48'
+              appInfo.size < 800 ? 'fs-18' : appInfo.size < 1050 ? 'fs-32' : 'fs-48'
             }`}
           >
             Portfolio
           </p>
           <p
             className={`ff-text ${
-              appSize < 800 ? 'fs-10' : appSize < 1050 ? 'fs-16' : 'fs-20'
+              appInfo.size < 800 ? 'fs-10' : appInfo.size < 1050 ? 'fs-16' : 'fs-20'
             }`}
           >
             Voici un aperçu de mon travail sur quelques clients qui ont accepté
@@ -82,15 +78,15 @@ export default function Portfolio({ portfolioRef, appSize }) {
             className='d-flex-row ai-center'
             style={{
               height:
-                appSize < 400
+                appInfo.size < 400
                   ? '20rem'
-                  : appSize < 500
+                  : appInfo.size < 500
                   ? '24rem'
-                  : appSize < 650
+                  : appInfo.size < 650
                   ? '30rem'
-                  : appSize < 800
+                  : appInfo.size < 800
                   ? '40rem'
-                  : appSize < 650
+                  : appInfo.size < 650
                   ? '50rem'
                   : '60rem',
             }}
@@ -101,9 +97,9 @@ export default function Portfolio({ portfolioRef, appSize }) {
               }`}
               style={{
                 width:
-                  appSize < 800
+                  appInfo.size < 800
                     ? '5.6rem'
-                    : appSize < 1050
+                    : appInfo.size < 1050
                     ? '8.8rem'
                     : '10.4rem',
               }}
@@ -119,7 +115,7 @@ export default function Portfolio({ portfolioRef, appSize }) {
                   className={`material-symbols-outlined user-select-none ${
                     activePhoto !== 0 ? 'c-on-surface' : 'c-inactive'
                   } ${
-                    appSize < 800 ? 'fs-24' : appSize < 1050 ? 'fs-48' : 'fs-56'
+                    appInfo.size < 800 ? 'fs-24' : appInfo.size < 1050 ? 'fs-48' : 'fs-56'
                   }`}
                 >
                   chevron_left
@@ -144,9 +140,9 @@ export default function Portfolio({ portfolioRef, appSize }) {
               }`}
               style={{
                 width:
-                  appSize < 800
+                  appInfo.size < 800
                     ? '5.6rem'
-                    : appSize < 1050
+                    : appInfo.size < 1050
                     ? '8.8rem'
                     : '10.4rem',
               }}
@@ -165,7 +161,7 @@ export default function Portfolio({ portfolioRef, appSize }) {
                       ? 'c-on-surface'
                       : 'c-inactive'
                   } ${
-                    appSize < 800 ? 'fs-24' : appSize < 1050 ? 'fs-48' : 'fs-56'
+                    appInfo.size < 800 ? 'fs-24' : appInfo.size < 1050 ? 'fs-48' : 'fs-56'
                   }`}
                 >
                   chevron_right
@@ -177,15 +173,15 @@ export default function Portfolio({ portfolioRef, appSize }) {
             className='d-flex-row border-top-1'
             style={{
               height:
-                appSize < 400
+                appInfo.size < 400
                   ? '5.6rem'
-                  : appSize < 500
+                  : appInfo.size < 500
                   ? '7.2rem'
-                  : appSize < 650
+                  : appInfo.size < 650
                   ? '9.6rem'
-                  : appSize < 800
+                  : appInfo.size < 800
                   ? '11.2rem'
-                  : appSize < 650
+                  : appInfo.size < 650
                   ? '13.6rem'
                   : '14.4rem',
             }}
@@ -194,9 +190,9 @@ export default function Portfolio({ portfolioRef, appSize }) {
               className='border-right-1'
               style={{
                 width:
-                  appSize < 800
+                  appInfo.size < 800
                     ? '5.6rem'
-                    : appSize < 1050
+                    : appInfo.size < 1050
                     ? '8.8rem'
                     : '10.4rem',
               }}
@@ -205,17 +201,17 @@ export default function Portfolio({ portfolioRef, appSize }) {
               style={{
                 flex: '1',
                 gap:
-                  appSize < 800
+                  appInfo.size < 800
                     ? '.8rem'
-                    : appSize < 1050
+                    : appInfo.size < 1050
                     ? '1.6rem'
                     : '2.4rem',
                 overflow: 'auto',
               }}
               className={`height-full d-flex-row ai-center scrollbar-styled ${
-                appSize < 800
+                appInfo.size < 800
                   ? 'pr-16 pl-16'
-                  : appSize < 1050
+                  : appInfo.size < 1050
                   ? 'pr-32 pl-32'
                   : 'pr-48 pl-48'
               }`}
@@ -241,9 +237,9 @@ export default function Portfolio({ portfolioRef, appSize }) {
               className='border-left-1'
               style={{
                 width:
-                  appSize < 800
+                  appInfo.size < 800
                     ? '5.6rem'
-                    : appSize < 1050
+                    : appInfo.size < 1050
                     ? '8.8rem'
                     : '10.4rem',
               }}

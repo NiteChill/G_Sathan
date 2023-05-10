@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import chip from '../../images/chip.svg';
 
-export default function ListText({ appSize, text, delay }) {
+export default function ListText({ appInfo, text, delay }) {
   const [rotation, setRotation] = useState(Math.random() * 90);
   useEffect(() => {
     let interval;
@@ -12,7 +12,7 @@ export default function ListText({ appSize, text, delay }) {
   return (
     <div
       className={`ff-text d-flex-row ai-center ${
-        appSize < 800 ? 'fs-10' : appSize < 1050 ? 'fs-16' : 'fs-20'
+        appInfo.size < 800 ? 'fs-10' : appInfo.size < 1050 ? 'fs-16' : 'fs-20'
       }`}
       style={{ whiteSpace: 'normal' }}
     >
@@ -21,8 +21,8 @@ export default function ListText({ appSize, text, delay }) {
         alt='chip'
         style={{
           transform: `rotate(${rotation}deg)`,
-          height: appSize < 800 ? '.8rem' : '1.6rem',
-          width: appSize < 800 ? '.8rem' : '1.6rem',
+          height: appInfo.size < 800 ? '.8rem' : '1.6rem',
+          width: appInfo.size < 800 ? '.8rem' : '1.6rem',
           marginRight: '.6rem',
           transition: `transform 1s ease ${delay}`,
         }}

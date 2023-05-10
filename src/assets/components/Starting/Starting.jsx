@@ -2,23 +2,22 @@ import { useEffect, useState } from 'react';
 import studio from '../../images/studio_image.png';
 
 export default function Starting({
-  appSize,
+  appInfo,
   startingRef,
 }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.map((entry) => {
-          entry.isIntersecting &&
-            (setVisible(entry.isIntersecting),
-            observer.unobserve(entry.target));
-        });
-      },
-      { threshold: 0.1 }
-    );
-    startingRef.current && observer.observe(startingRef.current);
-  }, [startingRef]);
+    if (
+      appInfo.scroll +
+        appInfo.ref.current.getBoundingClientRect().height -
+        startingRef.current.getBoundingClientRect().height / 5 >=
+      startingRef.current.offsetTop
+    ) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  }, [startingRef, appInfo]);
   return (
     <div ref={startingRef}>
       <div
@@ -31,23 +30,23 @@ export default function Starting({
       >
         <div
           className={`d-flex-column b-surface-1 starting ${
-            appSize < 800
+            appInfo.size < 800
               ? 'pt-32 pr-24 pb-32 pl-24'
-              : appSize < 1050
+              : appInfo.size < 1050
               ? 'pt-64 pr-48 pb-64 pl-48'
               : 'pt-96 pr-64 pb-96 pl-64'
           }`}
         >
           <p
             className={`ff-title ${
-              appSize < 800 ? 'fs-18' : appSize < 1050 ? 'fs-32' : 'fs-48'
+              appInfo.size < 800 ? 'fs-18' : appInfo.size < 1050 ? 'fs-32' : 'fs-48'
             }`}
           >
             Mes débuts
           </p>
           <div
             className={`ff-text mt-24 ${
-              appSize < 800 ? 'fs-10' : appSize < 1050 ? 'fs-16' : 'fs-20'
+              appInfo.size < 800 ? 'fs-10' : appInfo.size < 1050 ? 'fs-16' : 'fs-20'
             }`}
           >
             <p className='mb-16'>
@@ -57,7 +56,7 @@ export default function Starting({
             <p>Dès les premiers traits...</p>
           </div>
         </div>
-        {appSize >= 450 && (
+        {appInfo.size >= 450 && (
           <div
             className='d-flex-row jc-center ai-center border-left-1'
             style={{ minWidth: '45%', flex: '1' }}

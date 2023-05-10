@@ -4,8 +4,7 @@ import Menu from '../Menu/Menu';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 export default function Navbar({
-  appSize,
-  appRef,
+  appInfo,
   startingRef,
   tattooProcessusRef,
   portfolioRef,
@@ -14,12 +13,11 @@ export default function Navbar({
   return (
     <>
       <Menu
-        appSize={appSize}
+        appInfo={appInfo}
         menu={menu}
         setMenu={setMenu}
         onClick={() => setMenu(false)}
         onClick2={() => setMenu(!menu)}
-        appRef={appRef}
         startingRef={startingRef}
         tattooProcessusRef={tattooProcessusRef}
         portfolioRef={portfolioRef}

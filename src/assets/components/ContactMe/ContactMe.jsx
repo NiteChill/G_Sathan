@@ -1,21 +1,20 @@
 import { useRef, useEffect, useState } from 'react';
 
-export default function ContactMe({ appSize }) {
+export default function ContactMe({ appInfo }) {
   const [visible, setVisible] = useState(false);
   const contactMeRef = useRef(null);
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.map((entry) => {
-          entry.isIntersecting &&
-            (setVisible(entry.isIntersecting),
-            observer.unobserve(entry.target));
-        });
-      },
-      { threshold: 0.2 }
-    );
-    contactMeRef.current && observer.observe(contactMeRef.current);
-  }, [contactMeRef]);
+    if (
+      appInfo.scroll +
+        appInfo.ref.current.getBoundingClientRect().height -
+        contactMeRef.current.getBoundingClientRect().height / 5 >=
+      contactMeRef.current.offsetTop
+    ) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  }, [contactMeRef, appInfo]);
   return (
     <div
       style={{
@@ -28,25 +27,38 @@ export default function ContactMe({ appSize }) {
       <div
         className='d-flex-row ai-center jc-end width-full b-surface-1 c-on-surface ff-text border-bottom-1'
         style={{
-          height: appSize < 800 ? '8.5rem' : appSize < 1050 ? '10rem' : '14rem',
+          height:
+            appInfo.size < 800
+              ? '8.5rem'
+              : appInfo.size < 1050
+              ? '10rem'
+              : '14rem',
         }}
       >
-        {appSize >= 351 && (
+        {appInfo.size >= 351 && (
           <div
             className={`d-flex-column jc-center height-full pr-24 pl-24 ${
-              appSize > 450 && 'border-left-1'
+              appInfo.size > 450 && 'border-left-1'
             }`}
           >
             <p
               className={`ff-title ${
-                appSize < 800 ? 'fs-18' : appSize < 1050 ? 'fs-32' : 'fs-48'
+                appInfo.size < 800
+                  ? 'fs-18'
+                  : appInfo.size < 1050
+                  ? 'fs-32'
+                  : 'fs-48'
               }`}
             >
               Me contacter
             </p>
             <p
               className={`pt-8 ${
-                appSize < 800 ? 'fs-10' : appSize < 1050 ? 'fs-16' : 'fs-20'
+                appInfo.size < 800
+                  ? 'fs-10'
+                  : appInfo.size < 1050
+                  ? 'fs-16'
+                  : 'fs-20'
               }`}
             >
               Contactez moi via ce simple formulaire
@@ -55,17 +67,21 @@ export default function ContactMe({ appSize }) {
         )}
         <div
           className={`d-flex-row ai-center jc-center height-full b-primary cursor-pointer user-select-none hover-red ${
-            appSize < 800
+            appInfo.size < 800
               ? 'pr-24 pl-24'
-              : appSize < 1050
+              : appInfo.size < 1050
               ? 'pr-32 pl-32'
               : 'pr-48 pl-48'
-          } ${appSize <= 351 && 'width-full'}`}
+          } ${appInfo.size <= 351 && 'width-full'}`}
           onClick={() => {}}
         >
           <p
             className={`mr-8 ${
-              appSize < 800 ? 'fs-10' : appSize < 1050 ? 'fs-16' : 'fs-20'
+              appInfo.size < 800
+                ? 'fs-10'
+                : appInfo.size < 1050
+                ? 'fs-16'
+                : 'fs-20'
             }`}
             style={{ whiteSpace: 'nowrap' }}
           >
@@ -73,7 +89,7 @@ export default function ContactMe({ appSize }) {
           </p>
           <span
             className={`material-symbols-outlined cursor-pointer user-select-none c-on-surface ${
-              appSize < 1050 ? 'fs-16' : 'fs-24'
+              appInfo.size < 1050 ? 'fs-16' : 'fs-24'
             }`}
           >
             arrow_outward

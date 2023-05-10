@@ -1,95 +1,90 @@
 import { useRef, useEffect, useState } from 'react';
 
-export default function Footer({ appSize }) {
-  const warningRef = useRef(null);
-  const additionalWorkRef = useRef(null);
-  const contactRef = useRef(null);
+export default function Footer({ appInfo }) {
+  const footerRef = useRef(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.map((entry) => {
-          entry.isIntersecting &&
-            (setVisible(entry.isIntersecting),
-            observer.unobserve(entry.target));
-        });
-      },
-      { threshold: 0.8 }
-    );
-    warningRef.current && observer.observe(warningRef.current);
-    additionalWorkRef.current && observer.observe(additionalWorkRef.current);
-    contactRef.current && observer.observe(contactRef.current);
-  }, [warningRef, additionalWorkRef, contactRef]);
+    if (
+      appInfo.scroll +
+        appInfo.ref.current.getBoundingClientRect().height -
+        footerRef.current.getBoundingClientRect().height / 3 >=
+      footerRef.current.offsetTop
+    ) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  }, [footerRef, appInfo]);
   return (
     <div
       className={`d-flex-column gap-64 b-surface-1 ${
-        appSize < 800
+        appInfo.size < 800
           ? 'pt-48 pr-32 pb-48 pl-32'
-          : appSize < 1050
+          : appInfo.size < 1050
           ? 'pt-64 pr-48 pb-64 pl-48'
           : 'pt-96 pr-64 pb-64 pl-64'
       }`}
-      role=''
+      role='contentinfo'
     >
       <div
         className={`${
-          appSize < 550 ? 'd-flex-column gap-40' : 'd-flex-row jc-space-between'
+          appInfo.size < 550
+            ? 'd-flex-column gap-40'
+            : 'd-flex-row jc-space-between'
         }`}
+        ref={footerRef}
       >
         <div className='d-flex-column gap-24'>
-          <p className={`ff-title ${appSize < 900 ? 'fs-18' : 'fs-24'}`}>
+          <p className={`ff-title ${appInfo.size < 900 ? 'fs-18' : 'fs-24'}`}>
             Attention
           </p>
           <p
-            className={`ff-text ${appSize < 900 ? 'fs-10' : 'fs-16'}`}
+            className={`ff-text ${appInfo.size < 900 ? 'fs-10' : 'fs-16'}`}
             style={{
               transform: visible ? 'translateY(0)' : 'translateY(30%)',
               opacity: visible ? '1' : '0',
               transition: 'opacity .5s ease, transform .8s ease',
             }}
-            ref={warningRef}
           >
             Le tatouage est un acte relativement intime car{' '}
-            {appSize >= 550 && <br />}
+            {appInfo.size >= 550 && <br />}
             il s'agit d'une altération définitive de l'intégrité{' '}
-            {appSize >= 550 && <br />}
+            {appInfo.size >= 550 && <br />}
             physique. Il est important de le comprendre{' '}
-            {appSize >= 550 && <br />}
+            {appInfo.size >= 550 && <br />}
             avant d'envisager quoi que ce soit.
           </p>
         </div>
         <div className='d-flex-column gap-24 height-full'>
           <p
-            className={`ff-title ${appSize < 900 ? 'fs-18' : 'fs-24'}`}
+            className={`ff-title ${appInfo.size < 900 ? 'fs-18' : 'fs-24'}`}
             style={{ whiteSpace: 'nowrap' }}
           >
             Travail additionel
           </p>
           <p
-            className={`ff-text ${appSize < 900 ? 'fs-10' : 'fs-16'}`}
+            className={`ff-text ${appInfo.size < 900 ? 'fs-10' : 'fs-16'}`}
             style={{
               transform: visible ? 'translateY(0)' : 'translateY(30%)',
               opacity: visible ? '1' : '0',
               transition: 'opacity .5s ease .1s, transform .8s ease .1s',
             }}
-            ref={additionalWorkRef}
           >
-            Additionnellement au tatouage, {appSize >= 550 && <br />}
-            je travaille sur des commandes {appSize >= 550 && <br />}
+            Additionnellement au tatouage, {appInfo.size >= 550 && <br />}
+            je travaille sur des commandes {appInfo.size >= 550 && <br />}
             d'illustration et produits dérivés.
           </p>
         </div>
         <div className='d-flex-column gap-24'>
-          <p className={`ff-title ${appSize < 900 ? 'fs-18' : 'fs-24'}`}>
+          <p className={`ff-title ${appInfo.size < 900 ? 'fs-18' : 'fs-24'}`}>
             Contact
           </p>
           <div
             className={`height-full ${
-              appSize < 550
+              appInfo.size < 550
                 ? 'd-flex-row jc-space-between'
                 : 'd-flex-column gap-16'
-            } c-on-surface ff-text ${appSize < 900 ? 'fs-10' : 'fs-16'}`}
-            ref={contactRef}
+            } c-on-surface ff-text ${appInfo.size < 900 ? 'fs-10' : 'fs-16'}`}
           >
             <a
               href='mailto:g.sathantattoo@gmail.com'
