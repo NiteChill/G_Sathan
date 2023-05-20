@@ -27,7 +27,7 @@ export default function App() {
     setAppInfo({
       ...appInfo,
       size: appRef.current.getBoundingClientRect().width,
-      ref: appRef &&  appRef,
+      ref: appRef && appRef,
     });
     window.addEventListener('resize', () =>
       setAppInfo({
@@ -44,7 +44,6 @@ export default function App() {
         setAppInfo({ ...appInfo, scroll: e.target.scrollTop });
       }}
     >
-      <div className='work'>work in progress</div>
       <FollowCursor />
       <Navbar
         appInfo={appInfo}

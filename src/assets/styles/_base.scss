@@ -77,15 +77,3 @@ html {
     background: colors.$surface-3;
   }
 }
-
-.work {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 5.6rem;
-  font-family: 'garet-book', sans-serif;
-  background: colors.$surface-3;
-  z-index: 1000;
-}
