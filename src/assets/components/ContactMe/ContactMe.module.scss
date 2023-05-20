@@ -1,0 +1,54 @@
+@use '../../styles/variables' as colors;
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: colors.$on-surface;
+  font-family: 'garet-book', sans-serif;
+  padding-bottom: 1px;
+  & .fill {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 1px;
+      bottom: 0;
+      left: 0;
+      background: colors.$surface-1;
+    }
+  }
+  & .supporting_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 0 2.4rem;
+    background: colors.$surface-1;
+  }
+  & .button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    cursor: pointer;
+    user-select: none;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 1px;
+      background: colors.$primary;
+      z-index: -1;
+    }
+    &:hover p {
+      text-decoration: underline;
+    }
+  }
+}

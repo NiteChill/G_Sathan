@@ -1,0 +1,11 @@
+@use '../../styles/variables' as colors;
+
+.follow_cursor {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  background: colors.$primary;
+  border-radius: 100%;
+  filter: blur(2rem);
+  z-index: 0;
+}

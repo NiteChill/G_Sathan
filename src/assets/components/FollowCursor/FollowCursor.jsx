@@ -1,44 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
+
+import styles from './FollowCursor.module.scss';
 
 export default function FollowCursor() {
-  const [mousePos, setMousePos] = useState({
-    x: 0,
-    y: 0,
-  });
-  const [circlePos, setCirclePos] = useState({
-    x: 0,
-    y: 0,
-  });
+  const followRef = useRef(null);
   useEffect(() => {
-    function mouseMove(e) {
-      setMousePos({ x: e.pageX - 10, y: e.pageY - 10 });
+    function handleMove(e) {
+      followRef.current.animate(
+        {
+          left: `${e.clientX - 50}px`,
+          top: `${e.clientY - 50}px`,
+        },
+        { duration: 800, fill: 'forwards' }
+      );
     }
-    document.addEventListener('mousemove', mouseMove);
-    return () => document.removeEventListener('mousemove', mouseMove);
+    document.addEventListener('mousemove', handleMove);
+    return () => document.removeEventListener('mousemove', handleMove);
   }, []);
-  useEffect(() => {
-    let interval;
-    interval = setInterval(() => {
-      setCirclePos({
-        x: mousePos.x,
-        y: mousePos.y,
-      });
-    }, 1);
-    return () => clearInterval(interval);
-  }, [mousePos]);
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        width: '2rem',
-        height: '2rem',
-        borderRadius: '1rem',
-        zIndex: '1000',
-        top: `${circlePos.y}px`,
-        left: `${circlePos.x}px`,
-        pointerEvents: 'none'
-      }}
-      className='b-primary'
-    ></div>
-  );
+  return <div className={styles.follow_cursor} ref={followRef}></div>;
 }

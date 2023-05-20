@@ -3,6 +3,8 @@ import Logo from '../Logo/Logo';
 import Menu from '../Menu/Menu';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
+import styles from './Navbar.module.scss';
+
 export default function Navbar({
   appInfo,
   startingRef,
@@ -23,8 +25,7 @@ export default function Navbar({
         portfolioRef={portfolioRef}
       />
       <div
-        className={`d-flex-row ai-center jc-space-between pr-8 pl-8 border-bottom-1 user-select-none pos-fixed b-surface`}
-        style={{ width: '100vw', height: '5.6rem', zIndex: '10' }}
+        className={styles.navbar}
         role='navigation'
       >
         <BurgerMenu menu={menu} onclick={() => setMenu(!menu)} />

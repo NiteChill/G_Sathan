@@ -1,9 +1,12 @@
 import picture from '../../images/gsathan_picture.webp';
 import logo from '../../images/logo_gsathan_big.svg';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
+
+import styles from './HeroHeader.module.scss';
 
 export default function HeroHeader({ appInfo }) {
   const heroHeaderRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
     if (
       appInfo.scroll +
@@ -11,42 +14,21 @@ export default function HeroHeader({ appInfo }) {
         heroHeaderRef.current.getBoundingClientRect().height / 4 >=
       heroHeaderRef.current.offsetTop
     ) {
-      heroHeaderRef.current.style.opacity = '1';
+      setIsVisible(true);
     } else {
-      heroHeaderRef.current.style.opacity = '0';
+      setIsVisible(false);
     }
   }, [heroHeaderRef, appInfo]);
   return (
     <div
-      className={`${
-        appInfo.size <= '550' ? 'd-flex-column' : 'd-flex-row-reverse'
-      } width-full border-bottom-1`}
-      style={{ marginTop: '5.6rem', opacity: 0, transition: 'opacity 1s' }}
+      className={`${isVisible && styles.visible} ${styles.container}`}
       ref={heroHeaderRef}
     >
-      <img
-        src={picture}
-        alt='picture'
-        style={{
-          width: appInfo.size > 550 && '35%',
-          objectFit: 'cover',
-          minWidth: '100px',
-        }}
-        className={`${appInfo.size <= 550 ? 'border-bottom-1' : ''}`}
-      />
-      <div
-        className={`d-flex-row ai-center jc-center c-primary b-surface pt-24 pb-24 ${
-          appInfo.size > 550 && 'border-right'
-        }`}
-        style={{ flex: '1' }}
-      >
-        <div
-          className='d-flex-row ai-center jc-center'
-          style={{ width: '100%' }}
-        >
-          {/* <img src={logo} alt='logo gsathan' style={{ width: '23%' }} /> */}
+      <img src={picture} alt='picture' className={styles.image} />
+      <div className={styles.logo_container}>
+        <div className={styles.logo}>
           <h1
-            className={`d-flex-row ai-center jc-center ${
+            className={`${styles.text} ${
               appInfo.size < 350
                 ? 'fs-24'
                 : appInfo.size < 450

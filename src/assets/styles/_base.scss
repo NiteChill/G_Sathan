@@ -1,4 +1,4 @@
-@use './variables' as color;
+@use './variables' as colors;
 
 html {
   scroll-behavior: smooth;
@@ -17,12 +17,14 @@ html {
 }
 
 .App {
-  background: color.$surface;
-  color: color.$on-surface;
+  background: colors.$outline;
+  //surface background
+  color: colors.$on-surface;
   width: 100vw;
   height: 100vh;
   font-size: 1.6rem;
   overflow-y: scroll;
+  z-index: -1;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -42,8 +44,8 @@ html {
 }
 [data-title]:after {
   content: attr(data-title);
-  background-color: color.$surface-2;
-  color: color.$on-surface;
+  background-color: colors.$surface-2;
+  color: colors.$on-surface;
   position: absolute;
   font-size: 1rem;
   padding: 1px 5px 2px 5px;
@@ -69,9 +71,19 @@ html {
 .scrollbar-styled {
   &::-webkit-scrollbar {
     background: none;
-    height: .8rem;
+    height: 0.8rem;
   }
   &::-webkit-scrollbar-thumb {
-    background: color.$surface-3;
+    background: colors.$surface-3;
   }
+}
+
+.work {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 5.6rem;
+  font-family: 'garet-book', sans-serif;
+  background: colors.$surface-3;
 }

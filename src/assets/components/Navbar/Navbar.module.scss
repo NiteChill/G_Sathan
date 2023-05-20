@@ -1,0 +1,15 @@
+@use '../../../assets/styles/variables' as colors;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 .8rem;
+  border-bottom: 1px solid colors.$outline;
+  user-select: none;
+  position: fixed;
+  width: 100vw;
+  height: 5.6rem;
+  z-index: 10;
+  background: colors.$surface;
+}

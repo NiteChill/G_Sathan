@@ -1,5 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 
+import styles from './ContactMe.module.scss';
+
 export default function ContactMe({ appInfo }) {
   const [visible, setVisible] = useState(false);
   const contactMeRef = useRef(null);
@@ -25,7 +27,7 @@ export default function ContactMe({ appInfo }) {
       ref={contactMeRef}
     >
       <div
-        className='d-flex-row ai-center jc-end width-full b-surface-1 c-on-surface ff-text border-bottom-1'
+        className={styles.container}
         style={{
           height:
             appInfo.size < 800
@@ -36,37 +38,38 @@ export default function ContactMe({ appInfo }) {
         }}
       >
         {appInfo.size >= 351 && (
-          <div
-            className={`d-flex-column jc-center height-full pr-24 pl-24 ${
-              appInfo.size > 450 && 'border-left-1'
-            }`}
-          >
-            <p
-              className={`ff-title ${
-                appInfo.size < 800
-                  ? 'fs-18'
-                  : appInfo.size < 1050
-                  ? 'fs-32'
-                  : 'fs-48'
-              }`}
+          <>
+            <div className={styles.fill}></div>
+            <div
+              className={styles.supporting_text}
             >
-              Me contacter
-            </p>
-            <p
-              className={`pt-8 ${
-                appInfo.size < 800
-                  ? 'fs-10'
-                  : appInfo.size < 1050
-                  ? 'fs-16'
-                  : 'fs-20'
-              }`}
-            >
-              Contactez moi via ce simple formulaire
-            </p>
-          </div>
+              <p
+                className={`ff-title ${
+                  appInfo.size < 800
+                    ? 'fs-18'
+                    : appInfo.size < 1050
+                    ? 'fs-32'
+                    : 'fs-48'
+                }`}
+              >
+                Me contacter
+              </p>
+              <p
+                className={`pt-8 ${
+                  appInfo.size < 800
+                    ? 'fs-10'
+                    : appInfo.size < 1050
+                    ? 'fs-16'
+                    : 'fs-20'
+                }`}
+              >
+                Contactez moi via ce simple formulaire
+              </p>
+            </div>
+          </>
         )}
         <div
-          className={`d-flex-row ai-center jc-center height-full b-primary cursor-pointer user-select-none hover-red ${
+          className={`${styles.button} ${
             appInfo.size < 800
               ? 'pr-24 pl-24'
               : appInfo.size < 1050

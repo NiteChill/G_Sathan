@@ -9,6 +9,7 @@ import ContactMe from './assets/components/ContactMe/ContactMe';
 import TattooProcessus from './assets/components/TattooProcessus/TattooProcessus';
 import Portfolio from './assets/components/Portfolio/Portfolio';
 import Footer from './assets/components/Footer/Footer';
+import FollowCursor from './assets/components/FollowCursor/FollowCursor';
 
 export default function App() {
   const appRef = useRef(null);
@@ -43,7 +44,8 @@ export default function App() {
         setAppInfo({ ...appInfo, scroll: e.target.scrollTop });
       }}
     >
-      {/* <FollowCursor /> */}
+      <div className='work'>work in progress</div>
+      <FollowCursor />
       <Navbar
         appInfo={appInfo}
         startingRef={startingRef}
