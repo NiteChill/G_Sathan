@@ -1,5 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 
+import styles from './Footer.module.scss';
+
 export default function Footer({ appInfo }) {
   const footerRef = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -25,6 +27,7 @@ export default function Footer({ appInfo }) {
           : 'pt-96 pr-64 pb-64 pl-64'
       }`}
       role='contentinfo'
+      style={{ position: 'relative' }}
     >
       <div
         className={`${

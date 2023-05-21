@@ -42,11 +42,9 @@ export default function Portfolio({ portfolioRef, appInfo }) {
   }, [activePhoto, appInfo]);
   return (
     <div ref={portfolioRef}>
-      <div
-        className={`${styles.container} ${visible && styles.visible}`}
-      >
+      <div className={`${styles.container} ${visible && styles.visible}`}>
         <div
-          className={`d-flex-column b-surface-1 ${
+          className={`${styles.title_container} ${
             appInfo.size < 800
               ? 'pt-32 pr-24 pb-32 pl-24'
               : appInfo.size < 1050
@@ -78,236 +76,231 @@ export default function Portfolio({ portfolioRef, appInfo }) {
             de se faire photographier
           </p>
         </div>
-        <div className='b-surface-1 border-top-1 border-bottom-1'>
+        <div
+          className={styles.image_slider_top}
+          style={{
+            height:
+              appInfo.size < 400
+                ? '20rem'
+                : appInfo.size < 500
+                ? '24rem'
+                : appInfo.size < 650
+                ? '30rem'
+                : appInfo.size < 800
+                ? '40rem'
+                : appInfo.size < 650
+                ? '50rem'
+                : '60rem',
+          }}
+        >
           <div
-            className='d-flex-row ai-center'
+            className={`${styles.left_button} ${
+              activePhoto !== 0 && styles.hover
+            }`}
             style={{
-              height:
-                appInfo.size < 400
-                  ? '20rem'
-                  : appInfo.size < 500
-                  ? '24rem'
-                  : appInfo.size < 650
-                  ? '30rem'
-                  : appInfo.size < 800
-                  ? '40rem'
-                  : appInfo.size < 650
-                  ? '50rem'
-                  : '60rem',
-            }}
-          >
-            <div
-              className={`d-flex-row ai-center jc-center border-right-1 height-full ${
-                activePhoto !== 0 && 'hover-chevron-left cursor-pointer'
-              }`}
-              style={{
-                width:
-                  appInfo.size < 800
-                    ? '5.6rem'
-                    : appInfo.size < 1050
-                    ? '8.8rem'
-                    : '10.4rem',
-              }}
-              onClick={() =>
-                activePhoto !== 0 && setActivePhoto(activePhoto - 1)
-              }
-            >
-              <div
-                className='d-flex-row ai-center jc-center p-8'
-                style={{ transition: 'all .3s' }}
-              >
-                <span
-                  className={`material-symbols-outlined user-select-none ${
-                    activePhoto !== 0 ? 'c-on-surface' : 'c-inactive'
-                  } ${
-                    appInfo.size < 800
-                      ? 'fs-24'
-                      : appInfo.size < 1050
-                      ? 'fs-48'
-                      : 'fs-56'
-                  }`}
-                >
-                  chevron_left
-                </span>
-              </div>
-            </div>
-            <div
-              style={{ flex: '1' }}
-              className='b-surface height-full d-flex-row ai-center jc-center'
-            >
-              {activePhoto < photos.length ? (
-                <img
-                  src={photos[activePhoto].src}
-                  alt={photos[activePhoto].alt}
-                  style={{ height: '90%' }}
-                  className='border-1'
-                />
-              ) : (
-                <div className='d-flex-row width-full height-full ai-center jc-center'>
-                  <div
-                    className='d-flex-column ai-center'
-                    style={{ gap: '2.4rem' }}
-                  >
-                    <p
-                      className={`ff-title ta-center ${
-                        appInfo.size < 800
-                          ? 'fs-18'
-                          : appInfo.size < 1050
-                          ? 'fs-32'
-                          : 'fs-48'
-                      }`}
-                    >
-                      Voir plus sur mon Instagram
-                    </p>
-                    <a
-                        href='https://www.instagram.com/gerard_sathan/'
-                        target='_blank'
-                      className={`ff-text c-on-surface ${
-                        appInfo.size < 800
-                          ? 'fs-10'
-                          : appInfo.size < 1050
-                          ? 'fs-16'
-                          : 'fs-20'
-                      }`}
-                      >
-                        {appInfo.size > 350 ? 'https://www.instagram.com/gerard_sathan'
-                         : 'Mon Instagram'}
-                    </a>
-                  </div>
-                </div>
-              )}
-            </div>
-            <div
-              className={`d-flex-row ai-center jc-center border-left-1 height-full ${
-                activePhoto < photos.length &&
-                'hover-chevron-right cursor-pointer'
-              }`}
-              style={{
-                width:
-                  appInfo.size < 800
-                    ? '5.6rem'
-                    : appInfo.size < 1050
-                    ? '8.8rem'
-                    : '10.4rem',
-              }}
-              onClick={() =>
-                activePhoto < photos.length && setActivePhoto(activePhoto + 1)
-              }
-            >
-              <div
-                className='d-flex-row ai-center jc-center p-8 cursor-pointer hover-chevron-right'
-                style={{ transition: 'all .3s' }}
-              >
-                <span
-                  className={`material-symbols-outlined user-select-none ${
-                    activePhoto < photos.length ? 'c-on-surface' : 'c-inactive'
-                  } ${
-                    appInfo.size < 800
-                      ? 'fs-24'
-                      : appInfo.size < 1050
-                      ? 'fs-48'
-                      : 'fs-56'
-                  }`}
-                >
-                  chevron_right
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='d-flex-row border-top-1'
-            style={{
-              height:
-                appInfo.size < 400
-                  ? '5.6rem'
-                  : appInfo.size < 500
-                  ? '7.2rem'
-                  : appInfo.size < 650
-                  ? '9.6rem'
-                  : appInfo.size < 800
-                  ? '11.2rem'
-                  : appInfo.size < 650
-                  ? '13.6rem'
-                  : '14.4rem',
-            }}
-          >
-            <div
-              className='border-right-1'
-              style={{
-                width:
-                  appInfo.size < 800
-                    ? '5.6rem'
-                    : appInfo.size < 1050
-                    ? '8.8rem'
-                    : '10.4rem',
-              }}
-            ></div>
-            <div
-              style={{
-                flex: '1',
-                gap:
-                  appInfo.size < 800
-                    ? '.8rem'
-                    : appInfo.size < 1050
-                    ? '1.6rem'
-                    : '2.4rem',
-                overflow: 'auto',
-              }}
-              className={`height-full d-flex-row ai-center scrollbar-styled ${
+              width:
                 appInfo.size < 800
-                  ? 'pr-16 pl-16'
+                  ? '5.6rem'
                   : appInfo.size < 1050
-                  ? 'pr-32 pl-32'
-                  : 'pr-48 pl-48'
-              }`}
-              ref={sliderRef}
+                  ? '8.8rem'
+                  : '10.4rem',
+            }}
+            onClick={() => activePhoto !== 0 && setActivePhoto(activePhoto - 1)}
+          >
+            <div
+              className='d-flex-row ai-center jc-center p-8'
+              style={{ transition: 'all .3s' }}
             >
-              {photos.map((photo) => {
-                return (
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    style={{ height: activePhoto === photo.id ? '80%' : '60%' }}
-                    className={`border-1 user-select-none ${
-                      activePhoto !== photo.id && 'cursor-pointer'
-                    }`}
-                    key={photo.id}
-                    onClick={() => setActivePhoto(photo.id)}
-                    ref={(item) => (photosRef.current[photo.id] = item)}
-                  />
-                );
-              })}
-              <div
-                style={{
-                  height: activePhoto === photos.length ? '80%' : '60%',
-                }}
-                className={`d-flex-row ai-center jc-center border-1 user-select-none material-symbols-outlined ${
-                  activePhoto !== photos.length && 'cursor-pointer'
+              <span
+                className={`material-symbols-outlined user-select-none ${
+                  activePhoto !== 0 ? 'c-on-surface' : 'c-inactive'
                 } ${
                   appInfo.size < 800
-                    ? 'fs-16 p-8'
+                    ? 'fs-24'
                     : appInfo.size < 1050
-                    ? 'fs-24 p-16'
-                    : 'fs-32 p-24'
+                    ? 'fs-48'
+                    : 'fs-56'
                 }`}
-                onClick={() => setActivePhoto(photos.length)}
-                ref={(item) => (photosRef.current[photos.length] = item)}
               >
-                add
-              </div>
+                chevron_left
+              </span>
             </div>
-            <div
-              className='border-left-1'
-              style={{
-                width:
-                  appInfo.size < 800
-                    ? '5.6rem'
-                    : appInfo.size < 1050
-                    ? '8.8rem'
-                    : '10.4rem',
-              }}
-            ></div>
           </div>
+          <div
+            style={{ flex: '1' }}
+            className='b-surface height-full d-flex-row ai-center jc-center'
+          >
+            {activePhoto < photos.length ? (
+              <img
+                src={photos[activePhoto].src}
+                alt={photos[activePhoto].alt}
+                style={{ height: '90%' }}
+                className={styles.image}
+              />
+            ) : (
+              <div className='d-flex-row width-full height-full ai-center jc-center'>
+                <div
+                  className='d-flex-column ai-center'
+                  style={{ gap: '2.4rem' }}
+                >
+                  <p
+                    className={`ff-title ta-center ${
+                      appInfo.size < 800
+                        ? 'fs-18'
+                        : appInfo.size < 1050
+                        ? 'fs-32'
+                        : 'fs-48'
+                    }`}
+                  >
+                    Voir plus sur mon Instagram
+                  </p>
+                  <a
+                    href='https://www.instagram.com/gerard_sathan/'
+                    target='_blank'
+                    className={`ff-text c-on-surface ${
+                      appInfo.size < 800
+                        ? 'fs-10'
+                        : appInfo.size < 1050
+                        ? 'fs-16'
+                        : 'fs-20'
+                    }`}
+                  >
+                    {appInfo.size > 350
+                      ? 'https://www.instagram.com/gerard_sathan'
+                      : 'Mon Instagram'}
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+          <div
+            className={`${styles.right_button} ${
+              activePhoto < photos.length &&
+              styles.hover
+            }`}
+            style={{
+              width:
+                appInfo.size < 800
+                  ? '5.6rem'
+                  : appInfo.size < 1050
+                  ? '8.8rem'
+                  : '10.4rem',
+            }}
+            onClick={() =>
+              activePhoto < photos.length && setActivePhoto(activePhoto + 1)
+            }
+          >
+            <div
+              className='d-flex-row ai-center jc-center p-8'
+              style={{ transition: 'all .3s' }}
+            >
+              <span
+                className={`material-symbols-outlined user-select-none ${
+                  activePhoto < photos.length ? 'c-on-surface' : 'c-inactive'
+                } ${
+                  appInfo.size < 800
+                    ? 'fs-24'
+                    : appInfo.size < 1050
+                    ? 'fs-48'
+                    : 'fs-56'
+                }`}
+              >
+                chevron_right
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          className={styles.image_slider_bottom}
+          style={{
+            height:
+              appInfo.size < 400
+                ? '5.6rem'
+                : appInfo.size < 500
+                ? '7.2rem'
+                : appInfo.size < 650
+                ? '9.6rem'
+                : appInfo.size < 800
+                ? '11.2rem'
+                : appInfo.size < 650
+                ? '13.6rem'
+                : '14.4rem',
+          }}
+        >
+          <div
+            className={styles.left_box}
+            style={{
+              width:
+                appInfo.size < 800
+                  ? '5.6rem'
+                  : appInfo.size < 1050
+                  ? '8.8rem'
+                  : '10.4rem',
+            }}
+          ></div>
+          <div
+            style={{
+              gap:
+                appInfo.size < 800
+                  ? '.8rem'
+                  : appInfo.size < 1050
+                  ? '1.6rem'
+                  : '2.4rem'
+            }}
+            className={`${styles.image_container} ${
+              appInfo.size < 800
+                ? 'pr-16 pl-16'
+                : appInfo.size < 1050
+                ? 'pr-32 pl-32'
+                : 'pr-48 pl-48'
+            }`}
+            ref={sliderRef}
+          >
+            {photos.map((photo) => {
+              return (
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  style={{ height: activePhoto === photo.id ? '80%' : '60%' }}
+                  className={`${styles.images} ${
+                    activePhoto !== photo.id && 'cursor-pointer'
+                  }`}
+                  key={photo.id}
+                  onClick={() => setActivePhoto(photo.id)}
+                  ref={(item) => (photosRef.current[photo.id] = item)}
+                />
+              );
+            })}
+            <div
+              style={{
+                height: activePhoto === photos.length ? '80%' : '60%',
+              }}
+              className={`d-flex-row ai-center jc-center border-1 user-select-none material-symbols-outlined ${
+                activePhoto !== photos.length && 'cursor-pointer'
+              } ${
+                appInfo.size < 800
+                  ? 'fs-16 p-8'
+                  : appInfo.size < 1050
+                  ? 'fs-24 p-16'
+                  : 'fs-32 p-24'
+              }`}
+              onClick={() => setActivePhoto(photos.length)}
+              ref={(item) => (photosRef.current[photos.length] = item)}
+            >
+              add
+            </div>
+          </div>
+          <div
+            className={styles.right_box}
+            style={{
+              width:
+                appInfo.size < 800
+                  ? '5.6rem'
+                  : appInfo.size < 1050
+                  ? '8.8rem'
+                  : '10.4rem',
+            }}
+          ></div>
         </div>
       </div>
     </div>

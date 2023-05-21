@@ -67,13 +67,3 @@ html {
   margin-top: 30vh;
   opacity: 1;
 }
-
-.scrollbar-styled {
-  &::-webkit-scrollbar {
-    background: none;
-    height: 0.8rem;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: colors.$surface-3;
-  }
-}

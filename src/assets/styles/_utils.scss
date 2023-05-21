@@ -445,32 +445,6 @@
 .hover-icons:hover div svg path {
   fill: color.$on-surface;
 }
-.hover-chevron-right:hover div {
-  padding: 0.8rem 0.4rem 0.8rem 0.8rem;
-  & span {
-    margin-left: 0.4rem;
-  }
-}
-.hover-chevron-left:hover div {
-  padding: 0.8rem 0.8rem 0.8rem 0.4rem;
-  & span {
-    margin-right: 0.4rem;
-  }
-}
-@media screen and (min-width: 800px) {
-  .hover-chevron-right:hover div {
-    padding: 0.8rem 0rem 0.8rem 0.8rem;
-    & span {
-      margin-left: 0.8rem;
-    }
-  }
-  .hover-chevron-left:hover div {
-    padding: 0.8rem 0.8rem 0.8rem 0rem;
-    & span {
-      margin-right: 0.8rem;
-    }
-  }
-}
 
 // cursor
 .cursor-pointer {
