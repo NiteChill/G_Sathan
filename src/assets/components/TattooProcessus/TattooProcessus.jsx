@@ -1,6 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 import ListText from '../ListText/ListText';
 
+import styles from './TattooProcessus.module.scss';
+
 export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -17,15 +19,9 @@ export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
   }, [tattooProcessusRef, appInfo]);
   return (
     <div ref={tattooProcessusRef}>
-      <div
-        style={{
-          transform: visible ? 'translateY(0)' : 'translateY(15%)',
-          opacity: visible ? '1' : '0',
-          transition: 'opacity .5s ease, transform .8s ease',
-        }}
-      >
+      <div className={`${styles.container} ${visible && styles.visible}`}>
         <div
-          className='d-flex-row width-full border-bottom-1 b-surface-1'
+          className={styles.box_container}
           style={{
             height:
               appInfo.size < 550
@@ -37,31 +33,28 @@ export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
                 : '10rem',
           }}
         >
-          <div
-            className='height-full border-right-1'
-            style={{ width: '10%' }}
-          ></div>
-          <div className='height-full' style={{ flex: '1' }}></div>
-          <div
-            className='height-full border-left-1'
-            style={{ width: '10%' }}
-          ></div>
+          <div className={styles.side_box}></div>
+          <div className={styles.middle_box}></div>
+          <div className={styles.side_box}></div>
         </div>
-        <div className='d-flex-row b-surface-1 border-bottom-1'>
-          <div className='border-right-1' style={{ width: '10%' }}></div>
+        <div className={styles.main_container}>
+          <div className={styles.side_box}></div>
           <div
-            className={
+            className={`${
               appInfo.size < 800
                 ? 'pt-32 pr-24 pb-32 pl-24'
                 : appInfo.size < 1050
                 ? 'pt-64 pr-48 pb-64 pl-48'
                 : 'pt-96 pr-64 pb-96 pl-64'
-            }
-            style={{ flex: '1', maxWidth: '80%' }}
+            } ${styles.content}`}
           >
             <p
               className={`ff-title mb-24 ${
-                appInfo.size < 800 ? 'fs-18' : appInfo.size < 1050 ? 'fs-32' : 'fs-48'
+                appInfo.size < 800
+                  ? 'fs-18'
+                  : appInfo.size < 1050
+                  ? 'fs-32'
+                  : 'fs-48'
               }`}
             >
               Processus de tatouage
@@ -70,7 +63,11 @@ export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
               className='d-flex-column'
               style={{
                 gap:
-                  appInfo.size < 800 ? '.8rem' : appInfo.size < 1050 ? '1.6rem' : '3rem',
+                  appInfo.size < 800
+                    ? '.8rem'
+                    : appInfo.size < 1050
+                    ? '1.6rem'
+                    : '3rem',
               }}
             >
               <ListText
@@ -133,7 +130,7 @@ export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
               />
             </div>
           </div>
-          <div className='border-left-1' style={{ width: '10%' }}></div>
+          <div className={styles.side_box}></div>
         </div>
       </div>
     </div>

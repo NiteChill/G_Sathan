@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import studio from '../../images/studio_image.png';
+import styles from './Starting.module.scss';
 
 export default function Starting({
   appInfo,
@@ -21,15 +22,10 @@ export default function Starting({
   return (
     <div ref={startingRef}>
       <div
-        className='d-flex-row w-full border-bottom-1'
-        style={{
-          transform: visible ? 'translateY(0)' : 'translateY(30%)',
-          opacity: visible ? '1' : '0',
-          transition: 'opacity .4s ease, transform .8s ease',
-        }}
+        className={`${styles.container} ${visible && styles.visible}`}
       >
         <div
-          className={`d-flex-column b-surface-1 starting ${
+          className={`${styles.text_container} ${
             appInfo.size < 800
               ? 'pt-32 pr-24 pb-32 pl-24'
               : appInfo.size < 1050
@@ -58,14 +54,12 @@ export default function Starting({
         </div>
         {appInfo.size >= 450 && (
           <div
-            className='d-flex-row jc-center ai-center border-left-1'
-            style={{ minWidth: '45%', flex: '1' }}
+            className={styles.photo_container}
           >
             <img
               src={studio}
               alt='logo'
-              style={{ width: '70%', maxHeight: '70%', objectFit: 'cover' }}
-              className='border-1'
+              className={styles.image}
             />
           </div>
         )}

@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from 'react';
 
 import { photos } from '../../../datas/photos';
 
+import styles from './Portfolio.module.scss';
+
 export default function Portfolio({ portfolioRef, appInfo }) {
   const [visible, setVisible] = useState(false);
   const [activePhoto, setActivePhoto] = useState(0);
@@ -41,12 +43,7 @@ export default function Portfolio({ portfolioRef, appInfo }) {
   return (
     <div ref={portfolioRef}>
       <div
-        className='d-flex-column user-select-none'
-        style={{
-          transform: visible ? 'translateY(0)' : 'translateY(10%)',
-          opacity: visible ? '1' : '0',
-          transition: 'opacity .5s ease, transform .8s ease',
-        }}
+        className={`${styles.container} ${visible && styles.visible}`}
       >
         <div
           className={`d-flex-column b-surface-1 ${
