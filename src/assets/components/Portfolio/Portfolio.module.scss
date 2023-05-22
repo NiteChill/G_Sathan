@@ -4,13 +4,13 @@
   display: flex;
   flex-direction: column;
   user-select: none;
-  transform: translateY(10%);
-  opacity: 0;
   transition: opacity 0.5s ease, transform 0.8s ease;
+  z-index: 1;
   & .title_container {
     position: relative;
     display: flex;
     flex-direction: column;
+    z-index: 1;
     &::before {
       content: '';
       position: absolute;
@@ -26,12 +26,14 @@
     display: flex;
     align-items: center;
     padding-bottom: 1px;
+    z-index: 1;
     & .left_button {
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100%;
+      z-index: 1;
       &::before {
         content: '';
         position: absolute;
@@ -55,6 +57,7 @@
     & .image {
       height: 90%;
       border-radius: 8px;
+      z-index:  1;
     }
     & .right_button {
       position: relative;
@@ -62,6 +65,7 @@
       align-items: center;
       justify-content: center;
       height: 100%;
+      z-index: 1;
       &::before {
         content: '';
         position: absolute;
@@ -88,6 +92,7 @@
     padding-bottom: 1px;
     & .left_box {
       position: relative;
+      z-index: 1;
       &::before {
         content: '';
         position: absolute;
@@ -105,6 +110,7 @@
       flex: 1;
       overflow: auto;
       background: colors.$surface-1;
+      z-index: 1;
       &::-webkit-scrollbar {
         background: none;
         height: 0.8rem;
@@ -119,6 +125,7 @@
     }
     & .right_box {
       position: relative;
+      z-index: 1;
       &::before {
         content: '';
         position: absolute;
@@ -134,7 +141,6 @@
 
 .visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 @media screen and (min-width: 800px) {

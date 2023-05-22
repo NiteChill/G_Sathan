@@ -19,11 +19,7 @@ export default function ContactMe({ appInfo }) {
   }, [contactMeRef, appInfo]);
   return (
     <div
-      style={{
-        transform: visible ? 'translateY(0)' : 'translateY(50%)',
-        opacity: visible ? '1' : '0',
-        transition: 'opacity .5s ease, transform .8s ease',
-      }}
+      className={`${styles.main_container} ${visible && styles.visible}`}
       ref={contactMeRef}
     >
       <div

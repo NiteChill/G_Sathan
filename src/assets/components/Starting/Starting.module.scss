@@ -4,13 +4,13 @@
   display: flex;
   width: 100%;
   padding-bottom: 1px;
-  transform: translateY(30%);
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.4s ease, transform 0.8s ease;
   & .text_container {
     position: relative;
     display: flex;
     flex-direction: column;
+    z-index: 1;
     &::before {
       content: '';
       position: absolute;
@@ -29,6 +29,7 @@
     flex: 1;
     min-width: 45%;
     background: colors.$surface;
+    z-index: 1;
     & .image {
       width: 70%;
       max-height: 70%;
@@ -40,5 +41,4 @@
 
 .visible {
   opacity: 1;
-  transform: translateY(0);
 }
