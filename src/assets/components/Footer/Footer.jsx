@@ -5,17 +5,25 @@ import styles from './Footer.module.scss';
 export default function Footer({ appInfo }) {
   const footerRef = useRef(null);
   const [visible, setVisible] = useState(false);
-  const handleObserver = (entries) => {
-    entries.map((entry) => {
-      if (entry.intersectionRatio >= 0.3) {
-        setVisible(true);
-      }
+  useEffect(() => {
+    const handleObserver = (entries) => {
+      entries.map((entry) => {
+        if (
+          entry.intersectionRatio >= 0.6 ||
+          appInfo.scroll >= footerRef.current.offsetTop
+        ) {
+          setVisible(true);
+        } else {
+          setVisible(false);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(handleObserver, {
+      threshold: [0.6],
     });
-  };
-  const observer = new IntersectionObserver(handleObserver, {
-    threshold: [0.3],
-  });
-  footerRef.current && observer.observe(footerRef.current);
+    footerRef.current && observer.observe(footerRef.current);
+  }, [footerRef, appInfo]);
+
   return (
     <div
       className={`d-flex-column gap-64 b-surface-1 ${
@@ -26,6 +34,7 @@ export default function Footer({ appInfo }) {
           : 'pt-96 pr-64 pb-64 pl-64'
       }`}
       role='contentinfo'
+      ref={footerRef}
       style={{ position: 'relative' }}
     >
       <div
@@ -34,7 +43,6 @@ export default function Footer({ appInfo }) {
             ? 'd-flex-column gap-40'
             : 'd-flex-row jc-space-between'
         }`}
-        ref={footerRef}
       >
         <div className='d-flex-column gap-24'>
           <p

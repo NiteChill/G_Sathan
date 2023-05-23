@@ -1,21 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ListText from '../ListText/ListText';
 
 import styles from './TattooProcessus.module.scss';
 
 export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
   const [visible, setVisible] = useState(false);
-  const handleObserver = (entries) => {
-    entries.map((entry) => {
-      if (entry.intersectionRatio >= 0.75) {
-        setVisible(true);
-      }
+  useEffect(() => {
+    const handleObserver = (entries) => {
+      entries.map((entry) => {
+        if (
+          entry.intersectionRatio >= 0.5 ||
+          appInfo.scroll >= tattooProcessusRef.current.offsetTop
+        ) {
+          setVisible(true);
+        } else {
+          setVisible(false);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(handleObserver, {
+      threshold: [0.5],
     });
-  };
-  const observer = new IntersectionObserver(handleObserver, {
-    threshold: [0.75],
-  });
-  tattooProcessusRef.current && observer.observe(tattooProcessusRef.current);
+    tattooProcessusRef.current && observer.observe(tattooProcessusRef.current);
+  }, [tattooProcessusRef, appInfo]);
   return (
     <div ref={tattooProcessusRef}>
       <div className={`${styles.container}`}>

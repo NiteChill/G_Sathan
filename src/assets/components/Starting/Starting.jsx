@@ -4,17 +4,24 @@ import styles from './Starting.module.scss';
 
 export default function Starting({ appInfo, startingRef }) {
   const [visible, setVisible] = useState(false);
-  const handleObserver = (entries) => {
-    entries.map((entry) => {
-      if (entry.intersectionRatio >= 0.30) {
-        setVisible(true);
-      }
+  useEffect(() => {
+    const handleObserver = (entries) => {
+      entries.map((entry) => {
+        if (
+          entry.intersectionRatio >= 0.3 ||
+          appInfo.scroll >= startingRef.current.offsetTop
+        ) {
+          setVisible(true);
+        } else {
+          setVisible(false);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(handleObserver, {
+      threshold: [0.3],
     });
-  };
-  const observer = new IntersectionObserver(handleObserver, {
-    threshold: [0.30]
-  });
-  startingRef.current && observer.observe(startingRef.current);
+    startingRef.current && observer.observe(startingRef.current);
+  }, [startingRef, appInfo]);
   return (
     <div ref={startingRef}>
       <div className={`${styles.container} ${visible && styles.visible}`}>

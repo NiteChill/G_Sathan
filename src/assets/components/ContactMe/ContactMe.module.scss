@@ -36,15 +36,15 @@
         font-weight: bold;
         opacity: 0;
         transform: translateX(-30px);
-        transition: opacity 0.25s cubic-bezier(0.3, 0.83, 0.45, 0.81) .3s,
-          transform 0.3s cubic-bezier(0.3, 0.83, 0.45, 0.81) .3s;
+        transition: opacity 0.25s cubic-bezier(0.3, 0.83, 0.45, 0.81),
+          transform 0.3s cubic-bezier(0.3, 0.83, 0.45, 0.81);
       }
       & .text {
         padding-top: 0.8rem;
         opacity: 0;
         transform: translateX(-30px);
-        transition: opacity 0.25s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.35s,
-          transform 0.3s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.35s;
+        transition: opacity 0.25s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.05s,
+          transform 0.3s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.05s;
       }
     }
     & .button {

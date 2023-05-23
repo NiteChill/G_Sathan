@@ -5,17 +5,24 @@ import styles from './ContactMe.module.scss';
 export default function ContactMe({ appInfo }) {
   const [visible, setVisible] = useState(false);
   const contactMeRef = useRef(null);
-  const handleObserver = (entries) => {
-    entries.map((entry) => {
-      if (entry.intersectionRatio >= 0.3) {
-        setVisible(true);
-      }
+  useEffect(() => {
+    const handleObserver = (entries) => {
+      entries.map((entry) => {
+        if (
+          entry.intersectionRatio >= 0.3 ||
+          appInfo.scroll >= contactMeRef.current.offsetTop
+        ) {
+          setVisible(true);
+        } else {
+          setVisible(false);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(handleObserver, {
+      threshold: [0.3],
     });
-  };
-  const observer = new IntersectionObserver(handleObserver, {
-    threshold: [0.3],
-  });
-  contactMeRef.current && observer.observe(contactMeRef.current);
+    contactMeRef.current && observer.observe(contactMeRef.current);
+  }, [contactMeRef, appInfo]);
   return (
     <div className={`${styles.main_container}`} ref={contactMeRef}>
       <div

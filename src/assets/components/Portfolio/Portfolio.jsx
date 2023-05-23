@@ -11,17 +11,24 @@ export default function Portfolio({ portfolioRef, appInfo }) {
   const sliderRef = useRef(null);
   const photosRef = useRef([]);
 
-  const handleObserver = (entries) => {
-    entries.map((entry) => {
-      if (entry.intersectionRatio >= 0.3) {
-        setVisible(true);
-      }
+  useEffect(() => {
+    const handleObserver = (entries) => {
+      entries.map((entry) => {
+        if (
+          entry.intersectionRatio >= 0.3 ||
+          appInfo.scroll >= portfolioRef.current.offsetTop
+        ) {
+          setVisible(true);
+        } else {
+          setVisible(false);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(handleObserver, {
+      threshold: [0.3],
     });
-  };
-  const observer = new IntersectionObserver(handleObserver, {
-    threshold: [0.3],
-  });
-  portfolioRef.current && observer.observe(portfolioRef.current);
+    portfolioRef.current && observer.observe(portfolioRef.current);
+  }, [portfolioRef, appInfo]);
 
   useEffect(() => {
     let leftAdd = 56;
