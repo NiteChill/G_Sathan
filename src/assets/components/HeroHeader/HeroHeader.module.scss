@@ -5,8 +5,8 @@
   flex-direction: column;
   width: 100%;
   margin: 5.6rem 0 0 0;
-  transition: opacity 1s ease;
   padding-bottom: 1px;
+  overflow: hidden;
   & .image {
     width: 100%;
     object-fit: cover;
@@ -46,10 +46,6 @@
       }
     }
   }
-}
-
-.visible {
-  opacity: 1;
 }
 
 @media screen and (min-width: 550px) {
