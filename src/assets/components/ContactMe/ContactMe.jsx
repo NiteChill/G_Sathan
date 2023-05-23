@@ -5,23 +5,19 @@ import styles from './ContactMe.module.scss';
 export default function ContactMe({ appInfo }) {
   const [visible, setVisible] = useState(false);
   const contactMeRef = useRef(null);
-  useEffect(() => {
-    if (
-      appInfo.scroll +
-        appInfo.ref.current.getBoundingClientRect().height -
-        contactMeRef.current.getBoundingClientRect().height / 5 >=
-      contactMeRef.current.offsetTop
-    ) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
-  }, [contactMeRef, appInfo]);
+  const handleObserver = (entries) => {
+    entries.map((entry) => {
+      if (entry.intersectionRatio >= 0.3) {
+        setVisible(true);
+      }
+    });
+  };
+  const observer = new IntersectionObserver(handleObserver, {
+    threshold: [0.3],
+  });
+  contactMeRef.current && observer.observe(contactMeRef.current);
   return (
-    <div
-      className={`${styles.main_container} ${visible && styles.visible}`}
-      ref={contactMeRef}
-    >
+    <div className={`${styles.main_container}`} ref={contactMeRef}>
       <div
         className={styles.container}
         style={{
@@ -36,28 +32,26 @@ export default function ContactMe({ appInfo }) {
         {appInfo.size >= 351 && (
           <>
             <div className={styles.fill}></div>
-            <div
-              className={styles.supporting_text}
-            >
+            <div className={styles.supporting_text}>
               <p
-                className={`ff-title ${
+                className={`${styles.title} ${
                   appInfo.size < 800
                     ? 'fs-18'
                     : appInfo.size < 1050
                     ? 'fs-32'
                     : 'fs-48'
-                }`}
+                } ${visible && styles.visible}`}
               >
                 Me contacter
               </p>
               <p
-                className={`pt-8 ${
+                className={`${styles.text} ${
                   appInfo.size < 800
                     ? 'fs-10'
                     : appInfo.size < 1050
                     ? 'fs-16'
                     : 'fs-20'
-                }`}
+                } ${visible && styles.visible}`}
               >
                 Contactez moi via ce simple formulaire
               </p>

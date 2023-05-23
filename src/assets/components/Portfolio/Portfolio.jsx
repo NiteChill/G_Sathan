@@ -11,18 +11,18 @@ export default function Portfolio({ portfolioRef, appInfo }) {
   const sliderRef = useRef(null);
   const photosRef = useRef([]);
 
-  useEffect(() => {
-    if (
-      appInfo.scroll +
-        appInfo.ref.current.getBoundingClientRect().height -
-        portfolioRef.current.getBoundingClientRect().height / 4 >=
-      portfolioRef.current.offsetTop
-    ) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
-  }, [portfolioRef, appInfo]);
+  const handleObserver = (entries) => {
+    entries.map((entry) => {
+      if (entry.intersectionRatio >= 0.3) {
+        setVisible(true);
+      }
+    });
+  };
+  const observer = new IntersectionObserver(handleObserver, {
+    threshold: [0.3],
+  });
+  portfolioRef.current && observer.observe(portfolioRef.current);
+
   useEffect(() => {
     let leftAdd = 56;
     appInfo.size < 800
@@ -53,7 +53,9 @@ export default function Portfolio({ portfolioRef, appInfo }) {
           }`}
         >
           <p
-            className={`ff-title mb-24 ${
+            className={`ff-title mb-24 ${styles.title} ${
+              visible && styles.visible
+            } ${
               appInfo.size < 800
                 ? 'fs-18'
                 : appInfo.size < 1050
@@ -64,7 +66,7 @@ export default function Portfolio({ portfolioRef, appInfo }) {
             Portfolio
           </p>
           <p
-            className={`ff-text ${
+            className={`ff-text ${styles.text} ${visible && styles.visible} ${
               appInfo.size < 800
                 ? 'fs-10'
                 : appInfo.size < 1050
@@ -175,8 +177,7 @@ export default function Portfolio({ portfolioRef, appInfo }) {
           </div>
           <div
             className={`${styles.right_button} ${
-              activePhoto < photos.length &&
-              styles.hover
+              activePhoto < photos.length && styles.hover
             }`}
             style={{
               width:
@@ -245,7 +246,7 @@ export default function Portfolio({ portfolioRef, appInfo }) {
                   ? '.8rem'
                   : appInfo.size < 1050
                   ? '1.6rem'
-                  : '2.4rem'
+                  : '2.4rem',
             }}
             className={`${styles.image_container} ${
               appInfo.size < 800

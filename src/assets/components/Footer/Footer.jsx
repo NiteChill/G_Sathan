@@ -5,18 +5,17 @@ import styles from './Footer.module.scss';
 export default function Footer({ appInfo }) {
   const footerRef = useRef(null);
   const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    if (
-      appInfo.scroll +
-        appInfo.ref.current.getBoundingClientRect().height -
-        footerRef.current.getBoundingClientRect().height / 3 >=
-      footerRef.current.offsetTop
-    ) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
-  }, [footerRef, appInfo]);
+  const handleObserver = (entries) => {
+    entries.map((entry) => {
+      if (entry.intersectionRatio >= 0.3) {
+        setVisible(true);
+      }
+    });
+  };
+  const observer = new IntersectionObserver(handleObserver, {
+    threshold: [0.3],
+  });
+  footerRef.current && observer.observe(footerRef.current);
   return (
     <div
       className={`d-flex-column gap-64 b-surface-1 ${
@@ -38,16 +37,17 @@ export default function Footer({ appInfo }) {
         ref={footerRef}
       >
         <div className='d-flex-column gap-24'>
-          <p className={`ff-title ${appInfo.size < 900 ? 'fs-18' : 'fs-24'}`}>
+          <p
+            className={`ff-title ${styles.warning_title} ${
+              visible && styles.visible
+            } ${appInfo.size < 900 ? 'fs-18' : 'fs-24'}`}
+          >
             Attention
           </p>
           <p
-            className={`ff-text ${appInfo.size < 900 ? 'fs-10' : 'fs-16'}`}
-            style={{
-              transform: visible ? 'translateY(0)' : 'translateY(30%)',
-              opacity: visible ? '1' : '0',
-              transition: 'opacity .5s ease, transform .8s ease',
-            }}
+            className={`ff-text ${styles.warning_text} ${
+              visible && styles.visible
+            } ${appInfo.size < 900 ? 'fs-10' : 'fs-16'}`}
           >
             Le tatouage est un acte relativement intime car{' '}
             {appInfo.size >= 550 && <br />}
@@ -60,18 +60,17 @@ export default function Footer({ appInfo }) {
         </div>
         <div className='d-flex-column gap-24 height-full'>
           <p
-            className={`ff-title ${appInfo.size < 900 ? 'fs-18' : 'fs-24'}`}
+            className={`ff-title ${styles.additional_title} ${
+              visible && styles.visible
+            } ${appInfo.size < 900 ? 'fs-18' : 'fs-24'}`}
             style={{ whiteSpace: 'nowrap' }}
           >
             Travail additionel
           </p>
           <p
-            className={`ff-text ${appInfo.size < 900 ? 'fs-10' : 'fs-16'}`}
-            style={{
-              transform: visible ? 'translateY(0)' : 'translateY(30%)',
-              opacity: visible ? '1' : '0',
-              transition: 'opacity .5s ease .1s, transform .8s ease .1s',
-            }}
+            className={`ff-text ${styles.additional_text} ${
+              visible && styles.visible
+            } ${appInfo.size < 900 ? 'fs-10' : 'fs-16'}`}
           >
             Additionnellement au tatouage, {appInfo.size >= 550 && <br />}
             je travaille sur des commandes {appInfo.size >= 550 && <br />}
@@ -79,11 +78,17 @@ export default function Footer({ appInfo }) {
           </p>
         </div>
         <div className='d-flex-column gap-24'>
-          <p className={`ff-title ${appInfo.size < 900 ? 'fs-18' : 'fs-24'}`}>
+          <p
+            className={`ff-title ${styles.contact_title} ${
+              visible && styles.visible
+            } ${appInfo.size < 900 ? 'fs-18' : 'fs-24'}`}
+          >
             Contact
           </p>
           <div
-            className={`height-full ${
+            className={`height-full ${styles.contact_text} ${
+              visible && styles.visible
+            } ${
               appInfo.size < 550
                 ? 'd-flex-row jc-space-between'
                 : 'd-flex-column gap-16'
@@ -93,45 +98,17 @@ export default function Footer({ appInfo }) {
               href='mailto:g.sathantattoo@gmail.com'
               target='_blank'
               className='c-on-surface'
-              style={{
-                transform: visible ? 'translateY(0)' : 'translateY(30%)',
-                opacity: visible ? '1' : '0',
-                transition: 'opacity .5s ease .2s, transform .8s ease.2s',
-              }}
             >
               Email
             </a>
-            <p
-              className='td-underline cursor-pointer'
-              style={{
-                transform: visible ? 'translateY(0)' : 'translateY(30%)',
-                opacity: visible ? '1' : '0',
-                transition: 'opacity .5s ease .3s, transform .8s ease .3s',
-              }}
-            >
-              Formulaire
-            </p>
-            <a
-              href=''
-              target='_blank'
-              className='c-on-surface'
-              style={{
-                transform: visible ? 'translateY(0)' : 'translateY(30%)',
-                opacity: visible ? '1' : '0',
-                transition: 'opacity .5s ease .4s, transform .8s ease .4s',
-              }}
-            >
+            <p className='td-underline cursor-pointer'>Formulaire</p>
+            <a href='' target='_blank' className='c-on-surface'>
               Adresse
             </a>
             <a
               href='https://www.instagram.com/gerard_sathan/'
               target='_blank'
               className='c-on-surface'
-              style={{
-                transform: visible ? 'translateY(0)' : 'translateY(30%)',
-                opacity: visible ? '1' : '0',
-                transition: 'opacity .5s ease .5s, transform .8s ease .5s',
-              }}
             >
               Instagram
             </a>

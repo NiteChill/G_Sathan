@@ -21,6 +21,18 @@
       background: colors.$surface-1;
       z-index: -1;
     }
+    & .title {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.25s cubic-bezier(0.3, 0.83, 0.45, 0.81),
+        transform 0.3s cubic-bezier(0.3, 0.83, 0.45, 0.81);
+    }
+    & .text {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.25s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.05s,
+        transform 0.3s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.05s;
+    }
   }
   & .image_slider_top {
     display: flex;
@@ -57,7 +69,7 @@
     & .image {
       height: 90%;
       border-radius: 8px;
-      z-index:  1;
+      z-index: 1;
     }
     & .right_button {
       position: relative;
@@ -140,7 +152,8 @@
 }
 
 .visible {
-  opacity: 1;
+  opacity: 1 !important;
+  transform: translateX(0) !important;
 }
 
 @media screen and (min-width: 800px) {

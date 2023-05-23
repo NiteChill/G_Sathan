@@ -1,25 +1,24 @@
-import { useRef, useEffect, useState } from 'react';
+import { useState } from 'react';
 import ListText from '../ListText/ListText';
 
 import styles from './TattooProcessus.module.scss';
 
 export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
   const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    if (
-      appInfo.scroll +
-        appInfo.ref.current.getBoundingClientRect().height -
-        tattooProcessusRef.current.getBoundingClientRect().height / 4 >=
-      tattooProcessusRef.current.offsetTop
-    ) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
-  }, [tattooProcessusRef, appInfo]);
+  const handleObserver = (entries) => {
+    entries.map((entry) => {
+      if (entry.intersectionRatio >= 0.75) {
+        setVisible(true);
+      }
+    });
+  };
+  const observer = new IntersectionObserver(handleObserver, {
+    threshold: [0.75],
+  });
+  tattooProcessusRef.current && observer.observe(tattooProcessusRef.current);
   return (
     <div ref={tattooProcessusRef}>
-      <div className={`${styles.container} ${visible && styles.visible}`}>
+      <div className={`${styles.container}`}>
         <div
           className={styles.box_container}
           style={{
@@ -49,7 +48,9 @@ export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
             } ${styles.content}`}
           >
             <p
-              className={`ff-title mb-24 ${
+              className={`ff-title mb-24 ${styles.title} ${
+                visible && styles.visible
+              } ${visible && styles.visible} ${
                 appInfo.size < 800
                   ? 'fs-18'
                   : appInfo.size < 1050
@@ -73,7 +74,9 @@ export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
               <ListText
                 appInfo={appInfo}
                 text={
-                  <div>
+                  <div
+                    className={`${styles.list_1} ${visible && styles.visible}`}
+                  >
                     Prenez contact par{' '}
                     <a
                       href='mailto:g.sathantattoo@gmail.com'
@@ -103,7 +106,9 @@ export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
               <ListText
                 appInfo={appInfo}
                 text={
-                  <div>
+                  <div
+                    className={`${styles.list_2} ${visible && styles.visible}`}
+                  >
                     Venez vous faire tatouer dans mon salon ou dans d'autres qui
                     m'accueillent.{' '}
                     <a
@@ -121,7 +126,9 @@ export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
               <ListText
                 appInfo={appInfo}
                 text={
-                  <div>
+                  <div
+                    className={`${styles.list_3} ${visible && styles.visible}`}
+                  >
                     Suivez les conseils qui vous seront donnés afin que le
                     tatouage cicatrise correctement
                   </div>

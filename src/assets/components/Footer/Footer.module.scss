@@ -1,2 +1,48 @@
 @use '../../styles/variables' as colors;
 
+.warning_title {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.25s cubic-bezier(0.3, 0.83, 0.45, 0.81),
+    transform 0.3s cubic-bezier(0.3, 0.83, 0.45, 0.81);
+}
+
+.warning_text {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.25s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.05s,
+    transform 0.3s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.05s;
+}
+
+.additional_title {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.25s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.1s,
+    transform 0.3s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.1s;
+}
+
+.additional_text {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.25s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.15s,
+    transform 0.3s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.15s;
+}
+
+.contact_title {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.25s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.2s,
+    transform 0.3s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.2s;
+}
+
+.contact_text {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.25s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.25s,
+    transform 0.3s cubic-bezier(0.3, 0.83, 0.45, 0.81) 0.25s;
+}
+
+.visible {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
