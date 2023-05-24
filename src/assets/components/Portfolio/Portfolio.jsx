@@ -51,7 +51,7 @@ export default function Portfolio({ portfolioRef, appInfo }) {
     <div ref={portfolioRef}>
       <div className={`${styles.container} ${visible && styles.visible}`}>
         <div
-          className={`${styles.title_container} ${
+          className={`portfolio ${styles.title_container} ${
             appInfo.size < 800
               ? 'pt-32 pr-24 pb-32 pl-24'
               : appInfo.size < 1050

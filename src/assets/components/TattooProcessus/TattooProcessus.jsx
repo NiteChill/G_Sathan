@@ -46,7 +46,7 @@ export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
         <div className={styles.main_container}>
           <div className={styles.side_box}></div>
           <div
-            className={`${
+            className={`tattoo-processus ${
               appInfo.size < 800
                 ? 'pt-32 pr-24 pb-32 pl-24'
                 : appInfo.size < 1050

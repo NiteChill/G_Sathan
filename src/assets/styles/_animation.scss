@@ -12,19 +12,19 @@
   }
 }
 
-.target-animation-starting div.starting{
+.target-animation-starting div.starting::before{
   animation-name: targetAnimation;
   animation-duration: .7s;
   animation-delay: .7s; 
 }
 
-.target-animation-tattoo-processus div{
+.target-animation-tattoo-processus div.tattoo-processus::before{
   animation-name: targetAnimation;
   animation-duration: .7s;
   animation-delay: .7s; 
 }
 
-.target-animation-portfolio div{
+.target-animation-portfolio div.portfolio::before{
   animation-name: targetAnimation;
   animation-duration: .7s;
   animation-delay: .7s; 

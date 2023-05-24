@@ -26,7 +26,7 @@ export default function Starting({ appInfo, startingRef }) {
     <div ref={startingRef}>
       <div className={`${styles.container} ${visible && styles.visible}`}>
         <div
-          className={`${styles.text_container} ${
+          className={`starting ${styles.text_container} ${
             appInfo.size < 800
               ? 'pt-32 pr-24 pb-32 pl-24'
               : appInfo.size < 1050
