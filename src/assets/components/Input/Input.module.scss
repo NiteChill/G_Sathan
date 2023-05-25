@@ -1,0 +1,123 @@
+@use '../../styles/variables' as colors;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.input_container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 5.6rem;
+  width: 100%;
+  padding: 0 1.6rem 0 1.2rem;
+  gap: 1.2rem;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid #A08C8B;
+  cursor: text;
+  &.focused {
+    border: 2px solid #FFB3B1;
+  }
+}
+
+.hover{
+  &:hover {
+    border: 1px solid #D0C4C3;
+    & .label {
+      color: #D0C4C3;
+    }
+  }
+}
+
+.label {
+  color: #D7C1C0;
+  position: absolute;
+  white-space: nowrap;
+  font-weight: 400;
+  pointer-events: none;
+  transition: top 0.3s cubic-bezier(.27,.71,.36,.83), left 0.3s cubic-bezier(.27,.71,.36,.83), color 0.3s cubic-bezier(.27,.71,.36,.83), font-size 0.3S cubic-bezier(.27,.71,.36,.83);
+  font-size: 1.6rem;
+  z-index: 1;
+  &.focused {
+    color: #FFB3B1;
+    left: 1.2rem !important;
+    padding: 0 0.6rem;
+    font-size: 1.2rem;
+  }
+  &.filled {
+    color: #D7C1C0;
+    left: 1.2rem !important;
+    padding: 0 0.6rem;
+    top: -1rem;
+    font-size: 1.2rem;
+  }
+}
+
+.square {
+  user-select: none;
+  color: transparent;
+  position: absolute;
+  white-space: nowrap;
+  top: auto;
+  font-weight: 400;
+  pointer-events: none;
+  top: -1rem;
+  left: 1.2rem;
+  padding: 0 0.6rem;
+  font-size: 1.2rem;
+  transition: all 0.2s cubic-bezier(.27,.71,.36,.83);
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    bottom: 0;
+    left: 50%;
+    background: colors.$surface-3;
+    transition: right 0.2s cubic-bezier(.27,.71,.36,.83), left 0.3s cubic-bezier(.27,.71,.36,.83), background 0.3s cubic-bezier(.27,.71,.36,.83);
+  }
+  &.focused::before {
+    right: 0;
+    left: 0;
+  }
+}
+
+.input {
+  display: flex;
+  width: 100%;
+  height: 2.4rem;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 1.6rem;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  caret-color: #FFB3B1;
+  color: #D0C4C3;
+}
+
+.supporting_text {
+  font-size: 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  padding: 0 1.6rem;
+  color: #D7C1C0;
+  font-weight: 400;
+}
+
+.icons {
+  color: #D7C1C0;
+  user-select: none;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+  font-size: 2.4rem;
+}
+
+.cancel {
+  cursor: pointer;
+}

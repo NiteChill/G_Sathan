@@ -10,6 +10,7 @@ import TattooProcessus from './assets/components/TattooProcessus/TattooProcessus
 import Portfolio from './assets/components/Portfolio/Portfolio';
 import Footer from './assets/components/Footer/Footer';
 import FollowCursor from './assets/components/FollowCursor/FollowCursor';
+import Form from './assets/components/Form/Form';
 
 export default function App() {
   const appRef = useRef(null);
@@ -44,6 +45,7 @@ export default function App() {
         setAppInfo({ ...appInfo, scroll: e.target.scrollTop });
       }}
     >
+      <Form />
       <FollowCursor />
       <Navbar
         appInfo={appInfo}
