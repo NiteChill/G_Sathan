@@ -79,7 +79,7 @@
     right: 50%;
     bottom: 0;
     left: 50%;
-    background: colors.$surface-3;
+    background: colors.$surface-1;
     transition: right 0.2s cubic-bezier(.27,.71,.36,.83), left 0.3s cubic-bezier(.27,.71,.36,.83), background 0.3s cubic-bezier(.27,.71,.36,.83);
   }
   &.focused::before {
