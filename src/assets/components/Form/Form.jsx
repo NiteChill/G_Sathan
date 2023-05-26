@@ -1,16 +1,38 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import styles from './Form.module.scss';
 
 import Input from '../Input/Input';
 
-export default function Form() {
+export default function Form({ appInfo, isOpen, setIsOpen }) {
+  const modaleRef = useRef(null);
   const [formData, setFormData] = useState();
+  const [height, setHeight] = useState(2000);
+  useEffect(
+    () => setHeight(appInfo.ref.current.getBoundingClientRect().height),
+    []
+  );
   return (
-    <div className={styles.container}>
-      <div className={styles.modale_container}>
+    <div
+      className={styles.container}
+      style={{
+        marginTop: isOpen ? '0' : height,
+      }}
+      onClick={() => setIsOpen(false)}
+    >
+      <div
+        className={styles.modale_container}
+        style={{
+          marginTop: isOpen ? '0' : height,
+        }}
+        ref={modaleRef}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={styles.header}>
-          <div className={styles.icon_container}>
+          <div
+            className={styles.icon_container}
+            onClick={() => setIsOpen(false)}
+          >
             <span className={`material-symbols-outlined ${styles.icon}`}>
               close
             </span>
@@ -29,7 +51,7 @@ export default function Form() {
         />
         <Input icon='alternate_email' label='Email' cancel={true} />
         <p className={styles.title}>Le tatouage</p>
-        <div className={styles.double_input}>
+        <div className={`${styles.double_input} ${styles.second_double_input}`}>
           <Input icon='straighten' label='Taille' />
           <Input icon='push_pin' label='Emplacement' />
         </div>

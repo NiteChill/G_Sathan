@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 
 import styles from './Footer.module.scss';
 
-export default function Footer({ appInfo }) {
+export default function Footer({ appInfo, setIsOpen }) {
   const footerRef = useRef(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -109,7 +109,7 @@ export default function Footer({ appInfo }) {
             >
               Email
             </a>
-            <p className='td-underline cursor-pointer'>Formulaire</p>
+            <p className='td-underline cursor-pointer' onClick={() => setIsOpen(true)}>Formulaire</p>
             <a href='' target='_blank' className='c-on-surface'>
               Adresse
             </a>

@@ -11,6 +11,7 @@ export default function Menu({
   startingRef,
   tattooProcessusRef,
   portfolioRef,
+  setIsOpen
 }) {
   function handleClick(ref, animation) {
     setMenu(false);
@@ -109,6 +110,7 @@ export default function Menu({
             name='Formulaire de contact'
             onClick={() => {
               setMenu(false);
+              setIsOpen(true);
             }}
             title='Accéder au formulaire'
           />

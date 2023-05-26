@@ -3,7 +3,7 @@ import ListText from '../ListText/ListText';
 
 import styles from './TattooProcessus.module.scss';
 
-export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
+export default function TattooProcessus({ tattooProcessusRef, appInfo, setIsOpen }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const handleObserver = (entries) => {
@@ -95,6 +95,7 @@ export default function TattooProcessus({ tattooProcessusRef, appInfo }) {
                     , via le{' '}
                     <span
                       style={{ textDecoration: 'underline', cursor: 'pointer' }}
+                      onClick={() => setIsOpen(true)}
                     >
                       formulaire
                     </span>{' '}

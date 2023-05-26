@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 
 import styles from './ContactMe.module.scss';
 
-export default function ContactMe({ appInfo }) {
+export default function ContactMe({ appInfo, setIsOpen }) {
   const [visible, setVisible] = useState(false);
   const contactMeRef = useRef(null);
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function ContactMe({ appInfo }) {
               ? 'pr-32 pl-32'
               : 'pr-48 pl-48'
           } ${appInfo.size <= 351 && 'width-full'}`}
-          onClick={() => {}}
+          onClick={() => setIsOpen(true)}
         >
           <p
             className={`mr-8 ${

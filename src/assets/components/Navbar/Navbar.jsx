@@ -10,6 +10,7 @@ export default function Navbar({
   startingRef,
   tattooProcessusRef,
   portfolioRef,
+  setIsOpen,
 }) {
   const [menu, setMenu] = useState(false);
   return (
@@ -23,6 +24,7 @@ export default function Navbar({
         startingRef={startingRef}
         tattooProcessusRef={tattooProcessusRef}
         portfolioRef={portfolioRef}
+        setIsOpen={setIsOpen}
       />
       <div
         className={styles.navbar}

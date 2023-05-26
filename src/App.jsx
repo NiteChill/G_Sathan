@@ -17,6 +17,7 @@ export default function App() {
   const startingRef = useRef(null);
   const tattooProcessusRef = useRef(null);
   const portfolioRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const [appInfo, setAppInfo] = useState({
     size: 0,
@@ -45,23 +46,25 @@ export default function App() {
         setAppInfo({ ...appInfo, scroll: e.target.scrollTop });
       }}
     >
-      <Form />
+      <Form isOpen={isOpen} setIsOpen={setIsOpen} appInfo={appInfo} />
       <FollowCursor />
       <Navbar
         appInfo={appInfo}
         startingRef={startingRef}
         tattooProcessusRef={tattooProcessusRef}
         portfolioRef={portfolioRef}
+        setIsOpen={setIsOpen}
       />
       <HeroHeader appInfo={appInfo} />
-      <ContactMe appInfo={appInfo} />
+      <ContactMe appInfo={appInfo} setIsOpen={setIsOpen} />
       <Starting appInfo={appInfo} startingRef={startingRef} />
       <TattooProcessus
         tattooProcessusRef={tattooProcessusRef}
         appInfo={appInfo}
+        setIsOpen={setIsOpen}
       />
       <Portfolio portfolioRef={portfolioRef} appInfo={appInfo} />
-      <Footer appInfo={appInfo} />
+      <Footer appInfo={appInfo} setIsOpen={setIsOpen} />
     </div>
   );
 }
