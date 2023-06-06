@@ -9,11 +9,15 @@ export default function Input({
   cancel,
   sufix = null,
   type = 'text',
+  name,
+  setFormData,
+  formData,
+  value,
 }) {
-  const inputContainerRef = useRef(null);
-  const inputRef = useRef(null);
-  const [isFocused, setIsFocused] = useState(false);
-  const [inputText, setInputText] = useState('');
+  const inputContainerRef = useRef(null),
+    inputRef = useRef(null),
+    [isFocused, setIsFocused] = useState(false),
+    [inputText, setInputText] = useState('');
   return (
     <div className={`${styles.container} M3`}>
       <div
@@ -66,7 +70,11 @@ export default function Input({
             value={inputText}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            onInput={(e) => setInputText(e.target.value)}
+            onInput={(e) => {
+              setInputText(e.target.value);
+              setFormData({ ...formData, [e.target.name]: e.target.value });
+            }}
+            name={name}
           />
           {(isFocused || inputText !== '') && (
             <p className={styles.sufix}>{sufix}</p>
