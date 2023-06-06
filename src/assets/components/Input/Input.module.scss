@@ -88,19 +88,34 @@
   }
 }
 
-.input {
+.input_group {
   display: flex;
+  gap: .8rem;
+  align-items: center;
   width: 100%;
-  height: 2.4rem;
-  outline: none;
-  border: none;
-  background: none;
-  font-size: 1.6rem;
-  font-family: 'Roboto', sans-serif;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  caret-color: #FFB3B1;
-  color: #D0C4C3;
+  & .input {
+    display: flex;
+    width: 100%;
+    height: auto;
+    outline: none;
+    border: none;
+    background: none;
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    caret-color: #FFB3B1;
+    color: #D0C4C3;
+    &.align_right {
+      text-align: end;
+    }
+  }  
+  & .sufix {
+    font-family: 'Roboto', sans-serif;
+    color: #D7C1C0;
+    font-size: 1.6rem;
+    left: 0;
+  }
 }
 
 .supporting_text {

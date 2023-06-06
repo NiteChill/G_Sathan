@@ -73,7 +73,7 @@ export default function Footer({ appInfo, setIsOpen }) {
             } ${appInfo.size < 900 ? 'fs-18' : 'fs-24'}`}
             style={{ whiteSpace: 'nowrap' }}
           >
-            Travail additionel
+            Travail additionnel
           </p>
           <p
             className={`ff-text ${styles.additional_text} ${
@@ -82,7 +82,7 @@ export default function Footer({ appInfo, setIsOpen }) {
           >
             Additionnellement au tatouage, {appInfo.size >= 550 && <br />}
             je travaille sur des commandes {appInfo.size >= 550 && <br />}
-            d'illustration et produits dérivés.
+            d'illustrations et produits dérivés.
           </p>
         </div>
         <div className='d-flex-column gap-24'>

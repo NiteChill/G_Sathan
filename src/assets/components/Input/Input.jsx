@@ -7,6 +7,8 @@ export default function Input({
   label,
   supportingText,
   cancel,
+  sufix = null,
+  type = 'text',
 }) {
   const inputContainerRef = useRef(null);
   const inputRef = useRef(null);
@@ -54,15 +56,22 @@ export default function Input({
             {icon}
           </span>
         )}
-        <input
-          type='text'
-          className={styles.input}
-          ref={inputRef}
-          value={inputText}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          onInput={(e) => setInputText(e.target.value)}
-        />
+        <div className={styles.input_group}>
+          <input
+            type={type}
+            className={`${styles.input} ${
+              sufix !== null && styles.align_right
+            }`}
+            ref={inputRef}
+            value={inputText}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+            onInput={(e) => setInputText(e.target.value)}
+          />
+          {(isFocused || inputText !== '') && (
+            <p className={styles.sufix}>{sufix}</p>
+          )}
+        </div>
         {isFocused && cancel && (
           <span
             className={`material-symbols-outlined ${styles.icons} ${styles.cancel}`}

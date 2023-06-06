@@ -21,14 +21,10 @@
     background: colors.$surface-1;
     z-index: 30;
     gap: 1.6rem;
-    padding: 1.6rem;
+    padding: 1.6rem 1.6rem 0 1.6rem;
     font-family: 'Roboto', sans-serif;
     border-radius: 8px;
-    overflow-y: auto;
-    transition: margin .3s ease-out;
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    transition: margin 0.3s ease-out;
     & .header {
       position: relative;
       display: flex;
@@ -59,14 +55,28 @@
         font-weight: 400;
       }
     }
-    & .title {
-      font-size: 1.6rem;
-      margin-left: 0.8rem;
-      font-weight: 400;
-    }
-    & .double_input {
+    & .form {
       display: flex;
+      flex-direction: column;
       gap: 1.6rem;
+      align-items: end;
+      height: 100%;
+      overflow-y: auto;
+      padding-bottom: 1.6rem;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      & .title {
+        font-size: 1.6rem;
+        margin-left: 0.8rem;
+        font-weight: 400;
+        width: 100%;
+      }
+      & .double_input {
+        display: flex;
+        gap: 1.6rem;
+        width: 100%;
+      }
     }
   }
 }

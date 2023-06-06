@@ -1,0 +1,37 @@
+.button_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 100px;
+  border: 1px solid #a08c8b;
+  cursor: pointer;
+  gap: 0.8rem;
+  user-select: none;
+  transition: background 0.01s ease;
+  -webkit-tap-highlight-color: transparent;
+  width: fit-content;
+  outline: none;
+  background: none;
+  &:focus {
+    outline: 1px solid #ffb3b1;
+    background: rgba($color: #ffb3b1, $alpha: 0.08);
+  }
+  &.hovered:hover {
+    outline: none;
+    background: rgba($color: #ffb3b1, $alpha: 0.08);
+  }
+  &.clicked {
+    outline: none;
+    background: rgba($color: #ffb3b1, $alpha: 0.12) !important;
+  }
+}
+
+.icon {
+  color: #ffb3b1;
+}
+
+.text {
+  font-family: 'Roboto', sans-serif;
+  line-height: 20px;
+  color: #ffb3b1;
+}
