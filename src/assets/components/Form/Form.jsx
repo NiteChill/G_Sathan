@@ -102,6 +102,7 @@ export default function Form({ appInfo, isOpen, setIsOpen }) {
               icon='straighten'
               label='Taille'
               sufix='cm'
+              type='number'
               name='size'
               setFormData={setFormData}
               formData={formData}

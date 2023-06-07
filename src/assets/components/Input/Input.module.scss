@@ -19,39 +19,42 @@
   border-radius: 4px;
   font-size: 1.6rem;
   font-family: 'Roboto', sans-serif;
-  border: 1px solid #A08C8B;
+  border: 1px solid #a08c8b;
   cursor: text;
   &.focused {
-    border: 2px solid #FFB3B1;
+    border: 2px solid #ffb3b1;
   }
 }
 
-.hover{
+.hover {
   &:hover {
-    border: 1px solid #D0C4C3;
+    border: 1px solid #d0c4c3;
     & .label {
-      color: #D0C4C3;
+      color: #d0c4c3;
     }
   }
 }
 
 .label {
-  color: #D7C1C0;
+  color: #d7c1c0;
   position: absolute;
   white-space: nowrap;
   font-weight: 400;
   pointer-events: none;
-  transition: top 0.3s cubic-bezier(.27,.71,.36,.83), left 0.3s cubic-bezier(.27,.71,.36,.83), color 0.3s cubic-bezier(.27,.71,.36,.83), font-size 0.3S cubic-bezier(.27,.71,.36,.83);
+  transition: top 0.3s cubic-bezier(0.27, 0.71, 0.36, 0.83),
+    left 0.3s cubic-bezier(0.27, 0.71, 0.36, 0.83),
+    color 0.3s cubic-bezier(0.27, 0.71, 0.36, 0.83),
+    font-size 0.3s cubic-bezier(0.27, 0.71, 0.36, 0.83);
   font-size: 1.6rem;
   z-index: 1;
   &.focused {
-    color: #FFB3B1;
+    color: #ffb3b1;
     left: 1.2rem !important;
     padding: 0 0.6rem;
     font-size: 1.2rem;
   }
   &.filled {
-    color: #D7C1C0;
+    color: #d7c1c0;
     left: 1.2rem !important;
     padding: 0 0.6rem;
     top: -1rem;
@@ -71,7 +74,7 @@
   left: 1.2rem;
   padding: 0 0.6rem;
   font-size: 1.2rem;
-  transition: all 0.2s cubic-bezier(.27,.71,.36,.83);
+  transition: all 0.2s cubic-bezier(0.27, 0.71, 0.36, 0.83);
   &::before {
     content: '';
     position: absolute;
@@ -80,7 +83,9 @@
     bottom: 0;
     left: 50%;
     background: colors.$surface-1;
-    transition: right 0.2s cubic-bezier(.27,.71,.36,.83), left 0.3s cubic-bezier(.27,.71,.36,.83), background 0.3s cubic-bezier(.27,.71,.36,.83);
+    transition: right 0.2s cubic-bezier(0.27, 0.71, 0.36, 0.83),
+      left 0.3s cubic-bezier(0.27, 0.71, 0.36, 0.83),
+      background 0.3s cubic-bezier(0.27, 0.71, 0.36, 0.83);
   }
   &.focused::before {
     right: 0;
@@ -90,7 +95,7 @@
 
 .input_group {
   display: flex;
-  gap: .8rem;
+  gap: 0.8rem;
   align-items: center;
   width: 100%;
   & .input {
@@ -104,15 +109,18 @@
     font-family: 'Roboto', sans-serif;
     overflow: hidden;
     text-overflow: ellipsis;
-    caret-color: #FFB3B1;
-    color: #D0C4C3;
+    caret-color: #ffb3b1;
+    color: #d0c4c3;
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
     &.align_right {
       text-align: end;
     }
-  }  
+  }
   & .sufix {
     font-family: 'Roboto', sans-serif;
-    color: #D7C1C0;
+    color: #d7c1c0;
     font-size: 1.6rem;
     left: 0;
   }
@@ -122,12 +130,12 @@
   font-size: 1.2rem;
   font-family: 'Roboto', sans-serif;
   padding: 0 1.6rem;
-  color: #D7C1C0;
+  color: #d7c1c0;
   font-weight: 400;
 }
 
 .icons {
-  color: #D7C1C0;
+  color: #d7c1c0;
   user-select: none;
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
   font-size: 2.4rem;
