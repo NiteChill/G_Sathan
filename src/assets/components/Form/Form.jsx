@@ -18,7 +18,7 @@ export default function Form({ appInfo, isOpen, setIsOpen }) {
       more: '',
     }),
     [height, setHeight] = useState(2000),
-    mailBody = `Nom%20:%20${formData.name}%0APrénom%20:%20${formData.lastname}%0AAdresse mail%20:%20${formData.mail}%0A%0ALe tatouage%0ATaille%20:%20${formData.size}%20cm%0AEmplacement%20:%20${formData.position}%0ADescriptif du projet%20:%20${formData.description}%0ARemarques addionelles%20:%20${formData.more}`,
+    mailBody = `Nom%20:%20${formData.name}%0APrénom%20:%20${formData.lastname}%0AAdresse%20:%20${formData.address}%0AAdresse mail%20:%20${formData.mail}%0A%0ALe tatouage%0ATaille%20:%20${formData.size}%20cm%0AEmplacement%20:%20${formData.position}%0ADescriptif du projet%20:%20${formData.description}%0ARemarques addionelles%20:%20${formData.more}`,
     mailSubject = `Demande%20de%20tatouage%20envoyée%20depuis%20le%20Formulaire%20par%20${formData.name}%20${formData.lastname}`,
     sendTo = 'puissantachille@gmail.com',
     handleSubmit = (e) => {
